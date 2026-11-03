@@ -411,6 +411,16 @@
         }
       }
     },
+    "Data": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daten"
+          }
+        }
+      }
+    },
     "Delete": {
       "localizations": {
         "de": {
@@ -571,6 +581,26 @@
         }
       }
     },
+    "Export Tasks as JSON": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgaben als JSON exportieren"
+          }
+        }
+      }
+    },
+    "Exported %lld tasks.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Aufgaben exportiert."
+          }
+        }
+      }
+    },
     "Filter and Sort": {
       "localizations": {
         "de": {
@@ -631,6 +661,16 @@
         }
       }
     },
+    "Generate 1,000 Sample Tasks": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1.000 Beispielaufgaben erzeugen"
+          }
+        }
+      }
+    },
     "Get Deadline Reminders?": {
       "localizations": {
         "de": {
@@ -667,6 +707,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "Falls ein Konto für %@ existiert, ist ein Link zum Zurücksetzen unterwegs."
+          }
+        }
+      }
+    },
+    "Import Tasks from JSON": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgaben aus JSON importieren"
+          }
+        }
+      }
+    },
+    "Imported %lld tasks.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Aufgaben importiert."
+          }
+        }
+      }
+    },
+    "Imported %lld tasks; skipped %lld that couldn't be added.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld Aufgaben importiert; %2$lld konnten nicht hinzugefügt werden."
           }
         }
       }
@@ -1251,6 +1321,16 @@
         }
       }
     },
+    "Share Export": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export teilen"
+          }
+        }
+      }
+    },
     "Share Task": {
       "localizations": {
         "de": {
@@ -1531,6 +1611,16 @@
         }
       }
     },
+    "That file isn't a valid task export.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Datei ist kein gültiger Aufgabenexport."
+          }
+        }
+      }
+    },
     "That photo couldn't be read.": {
       "localizations": {
         "de": {
@@ -1547,6 +1637,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Der Anhang konnte nicht geladen werden."
+          }
+        }
+      }
+    },
+    "The export couldn't be written.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Export konnte nicht geschrieben werden."
           }
         }
       }
@@ -1627,6 +1727,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Zu viele Versuche. Warte einen Moment und versuche es erneut."
+          }
+        }
+      }
+    },
+    "Transferring tasks": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgaben werden übertragen"
           }
         }
       }

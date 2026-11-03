@@ -4,6 +4,7 @@ import SwiftUI
 struct SettingsView: View {
     @State private var model: SettingsViewModel
     @State private var isConfirmingSignOut = false
+    @State private var isImporting = false
     @Environment(\.dismiss) private var dismiss
 
     init(model: SettingsViewModel) {
@@ -24,6 +25,26 @@ struct SettingsView: View {
                         ForEach(ReminderLeadTime.allCases, id: \.self) { Text($0.title).tag($0) }
                     }
                 }
+                Section {
+                    Button("Export Tasks as JSON", systemImage: "square.and.arrow.up") {
+                        Task { await model.exportTasks() }
+                    }
+                    if let url = model.exportURL {
+                        ShareLink(item: url) { Label("Share Export", systemImage: "doc.text") }
+                    }
+                    Button("Import Tasks from JSON", systemImage: "square.and.arrow.down") { isImporting = true }
+                    if let progress = model.transferProgress {
+                        ProgressView(value: progress).accessibilityLabel(Text("Transferring tasks"))
+                    }
+                    #if DEBUG
+                    Button("Generate 1,000 Sample Tasks", systemImage: "hammer") {
+                        Task { await model.generateSampleTasks() }
+                    }
+                    #endif
+                } header: {
+                    Text("Data")
+                }
+                .disabled(model.transferProgress != nil)
                 if model.isSyncAvailable {
                     Section("Sync") {
                         LabeledContent("Status") {
@@ -43,6 +64,20 @@ struct SettingsView: View {
                 }
             }
             .task { await model.observeSync() }
+            .fileImporter(isPresented: $isImporting, allowedContentTypes: [.json]) { result in
+                switch result {
+                case .success(let url): Task { await model.importTasks(from: url) }
+                case .failure: model.reportImportPickerFailure()
+                }
+            }
+            .alert("Tasks", isPresented: Binding(
+                get: { model.transferMessage != nil },
+                set: { if !$0 { model.dismissTransferMessage() } }
+            )) {
+                Button("OK", role: .cancel) { model.dismissTransferMessage() }
+            } message: {
+                Text(model.transferMessage ?? "")
+            }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

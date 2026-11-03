@@ -204,7 +204,8 @@ final class AppEnvironment {
             session: session,
             sessionController: self.session,
             sync: sync,
-            reminderCoordinator: reminderCoordinator
+            reminderCoordinator: reminderCoordinator,
+            repository: tasks
         )
     }
 

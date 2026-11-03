@@ -31,6 +31,7 @@
 		2B9DDE501A0883B0B2805645 /* ReminderSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C1898C5504DD3CD7A2C /* ReminderSchedulerTests.swift */; };
 		2D94ADB396D0AEB241950303 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2DC663564D6237204A4F3FA8 /* FirebaseStorage */; };
 		2DD65B79F9D264096892A165 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DD8EC114F1C6B97F118CE4 /* ForgotPasswordView.swift */; };
+		33FA7739BBD6E8A651249AB8 /* TaskTransferTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DCF40E10F749406878B080 /* TaskTransferTests.swift */; };
 		353CF61126AC8FC096650D78 /* ImageCompressorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647625382B9372A0B9AD44E /* ImageCompressorTests.swift */; };
 		357603FAEDA7AD1E7337A4D4 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313A9A7E7A81A795A86D1977 /* FormField.swift */; };
 		35E183D4B83FE76918BF7A88 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0E68852D1ECFAB00F9AF08 /* ForgotPasswordViewModel.swift */; };
@@ -64,11 +65,13 @@
 		740747C7F3925D69C045FB35 /* AttachmentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6923543679805C5B98A8F6D /* AttachmentsViewModel.swift */; };
 		7799F41D4491CF6A8E1DDD04 /* FirebaseBootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE2A02528379C8F82EDC307 /* FirebaseBootstrap.swift */; };
 		7886FC31A3DB73601A98144A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAF37CDCD393904783FD40E7 /* Assets.xcassets */; };
+		79B8BE78731CF5ACD437E424 /* TaskTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA5D918CCD5E0A15553EE94 /* TaskTransfer.swift */; };
 		859C01C1707B1F59BBC632B5 /* Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0E7F6D117D66BE2CE99EC6 /* Tokens.swift */; };
 		8D010610631624B2453F0358 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53080C39B182410798098F92 /* TaskItem.swift */; };
 		8E6A52C64E4D6DFFFE865E49 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BE9A79BB160CAB2990ABBA /* MainView.swift */; };
 		8EF791F47BEF7A40C238570B /* FirestoreTaskRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028080F0203BD8860723266E /* FirestoreTaskRemote.swift */; };
 		915DFD9F332410B3D0FC1294 /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797275E6F2CA8305265E8C5F /* TaskListViewModel.swift */; };
+		919930ADE8ACD9DCDA10556E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 11FC8C04759B2B82A7058CFE /* PrivacyInfo.xcprivacy */; };
 		91B2215BA3EDC55B2AB8D098 /* Eventually.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA260604D2E88C0669FC3 /* Eventually.swift */; };
 		9424E2CB1B3AB258FD326A66 /* InlineValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D02EB976DE421312073A6BD /* InlineValidation.swift */; };
 		97A6C5B4C057EDB09FC9C663 /* TaskManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D473E08AF146B063569B6AAB /* TaskManagerApp.swift */; };
@@ -152,6 +155,7 @@
 		0606D07F5BC6056B2C044F62 /* SessionControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionControllerTests.swift; sourceTree = "<group>"; };
 		0907426701EB5A775C90639C /* MessageBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBanner.swift; sourceTree = "<group>"; };
 		1192BE7B18566F939F76D04C /* DesignSystemCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystemCatalog.swift; sourceTree = "<group>"; };
+		11FC8C04759B2B82A7058CFE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		12C80502762A6907362C6083 /* InviteCollaboratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCollaboratorView.swift; sourceTree = "<group>"; };
 		141911EFB650AF04737CAC42 /* TaskDocumentMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDocumentMapper.swift; sourceTree = "<group>"; };
 		1620D546A1F1EFA991182415 /* TaskViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModelTests.swift; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 		994178C3E88FF1BC35F36A74 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		9B2DF0DED24F5A6ACBACA543 /* AuthMemoryLeakTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMemoryLeakTests.swift; sourceTree = "<group>"; };
 		9E9C6419C27FA4007B5514AA /* SessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
+		9EA5D918CCD5E0A15553EE94 /* TaskTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTransfer.swift; sourceTree = "<group>"; };
 		A0458718BFF2AB775B9EC12C /* TaskFilterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFilterMenu.swift; sourceTree = "<group>"; };
 		A36320385584079394EFFDEF /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		A3FE07CD27DB31BF80A97288 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -259,6 +264,7 @@
 		F2DAB36AD38FA55F68AA05BE /* FirebaseAttachmentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAttachmentStorage.swift; sourceTree = "<group>"; };
 		F34848CBEAAA3DF8E456E7FD /* TaskRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRemote.swift; sourceTree = "<group>"; };
 		F8CCB5EDDF31527FD7863FE4 /* ReminderScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderScheduler.swift; sourceTree = "<group>"; };
+		F8DCF40E10F749406878B080 /* TaskTransferTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTransferTests.swift; sourceTree = "<group>"; };
 		F9E45A1FA6069368C351B60B /* TaskQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskQuery.swift; sourceTree = "<group>"; };
 		FBB538052B52E62C1B49F7FE /* TaskDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -313,6 +319,7 @@
 				EAF37CDCD393904783FD40E7 /* Assets.xcassets */,
 				A36320385584079394EFFDEF /* InfoPlist.xcstrings */,
 				764DB92DE8BC93F9D3259568 /* Localizable.xcstrings */,
+				11FC8C04759B2B82A7058CFE /* PrivacyInfo.xcprivacy */,
 				EDB10CA81851067DFD7498C8 /* TaskManager.entitlements */,
 			);
 			path = Resources;
@@ -610,6 +617,7 @@
 				2A2CCCCB6B1406323D1DFF79 /* TaskManagerMigrationPlan.swift */,
 				49B05ACFC83E98CBEDB2D747 /* TaskRepository.swift */,
 				7360E1D71482F15186031AA6 /* TaskStore.swift */,
+				9EA5D918CCD5E0A15553EE94 /* TaskTransfer.swift */,
 				EB0558572EDDB761CBB89766 /* UnavailableTaskRepository.swift */,
 			);
 			path = Persistence;
@@ -657,6 +665,7 @@
 			children = (
 				2F81B84C63F8FD334EE3056F /* TaskQueryTests.swift */,
 				A5E9E4B236EA281022533334 /* TaskStoreTests.swift */,
+				F8DCF40E10F749406878B080 /* TaskTransferTests.swift */,
 				1620D546A1F1EFA991182415 /* TaskViewModelTests.swift */,
 			);
 			path = Tasks;
@@ -796,6 +805,7 @@
 				7886FC31A3DB73601A98144A /* Assets.xcassets in Resources */,
 				3BD105270BD13578F603F05F /* InfoPlist.xcstrings in Resources */,
 				1CC8879840859C3B1B3E3E89 /* Localizable.xcstrings in Resources */,
+				919930ADE8ACD9DCDA10556E /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -936,6 +946,7 @@
 				BB7EF949FC7F1415E8C0D39C /* TaskRepository.swift in Sources */,
 				6B011E868FFE86660FA5BB09 /* TaskRow.swift in Sources */,
 				CD2BEB14655567A3CEF5656D /* TaskStore.swift in Sources */,
+				79B8BE78731CF5ACD437E424 /* TaskTransfer.swift in Sources */,
 				859C01C1707B1F59BBC632B5 /* Tokens.swift in Sources */,
 				54B2E3843A2265B013D266F9 /* UnavailableTaskRepository.swift in Sources */,
 				9BB2641E8B5162E9F7DB280E /* UnconfiguredAuthService.swift in Sources */,
@@ -966,6 +977,7 @@
 				16D0414E0E161A3F525C1146 /* SessionExpiryPolicyTests.swift in Sources */,
 				19DAA32F8BA8CCD2818CEE23 /* TaskQueryTests.swift in Sources */,
 				495B4829C3F0B74FD0EC2312 /* TaskStoreTests.swift in Sources */,
+				33FA7739BBD6E8A651249AB8 /* TaskTransferTests.swift in Sources */,
 				6F656FC8CD871CD6F8E43BF2 /* TaskViewModelTests.swift in Sources */,
 				01F0472AE12BC55F21C857AB /* TestClock.swift in Sources */,
 				DDD1F7C5C1C7FF98B956D483 /* UploadStateMachineTests.swift in Sources */,

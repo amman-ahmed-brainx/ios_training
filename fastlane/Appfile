@@ -1,0 +1,2 @@
+app_identifier("com.brainxtech.taskmanager")
+team_id(ENV["TASKMANAGER_TEAM_ID"]) if ENV["TASKMANAGER_TEAM_ID"]
