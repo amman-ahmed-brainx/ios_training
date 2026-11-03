@@ -1,0 +1,31 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Connected to Firebase." : {
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Mit Firebase verbunden." } }
+      }
+    },
+    "Firebase is not configured. Running offline." : {
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Firebase ist nicht eingerichtet. Die App läuft offline." } }
+      }
+    },
+    "Loading" : {
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wird geladen" } }
+      }
+    },
+    "Running with sample data." : {
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Die App verwendet Beispieldaten." } }
+      }
+    },
+    "Task Manager" : {
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Aufgabenverwaltung" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

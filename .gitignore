@@ -1,0 +1,36 @@
+# macOS
+.DS_Store
+
+# Xcode
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+*.xcresult
+*.xcarchive
+*.ipa
+*.dSYM.zip
+*.trace
+
+# Secrets: never commit
+GoogleService-Info.plist
+*.p8
+*.p12
+*.mobileprovision
+.env
+.env.*
+fastlane/*.json
+
+# Fastlane output
+fastlane/report.xml
+fastlane/test_output/
+fastlane/README.md
+
+# Node / Firebase
+node_modules/
+functions/lib/
+firebase-debug.log*
+firestore-debug.log*
+ui-debug.log*
+.firebase/
+coverage/
