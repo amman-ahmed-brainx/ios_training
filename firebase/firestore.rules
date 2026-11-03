@@ -1,0 +1,52 @@
+rules_version = '2';
+
+// Task access is driven by `memberIds` (owner + collaborators). Mirrors TaskPermissions.swift.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isMember() {
+      return signedIn() && request.auth.uid in resource.data.memberIds;
+    }
+
+    function isOwner() {
+      return signedIn() && request.auth.uid == resource.data.ownerId;
+    }
+
+    // memberIds is exactly the owner plus the collaborators: no hidden readers.
+    function validMembership(data) {
+      return data.ownerId in data.memberIds
+        && data.memberIds.hasAll(data.collaboratorIds)
+        && data.memberIds.size() == data.collaboratorIds.size() + 1
+        && !(data.ownerId in data.collaboratorIds);
+    }
+
+    match /tasks/{taskId} {
+      allow read: if isMember();
+
+      allow create: if signedIn()
+        && request.resource.data.ownerId == request.auth.uid
+        && validMembership(request.resource.data);
+
+      // Owner may change anything except ownership; collaborators only the status fields.
+      allow update: if (isOwner()
+          && request.resource.data.ownerId == resource.data.ownerId
+          && validMembership(request.resource.data))
+        || (isMember()
+          && request.resource.data.diff(resource.data).affectedKeys()
+               .hasOnly(['status', 'statusUpdatedAt', 'updatedAt', 'updatedBy'])
+          && request.resource.data.updatedBy == request.auth.uid);
+
+      allow delete: if isOwner();
+    }
+
+    // Any signed-in user may read profiles so invite-by-email can find people (see README).
+    match /users/{uid} {
+      allow read: if signedIn();
+      allow create, update: if signedIn() && request.auth.uid == uid;
+      allow delete: if false;
+    }
+  }
+}

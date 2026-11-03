@@ -34,3 +34,6 @@ firestore-debug.log*
 ui-debug.log*
 .firebase/
 coverage/
+
+# The review hook's working file; the post-commit hook commits ledger and records itself.
+.code-reviews/brainx-review.md

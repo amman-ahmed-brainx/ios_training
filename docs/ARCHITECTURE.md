@@ -95,6 +95,33 @@ Views ◀── @MainActor view models ◀── AsyncStream<[TaskItem]> ◀─�
 - **Navigation.** `AppRouter` owns the signed-in `NavigationStack` path so later phases can deep link
   from notifications.
 
+## Real-time backend and offline sync (Phases 4–5)
+
+```
+UI ◀── SwiftData (TaskStore) ◀── merge ── SyncEngine ◀── Firestore snapshot listener
+                    │                          │
+                    └── outbox (pending rows) ─┴──▶ push: save / saveStatus / delete
+```
+
+- **Incoming.** `FirestoreTaskRemote` listens to `tasks` where `memberIds` contains the user.
+  Firestore delivers callbacks on a background queue (set in `FirebaseBootstrap`); documents are
+  mapped to `VersionedTask` DTOs (`TaskDocumentMapper`) and merged by `TaskStore.applyRemote`.
+  Rows missing from an authoritative (non-cache) snapshot are deleted locally if they were synced.
+- **Outgoing.** `SyncEngine` (an actor) pushes pending rows oldest-first when online, after every
+  local change, on pull-to-refresh / "Sync Now", from background tasks, and once more before a
+  user-initiated sign-out. Owners write the whole document; collaborators only the status fields.
+  Writes use fixed document ids, so a retried push is idempotent.
+- **Retry.** A failing row backs off on its own (`2^attempts` seconds, capped at 5 minutes) and
+  never blocks the others. A rejected write (permission denied) stays pending but parked, with the reason
+  recorded, so nothing is discarded silently; `notFound` on a status/delete removes the local row.
+- **Conflict policy** (`ConflictResolver`, unit-tested): last write wins by `updatedAt`, the remote
+  copy wins ties; `status` merges separately by `statusUpdatedAt`, so a collaborator's status change
+  survives an owner's stale offline edit of other fields. A pending local delete beats a remote edit.
+- **Status.** `NetworkMonitor` (`NWPathMonitor`) and the outbox drive `SyncStatus`, shown by the
+  list's banner (synced / pending / offline) and in Settings.
+- **Known limitation.** A user-initiated sign-out while offline still wipes unsynced changes (the
+  Settings footer says so); a push is attempted first when online.
+
 ## Decisions and trade-offs
 
 - **The project lives at the repository root** (`ios_training/`), not in a nested `TaskManager/`

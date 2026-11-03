@@ -1,4 +1,5 @@
 import FirebaseCore
+import FirebaseFirestore
 import Foundation
 
 /// The only place `FirebaseApp` is configured.
@@ -12,6 +13,10 @@ enum FirebaseBootstrap {
             let options = FirebaseOptions(contentsOfFile: path)
         else { return false }
         FirebaseApp.configure(options: options)
+        // Deliver snapshot callbacks on a background queue so parsing never runs on main.
+        let settings = Firestore.firestore().settings
+        settings.dispatchQueue = DispatchQueue(label: "com.brainxtech.taskmanager.firestore", qos: .userInitiated)
+        Firestore.firestore().settings = settings
         return true
     }
 }

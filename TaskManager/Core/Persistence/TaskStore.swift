@@ -144,6 +144,142 @@ actor TaskStore {
         }
     }
 
+    // MARK: - Outbox
+
+    /// One row waiting to be pushed.
+    struct PendingChange: Sendable {
+        enum Kind: Sendable { case save, statusOnly, delete }
+        let task: VersionedTask
+        let kind: Kind
+    }
+
+    /// Pending rows due for a push, oldest first. Rows backing off until later are skipped.
+    func pendingChanges(for userId: String, now: Date) throws -> [PendingChange] {
+        let synced = SyncState.synced.rawValue
+        let descriptor = FetchDescriptor<TaskEntity>(
+            predicate: #Predicate { $0.cacheOwnerId == userId && $0.syncStateRaw != synced },
+            sortBy: [SortDescriptor(\.pendingSince)]
+        )
+        return try modelContext.fetch(descriptor)
+            .filter { ($0.nextRetryAt ?? .distantPast) <= now }
+            .map { entity in
+                let kind: PendingChange.Kind
+                if entity.syncState == .pendingDelete {
+                    kind = .delete
+                } else if entity.ownerId == userId {
+                    kind = .save
+                } else {
+                    // Collaborators may only write the status fields.
+                    kind = .statusOnly
+                }
+                return PendingChange(task: entity.versioned, kind: kind)
+            }
+    }
+
+    /// Earliest time a backed-off row becomes due, if any.
+    func nextRetryDate(for userId: String) throws -> Date? {
+        let synced = SyncState.synced.rawValue
+        let descriptor = FetchDescriptor<TaskEntity>(
+            predicate: #Predicate { $0.cacheOwnerId == userId && $0.syncStateRaw != synced }
+        )
+        return try modelContext.fetch(descriptor).compactMap(\.nextRetryAt).min()
+    }
+
+    /// Records a successful push. If the row changed again while the push was in flight it stays
+    /// pending, so that newer edit is pushed next time.
+    func markPushed(_ change: PendingChange, for userId: String) throws(TaskRepositoryError) {
+        guard let entity = try entity(change.task.item.id, for: userId) else { return }
+        if change.kind == .delete {
+            modelContext.delete(entity)
+        } else if entity.updatedAt == change.task.item.updatedAt {
+            entity.markSynced()
+        }
+        try save(notifying: userId)
+    }
+
+    /// Records a failed push: retryable failures back off exponentially, permanent ones are dropped
+    /// (the listener then restores the backend's version).
+    func markFailed(_ change: PendingChange, for userId: String, error: RemoteError, now: Date) throws(TaskRepositoryError) {
+        guard let entity = try entity(change.task.item.id, for: userId) else { return }
+        if error.isRetryable {
+            entity.syncAttempts += 1
+            entity.nextRetryAt = now.addingTimeInterval(Self.backoff(attempt: entity.syncAttempts))
+            entity.lastSyncError = String(describing: error)
+        } else if error == .notFound && change.kind != .save {
+            // Deleted on the backend: nothing left to update or delete.
+            modelContext.delete(entity)
+        } else {
+            // The backend refused this write (e.g. access was revoked). Retrying won't help, but the
+            // change is never silently discarded: it stays pending, parked, with the reason recorded.
+            Log.sync.error("A change was rejected by the backend: \(String(describing: error), privacy: .public)")
+            entity.syncAttempts += 1
+            entity.nextRetryAt = .distantFuture
+            entity.lastSyncError = String(describing: error)
+        }
+        try save(notifying: userId)
+    }
+
+    /// 2s, 4s, 8s … capped at 5 minutes.
+    static func backoff(attempt: Int) -> TimeInterval {
+        min(300, pow(2, Double(min(attempt, 9))))
+    }
+
+    private func entity(_ taskId: String, for userId: String) throws(TaskRepositoryError) -> TaskEntity? {
+        do {
+            return try modelContext.fetch(FetchDescriptor<TaskEntity>(
+                predicate: #Predicate { $0.id == taskId && $0.cacheOwnerId == userId }
+            )).first
+        } catch {
+            throw .storageFailed
+        }
+    }
+
+    // MARK: - Remote merge
+
+    /// Merges the backend's view of the user's tasks into the cache (see `ConflictResolver`).
+    func applyRemote(_ snapshot: RemoteTaskSnapshot, for userId: String) throws(TaskRepositoryError) {
+        let locals: [TaskEntity]
+        do {
+            locals = try modelContext.fetch(FetchDescriptor<TaskEntity>(predicate: #Predicate { $0.cacheOwnerId == userId }))
+        } catch {
+            throw .storageFailed
+        }
+        let localById = Dictionary(locals.map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
+        let remoteIds = Set(snapshot.tasks.map(\.item.id))
+
+        for remote in snapshot.tasks {
+            guard let entity = localById[remote.item.id] else {
+                modelContext.insert(TaskEntity(item: remote.item, cacheOwnerId: userId,
+                                               statusUpdatedAt: remote.statusUpdatedAt, pendingSince: nil))
+                continue
+            }
+            switch entity.syncState {
+            case .synced:
+                entity.apply(remote)
+            case .pendingDelete:
+                // Our delete is newer intent; the push removes it remotely.
+                continue
+            case .pendingCreate, .pendingUpdate:
+                let outcome = ConflictResolver.resolve(local: entity.versioned, remote: remote)
+                entity.apply(outcome.merged)
+                if outcome.needsPush {
+                    // It exists remotely now, so any later push is an update.
+                    entity.syncState = .pendingUpdate
+                } else {
+                    entity.markSynced()
+                }
+            }
+        }
+
+        // A cached snapshot may be incomplete; only an authoritative one proves a task is gone.
+        if !snapshot.isFromCache {
+            for entity in locals where entity.syncState == .synced && !remoteIds.contains(entity.id) {
+                modelContext.delete(entity)
+            }
+        }
+        try save(notifying: userId)
+    }
+
     // MARK: - Helpers
 
     private func visibleEntity(_ taskId: String, for userId: String) throws(TaskRepositoryError) -> TaskEntity {

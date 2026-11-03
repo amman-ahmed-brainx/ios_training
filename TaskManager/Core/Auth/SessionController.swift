@@ -99,7 +99,12 @@ final class SessionController {
         case .signedIn(let session):
             let isNewSession = currentSession?.uid != session.uid
             state = .signedIn(session)
-            if isNewSession { ensureProfile(for: session) }
+            if isNewSession {
+                ensureProfile(for: session)
+                for observer in observers {
+                    await observer.sessionDidStart(session)
+                }
+            }
         case .signedOut(let reason):
             if let session = currentSession {
                 // We did not ask for this: the backend dropped the session (revoked or disabled).

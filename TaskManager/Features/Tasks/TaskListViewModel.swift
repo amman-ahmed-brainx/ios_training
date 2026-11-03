@@ -20,14 +20,37 @@ final class TaskListViewModel {
         didSet { if query != oldValue { refreshVisible() } }
     }
 
+    private(set) var syncStatus = SyncStatus.idle
+
     let userId: String
     private let repository: any TaskRepository
     private let clock: any AppClock
+    private let sync: (any SyncControlling)?
 
-    init(repository: any TaskRepository, userId: String, clock: any AppClock) {
+    init(repository: any TaskRepository, userId: String, clock: any AppClock, sync: (any SyncControlling)? = nil) {
         self.repository = repository
         self.userId = userId
         self.clock = clock
+        self.sync = sync
+    }
+
+    /// The banner state: offline wins over pending.
+    var bannerStatus: SyncStatusBanner.Status {
+        if !syncStatus.isOnline { return .offline(pendingCount: pendingChangeCount) }
+        return pendingChangeCount == 0 ? .synced : .pending(count: pendingChangeCount)
+    }
+
+    /// Follows sync status until cancelled (the view's `.task`).
+    func observeSync() async {
+        guard let sync else { return }
+        for await status in sync.statusUpdates() {
+            syncStatus = status
+        }
+    }
+
+    /// Pull-to-refresh: push local changes now; the listener keeps incoming data live anyway.
+    func refresh() async {
+        await sync?.syncNow()
     }
 
     /// Local changes not yet confirmed by the backend.

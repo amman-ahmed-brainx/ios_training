@@ -19,6 +19,16 @@ struct SettingsView: View {
                     }
                     LabeledContent("Email") { Text(verbatim: model.session.email) }
                 }
+                if model.isSyncAvailable {
+                    Section("Sync") {
+                        LabeledContent("Status") {
+                            Text(model.syncStatus.isOnline ? (model.syncStatus.isSyncing ? "Syncing…" : "Online") : "Offline")
+                        }
+                        LabeledContent("Pending Changes") { Text(model.syncStatus.pendingCount, format: .number) }
+                        Button("Sync Now") { Task { await model.syncNow() } }
+                            .disabled(!model.syncStatus.isOnline || model.syncStatus.isSyncing)
+                    }
+                }
                 Section {
                     Button("Sign Out", role: .destructive) { isConfirmingSignOut = true }
                         .disabled(model.isSigningOut)
@@ -27,6 +37,7 @@ struct SettingsView: View {
                     Text("Signing out removes your tasks from this device, including changes that haven't synced yet.")
                 }
             }
+            .task { await model.observeSync() }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

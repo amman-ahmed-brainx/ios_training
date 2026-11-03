@@ -29,6 +29,7 @@ struct TaskListView: View {
             }
             .safeAreaInset(edge: .bottom) { bottomBar }
             .task { await model.observe() }
+            .task { await model.observeSync() }
             .confirmationDialog(
                 "Delete this task?",
                 isPresented: isConfirmingDeletion,
@@ -120,6 +121,7 @@ struct TaskListView: View {
             .accessibilityIdentifier("taskRow.\(task.id)")
         }
         .listStyle(.plain)
+        .refreshable { await model.refresh() }
         .animation(reduceMotion ? nil : .default, value: model.visibleTasks)
     }
 
@@ -147,9 +149,7 @@ struct TaskListView: View {
     private var bottomBar: some View {
         HStack(alignment: .bottom) {
             if model.loadState == .loaded && !model.tasks.isEmpty {
-                SyncStatusBanner(
-                    status: model.pendingChangeCount == 0 ? .synced : .pending(count: model.pendingChangeCount)
-                )
+                SyncStatusBanner(status: model.bannerStatus)
             }
             Spacer(minLength: Spacing.small)
             FloatingAddButton(label: "Add Task", action: onAdd)

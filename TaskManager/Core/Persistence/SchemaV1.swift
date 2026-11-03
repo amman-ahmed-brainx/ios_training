@@ -107,6 +107,36 @@ extension TaskEntity {
         )
     }
 
+    var versioned: VersionedTask {
+        VersionedTask(item: item, statusUpdatedAt: statusUpdatedAt)
+    }
+
+    /// Overwrites the task fields (not the outbox bookkeeping) with `task`.
+    func apply(_ task: VersionedTask) {
+        let item = task.item
+        title = item.title
+        notes = item.notes
+        status = item.status
+        priority = item.priority
+        dueDate = item.dueDate
+        ownerId = item.ownerId
+        collaboratorIds = item.collaboratorIds
+        attachments = item.attachments
+        createdAt = item.createdAt
+        updatedAt = item.updatedAt
+        updatedBy = item.updatedBy
+        statusUpdatedAt = task.statusUpdatedAt
+    }
+
+    /// Clears the outbox state after the backend confirmed this row.
+    func markSynced() {
+        syncState = .synced
+        pendingSince = nil
+        syncAttempts = 0
+        nextRetryAt = nil
+        lastSyncError = nil
+    }
+
     static func encode(_ attachments: [TaskAttachment]) -> Data {
         // Encoding plain Codable values cannot fail; an empty blob decodes back to [].
         (try? JSONEncoder().encode(attachments)) ?? Data()

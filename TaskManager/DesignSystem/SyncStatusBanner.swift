@@ -5,7 +5,6 @@ struct SyncStatusBanner: View {
     enum Status: Equatable {
         case synced
         case pending(count: Int)
-        /// Shown once the network monitor arrives with offline sync; the list passes it then.
         case offline(pendingCount: Int)
     }
 

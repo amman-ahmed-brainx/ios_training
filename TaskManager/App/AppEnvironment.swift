@@ -43,6 +43,8 @@ final class AppEnvironment {
     let auth: any AuthService
     let session: SessionController
     let tasks: any TaskRepository
+    /// `nil` when there is no backend (no Firebase plist) or no local store.
+    let sync: SyncEngine?
     let router = AppRouter()
 
     init(mode: Mode, clock: any AppClock = SystemClock()) {
@@ -53,7 +55,16 @@ final class AppEnvironment {
         auth = backend.auth
         session = SessionController(auth: backend.auth, profiles: backend.profiles)
         // Fakes get a fresh in-memory store each launch so previews and UI tests are deterministic.
-        tasks = Self.makeTaskRepository(inMemory: mode != .live, clock: clock)
+        let local = Self.makeLocalRepository(inMemory: mode != .live, clock: clock)
+        tasks = local ?? UnavailableTaskRepository()
+        if let local, let remote = backend.remote {
+            let engine = SyncEngine(remote: remote, repository: local, clock: clock)
+            sync = engine
+            session.register(engine)
+        } else {
+            sync = nil
+        }
+        // Registered last: the cache is wiped only after sync has stopped (and flushed).
         session.register(TaskCacheCleaner(repository: tasks))
     }
 
@@ -91,7 +102,7 @@ final class AppEnvironment {
     }
 
     func makeTaskListViewModel(session: AuthSession) -> TaskListViewModel {
-        TaskListViewModel(repository: tasks, userId: session.uid, clock: clock)
+        TaskListViewModel(repository: tasks, userId: session.uid, clock: clock, sync: sync)
     }
 
     func makeTaskDetailViewModel(taskId: String, session: AuthSession) -> TaskDetailViewModel {
@@ -103,12 +114,12 @@ final class AppEnvironment {
     }
 
     func makeSettingsViewModel(session: AuthSession) -> SettingsViewModel {
-        SettingsViewModel(session: session, sessionController: self.session)
+        SettingsViewModel(session: session, sessionController: self.session, sync: sync)
     }
 
     // MARK: - Backend selection
 
-    private static func makeTaskRepository(inMemory: Bool, clock: any AppClock) -> any TaskRepository {
+    private static func makeLocalRepository(inMemory: Bool, clock: any AppClock) -> LocalTaskRepository? {
         do {
             return LocalTaskRepository(container: try PersistenceContainer.make(inMemory: inMemory), clock: clock)
         } catch {
@@ -119,7 +130,7 @@ final class AppEnvironment {
             return LocalTaskRepository(container: try PersistenceContainer.make(inMemory: true), clock: clock)
         } catch {
             Log.app.fault("Opening an in-memory task store failed: \(error.localizedDescription, privacy: .public)")
-            return UnavailableTaskRepository()
+            return nil
         }
     }
 
@@ -127,6 +138,7 @@ final class AppEnvironment {
         let status: BackendStatus
         let auth: any AuthService
         let profiles: any UserProfileStore
+        let remote: (any TaskRemote)?
     }
 
     private static func makeBackend(for mode: Mode) -> Backend {
@@ -134,19 +146,24 @@ final class AppEnvironment {
         switch mode {
         case .preview:
             let fake = FakeAuthService(signedIn: true)
-            return Backend(status: .fake, auth: fake, profiles: fake)
+            return Backend(status: .fake, auth: fake, profiles: fake, remote: FakeTaskRemote())
         case .uiTest:
             let fake = FakeAuthService()
-            return Backend(status: .fake, auth: fake, profiles: fake)
+            return Backend(status: .fake, auth: fake, profiles: fake, remote: FakeTaskRemote())
         case .live:
             break
         }
         #endif
         if FirebaseBootstrap.configureIfAvailable() {
-            return Backend(status: .firebase, auth: FirebaseAuthService(), profiles: FirestoreUserProfileStore())
+            return Backend(
+                status: .firebase,
+                auth: FirebaseAuthService(),
+                profiles: FirestoreUserProfileStore(),
+                remote: FirestoreTaskRemote()
+            )
         }
         Log.app.notice("GoogleService-Info.plist missing; running without a backend.")
         let unconfigured = UnconfiguredAuthService()
-        return Backend(status: .unconfigured, auth: unconfigured, profiles: unconfigured)
+        return Backend(status: .unconfigured, auth: unconfigured, profiles: unconfigured, remote: nil)
     }
 }
