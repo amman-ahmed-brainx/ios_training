@@ -8,11 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		01D59524B9100BE87FD3A75C /* FirestoreUserProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C030173C3E4A1765A7EBD45 /* FirestoreUserProfileStore.swift */; };
+		01F0472AE12BC55F21C857AB /* TestClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0C9B096682FB16863C4DAE /* TestClock.swift */; };
+		097580E074AA0FD05AEDC368 /* TaskCacheCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30FB106717EACA2BBCF2AF0 /* TaskCacheCleaner.swift */; };
 		0A5C91BA5665A7ACF5FC01AE /* ValidatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D704EB0CFC78F72211CA8F7D /* ValidatorsTests.swift */; };
+		15DBB14EF4CBD53290D40E62 /* TaskItem+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862E70184E9427B01B08169B /* TaskItem+Preview.swift */; };
 		16D0414E0E161A3F525C1146 /* SessionExpiryPolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC027A7BB1F52830F40FBE4 /* SessionExpiryPolicyTests.swift */; };
+		19DAA32F8BA8CCD2818CEE23 /* TaskQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81B84C63F8FD334EE3056F /* TaskQueryTests.swift */; };
 		1CC8879840859C3B1B3E3E89 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 764DB92DE8BC93F9D3259568 /* Localizable.xcstrings */; };
+		1CDBD0A26D4801F3ED1B73A0 /* TaskEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1729F8EB49483307617A0B1 /* TaskEditorViewModel.swift */; };
+		1FF3CB4F1251E810EB25131B /* MockTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8226F24F9303DA6148B64409 /* MockTaskRepository.swift */; };
 		20AF41CBF2012BB5370AED27 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31C75483CE476B8D4EB824 /* RootView.swift */; };
 		21FC3343A4575812BAE09F81 /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9C6419C27FA4007B5514AA /* SessionController.swift */; };
+		25FC6747FEDA67E2DC9BE845 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A5DA303A8484B6645FD2B /* SettingsView.swift */; };
 		266D931D8FCF0F81E3BEA527 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529FCF06CD1FC13ED285241D /* EmptyStateView.swift */; };
 		28281B2049EA5961ADDA1E06 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 0B453C0F14541B8EFDB5A82F /* FirebaseMessaging */; };
 		2D94ADB396D0AEB241950303 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2DC663564D6237204A4F3FA8 /* FirebaseStorage */; };
@@ -21,43 +28,66 @@
 		35E183D4B83FE76918BF7A88 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0E68852D1ECFAB00F9AF08 /* ForgotPasswordViewModel.swift */; };
 		363D053D227DCF1A992E017B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FE07CD27DB31BF80A97288 /* LoginView.swift */; };
 		4137CA8111DB2E0FE50F36AE /* View+Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98415693C0FC5446497430E3 /* View+Accessibility.swift */; };
+		495B4829C3F0B74FD0EC2312 /* TaskStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E9E4B236EA281022533334 /* TaskStoreTests.swift */; };
 		52342FE7F2C321FF4CC0961A /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7438AEFB9F17A10E002E32C /* Validators.swift */; };
-		58BF1C67ABD4806B918010A6 /* SignedInPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC8579D518F10E4C5E8F73A /* SignedInPlaceholderView.swift */; };
+		54B2E3843A2265B013D266F9 /* UnavailableTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0558572EDDB761CBB89766 /* UnavailableTaskRepository.swift */; };
+		5B621F60731CB3068EE8EC0D /* TaskEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D930B3F6562CBD1A163CAC2 /* TaskEditorView.swift */; };
 		5D63B347D9760A3304B6A73D /* AppEnvironmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21257C6B536E173B5E280A58 /* AppEnvironmentTests.swift */; };
+		608A134384147A252A0CABC7 /* FloatingAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913D653F97889E357FEAEED4 /* FloatingAddButton.swift */; };
 		60D559C985BF9B85D6A34E7E /* MockAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB456BB6680F7EF1DBE1CA72 /* MockAuthService.swift */; };
 		61E31A29469C7E414BC5BA13 /* FloatingGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468AF988507C73A1363CFBF4 /* FloatingGlass.swift */; };
 		62D1D70B9D5F7283FD403EC3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D3BFA3E00090D4A6AFAEAE65 /* FirebaseAuth */; };
 		648523F0A972278BE8A3C5D7 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A517FE180B1662FEE919B /* Log.swift */; };
 		662493E34207E499C7F030E9 /* AuthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6A09DF11AA2EC13CB6D503 /* AuthHeader.swift */; };
+		67D2BBC50F22598D74964534 /* StatusBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75D23B4362EA79FB479B97 /* StatusBadge.swift */; };
 		67D322CA66F25B3585121E6F /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B971589CF1EC35F496A0472 /* AuthError.swift */; };
+		6B011E868FFE86660FA5BB09 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8397C8FA09C05031C66560D /* TaskRow.swift */; };
 		6C7C469F3886B9CDCA34F0A4 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994178C3E88FF1BC35F36A74 /* FirebaseAuthService.swift */; };
+		6F656FC8CD871CD6F8E43BF2 /* TaskViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620D546A1F1EFA991182415 /* TaskViewModelTests.swift */; };
 		7799F41D4491CF6A8E1DDD04 /* FirebaseBootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE2A02528379C8F82EDC307 /* FirebaseBootstrap.swift */; };
 		7886FC31A3DB73601A98144A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAF37CDCD393904783FD40E7 /* Assets.xcassets */; };
 		859C01C1707B1F59BBC632B5 /* Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0E7F6D117D66BE2CE99EC6 /* Tokens.swift */; };
+		8D010610631624B2453F0358 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53080C39B182410798098F92 /* TaskItem.swift */; };
+		8E6A52C64E4D6DFFFE865E49 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BE9A79BB160CAB2990ABBA /* MainView.swift */; };
+		915DFD9F332410B3D0FC1294 /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797275E6F2CA8305265E8C5F /* TaskListViewModel.swift */; };
 		91B2215BA3EDC55B2AB8D098 /* Eventually.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA260604D2E88C0669FC3 /* Eventually.swift */; };
 		9424E2CB1B3AB258FD326A66 /* InlineValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D02EB976DE421312073A6BD /* InlineValidation.swift */; };
 		97A6C5B4C057EDB09FC9C663 /* TaskManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D473E08AF146B063569B6AAB /* TaskManagerApp.swift */; };
 		99D92C859F6E439C9D22C389 /* FakeAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EDAAB3EB7348FED93D7BF /* FakeAuthService.swift */; };
 		9BB2641E8B5162E9F7DB280E /* UnconfiguredAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F188A500AD04ABC8E812603 /* UnconfiguredAuthService.swift */; };
+		9EA96CF5E28CDB7B520CEB15 /* TaskManagerMigrationPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2CCCCB6B1406323D1DFF79 /* TaskManagerMigrationPlan.swift */; };
+		9EED0286834935471148ECE0 /* TaskFilterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0458718BFF2AB775B9EC12C /* TaskFilterMenu.swift */; };
+		A0CB2E304FDFDC77FDAC7AE5 /* TaskPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3175D5B05C3028C531ED0C2 /* TaskPermissions.swift */; };
+		A2782B2270F9CF259FF328A8 /* TaskQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E45A1FA6069368C351B60B /* TaskQuery.swift */; };
 		A761D41AC57D19E68410FB95 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A58A7B4AD6146831D95E60AA /* FirebaseFirestore */; };
 		AAE960048F21DC33EAA594D1 /* AuthFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B95D848F03F168D91DCE47 /* AuthFlowView.swift */; };
 		AB23F1BB728C732B59EAD772 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAECB9B08532980A7D2B470F /* SignUpViewModel.swift */; };
 		AB91F129E65C5899EE9B62E7 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849281FB9BEDAB4E696EE358 /* SignUpView.swift */; };
 		AEA67CCCFEB01F6F3843EBD2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F36B55D7F61A3BA1D40AC197 /* FirebaseAnalytics */; };
 		B14989EB03160DD0089DD865 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E2AC941698465E00CAEE3E /* ButtonStyles.swift */; };
+		B5B66C786F6C37BD062C9C75 /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90778740BE78EE82576F679 /* TaskDetailView.swift */; };
+		B875C3E15BA50B2F07965B6D /* SyncStatusBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417BF2A4F3EE3316AB32CCBB /* SyncStatusBanner.swift */; };
+		BB7EF949FC7F1415E8C0D39C /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B05ACFC83E98CBEDB2D747 /* TaskRepository.swift */; };
 		BDA44C689F059B7C32CFE705 /* AuthMemoryLeakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DF0DED24F5A6ACBACA543 /* AuthMemoryLeakTests.swift */; };
+		C769AFF84D3720F78D3B29E6 /* SchemaV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E22E20127FA95B1FA016B /* SchemaV1.swift */; };
 		C7E1C713C4439EE10378DB3C /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE0DB547A51E088675C2261 /* AppEnvironment.swift */; };
 		CB340B10C5495082C6C06658 /* SessionControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606D07F5BC6056B2C044F62 /* SessionControllerTests.swift */; };
 		CBB13F73174BE6114878B48D /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBAE98AFA7C0A3A1AC709A8 /* PrimaryButton.swift */; };
 		CBBF31D0A142C6417558C3C3 /* SessionLifecycleObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C727FB42B12281D508D2F11F /* SessionLifecycleObserver.swift */; };
+		CBE84143535076123382BB0D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A5699B0DBB4D11F0FAFB1 /* SettingsViewModel.swift */; };
+		CC4E681585890BDB565DEB33 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AC7190FD59EAD7BD2D2473 /* TaskListView.swift */; };
+		CD2BEB14655567A3CEF5656D /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360E1D71482F15186031AA6 /* TaskStore.swift */; };
 		CD5173215CD48AD714B74C83 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F166BBE63AD618FF7678CD /* SplashView.swift */; };
 		D7D7F7F775F7F57D2BAC491C /* MessageBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0907426701EB5A775C90639C /* MessageBanner.swift */; };
+		D8F782F1ED2FC2E09A827FD0 /* TaskDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB538052B52E62C1B49F7FE /* TaskDetailViewModel.swift */; };
 		DDA2BA33DC003D08890CAEF4 /* UserProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C723DBF8DE42EA1F63426 /* UserProfileStore.swift */; };
 		E22F40D9C9E67D2B849F7C1B /* SessionExpiryPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F76E4C56D4E4B950D1E4AB5 /* SessionExpiryPolicy.swift */; };
 		E52E6326381E1B9143A4CEF7 /* DesignSystemCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192BE7B18566F939F76D04C /* DesignSystemCatalog.swift */; };
+		EA0BB39F1396E2ABE96E4150 /* LocalTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4547D5B6E5A1AA3BFE9520B5 /* LocalTaskRepository.swift */; };
 		EAC7B609867081C00C41C026 /* AuthFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325403DAC2ABCACFA3D609B4 /* AuthFlowUITests.swift */; };
 		ECE4597B3243398FAD3F5EA5 /* AppClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C5E52BB7FC7D581F736529 /* AppClock.swift */; };
 		F35B985595DE91F8928BD95C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E813BC4F61BBEA841988968E /* LoginViewModel.swift */; };
+		F42587129A9DD0FD7A1B6E03 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF41AB5084BF509026132D /* AppRouter.swift */; };
 		F4EED7B9B1E1FAC2F74EB9F2 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA031436EDBCDBC641B555D4 /* AuthService.swift */; };
 		F9736DE162292541325FFCAF /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2CEC9DB08D4DABCD580C4B5E /* FirebaseCrashlytics */; };
 		FC245058B1FD48863F5D109B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B02657CD64D787FA15DD4B /* AppDelegate.swift */; };
@@ -85,56 +115,86 @@
 		0606D07F5BC6056B2C044F62 /* SessionControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionControllerTests.swift; sourceTree = "<group>"; };
 		0907426701EB5A775C90639C /* MessageBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBanner.swift; sourceTree = "<group>"; };
 		1192BE7B18566F939F76D04C /* DesignSystemCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystemCatalog.swift; sourceTree = "<group>"; };
+		1620D546A1F1EFA991182415 /* TaskViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModelTests.swift; sourceTree = "<group>"; };
 		1B971589CF1EC35F496A0472 /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
 		21257C6B536E173B5E280A58 /* AppEnvironmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironmentTests.swift; sourceTree = "<group>"; };
 		22B02657CD64D787FA15DD4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A0E68852D1ECFAB00F9AF08 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		2A2CCCCB6B1406323D1DFF79 /* TaskManagerMigrationPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerMigrationPlan.swift; sourceTree = "<group>"; };
 		2C31C75483CE476B8D4EB824 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		2E0E7F6D117D66BE2CE99EC6 /* Tokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokens.swift; sourceTree = "<group>"; };
+		2F81B84C63F8FD334EE3056F /* TaskQueryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskQueryTests.swift; sourceTree = "<group>"; };
 		313A9A7E7A81A795A86D1977 /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
 		31F166BBE63AD618FF7678CD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		325403DAC2ABCACFA3D609B4 /* AuthFlowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowUITests.swift; sourceTree = "<group>"; };
 		412D7D504D08F37A9798094D /* AuthViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelTests.swift; sourceTree = "<group>"; };
+		417BF2A4F3EE3316AB32CCBB /* SyncStatusBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncStatusBanner.swift; sourceTree = "<group>"; };
 		41E2AC941698465E00CAEE3E /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		4547D5B6E5A1AA3BFE9520B5 /* LocalTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTaskRepository.swift; sourceTree = "<group>"; };
 		468AF988507C73A1363CFBF4 /* FloatingGlass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingGlass.swift; sourceTree = "<group>"; };
 		485EDAAB3EB7348FED93D7BF /* FakeAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAuthService.swift; sourceTree = "<group>"; };
+		49B05ACFC83E98CBEDB2D747 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		4D02EB976DE421312073A6BD /* InlineValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineValidation.swift; sourceTree = "<group>"; };
 		529FCF06CD1FC13ED285241D /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		53080C39B182410798098F92 /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
+		5B0C9B096682FB16863C4DAE /* TestClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestClock.swift; sourceTree = "<group>"; };
 		5C030173C3E4A1765A7EBD45 /* FirestoreUserProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUserProfileStore.swift; sourceTree = "<group>"; };
 		68060CCBBA294238F051317F /* TaskManagerTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = TaskManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A9A5DA303A8484B6645FD2B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		6F188A500AD04ABC8E812603 /* UnconfiguredAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnconfiguredAuthService.swift; sourceTree = "<group>"; };
 		6F76E4C56D4E4B950D1E4AB5 /* SessionExpiryPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionExpiryPolicy.swift; sourceTree = "<group>"; };
+		7360E1D71482F15186031AA6 /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
 		764DB92DE8BC93F9D3259568 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		797275E6F2CA8305265E8C5F /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
+		7CCF41AB5084BF509026132D /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		8226F24F9303DA6148B64409 /* MockTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTaskRepository.swift; sourceTree = "<group>"; };
 		82DD8EC114F1C6B97F118CE4 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		841E22E20127FA95B1FA016B /* SchemaV1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaV1.swift; sourceTree = "<group>"; };
 		849281FB9BEDAB4E696EE358 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		862E70184E9427B01B08169B /* TaskItem+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskItem+Preview.swift"; sourceTree = "<group>"; };
+		8D930B3F6562CBD1A163CAC2 /* TaskEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditorView.swift; sourceTree = "<group>"; };
 		90B95D848F03F168D91DCE47 /* AuthFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowView.swift; sourceTree = "<group>"; };
+		913D653F97889E357FEAEED4 /* FloatingAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingAddButton.swift; sourceTree = "<group>"; };
 		98415693C0FC5446497430E3 /* View+Accessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Accessibility.swift"; sourceTree = "<group>"; };
+		992A5699B0DBB4D11F0FAFB1 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		994178C3E88FF1BC35F36A74 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		9B2DF0DED24F5A6ACBACA543 /* AuthMemoryLeakTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMemoryLeakTests.swift; sourceTree = "<group>"; };
 		9E9C6419C27FA4007B5514AA /* SessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
+		A0458718BFF2AB775B9EC12C /* TaskFilterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFilterMenu.swift; sourceTree = "<group>"; };
 		A3FE07CD27DB31BF80A97288 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A5E9E4B236EA281022533334 /* TaskStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStoreTests.swift; sourceTree = "<group>"; };
+		B0AC7190FD59EAD7BD2D2473 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
+		B30FB106717EACA2BBCF2AF0 /* TaskCacheCleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCacheCleaner.swift; sourceTree = "<group>"; };
 		B33B4120D3DFEB82E1B07572 /* TaskManager.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TaskManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8397C8FA09C05031C66560D /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		BAECB9B08532980A7D2B470F /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		BB456BB6680F7EF1DBE1CA72 /* MockAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthService.swift; sourceTree = "<group>"; };
+		BB75D23B4362EA79FB479B97 /* StatusBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBadge.swift; sourceTree = "<group>"; };
 		BB7A517FE180B1662FEE919B /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		BD6A09DF11AA2EC13CB6D503 /* AuthHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeader.swift; sourceTree = "<group>"; };
 		BEC027A7BB1F52830F40FBE4 /* SessionExpiryPolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionExpiryPolicyTests.swift; sourceTree = "<group>"; };
 		BFE0DB547A51E088675C2261 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		C3175D5B05C3028C531ED0C2 /* TaskPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPermissions.swift; sourceTree = "<group>"; };
 		C58202577956DA8E07A99209 /* TaskManagerUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = TaskManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C727FB42B12281D508D2F11F /* SessionLifecycleObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLifecycleObserver.swift; sourceTree = "<group>"; };
 		C7438AEFB9F17A10E002E32C /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
+		D1729F8EB49483307617A0B1 /* TaskEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditorViewModel.swift; sourceTree = "<group>"; };
 		D3C5E52BB7FC7D581F736529 /* AppClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppClock.swift; sourceTree = "<group>"; };
 		D473E08AF146B063569B6AAB /* TaskManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerApp.swift; sourceTree = "<group>"; };
 		D704EB0CFC78F72211CA8F7D /* ValidatorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorsTests.swift; sourceTree = "<group>"; };
+		D90778740BE78EE82576F679 /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
 		DA031436EDBCDBC641B555D4 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		DAC8579D518F10E4C5E8F73A /* SignedInPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedInPlaceholderView.swift; sourceTree = "<group>"; };
 		DB5C723DBF8DE42EA1F63426 /* UserProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileStore.swift; sourceTree = "<group>"; };
 		DEBAE98AFA7C0A3A1AC709A8 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		E1BE9A79BB160CAB2990ABBA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E813BC4F61BBEA841988968E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		EAF37CDCD393904783FD40E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EB0558572EDDB761CBB89766 /* UnavailableTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnavailableTaskRepository.swift; sourceTree = "<group>"; };
 		EBE2A02528379C8F82EDC307 /* FirebaseBootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseBootstrap.swift; sourceTree = "<group>"; };
 		EC0AA260604D2E88C0669FC3 /* Eventually.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eventually.swift; sourceTree = "<group>"; };
 		EDB10CA81851067DFD7498C8 /* TaskManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TaskManager.entitlements; sourceTree = "<group>"; };
+		F9E45A1FA6069368C351B60B /* TaskQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskQuery.swift; sourceTree = "<group>"; };
+		FBB538052B52E62C1B49F7FE /* TaskDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,18 +269,38 @@
 			path = TaskManagerUITests;
 			sourceTree = "<group>";
 		};
+		2FEAF3F26AA7FBA9DDDC0694 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				53080C39B182410798098F92 /* TaskItem.swift */,
+				C3175D5B05C3028C531ED0C2 /* TaskPermissions.swift */,
+				F9E45A1FA6069368C351B60B /* TaskQuery.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		3BC2BE6477EA854256CBB757 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				FA30CE4E3827804A747E4B33 /* Fakes */,
 				22B02657CD64D787FA15DD4B /* AppDelegate.swift */,
 				BFE0DB547A51E088675C2261 /* AppEnvironment.swift */,
+				7CCF41AB5084BF509026132D /* AppRouter.swift */,
+				E1BE9A79BB160CAB2990ABBA /* MainView.swift */,
 				2C31C75483CE476B8D4EB824 /* RootView.swift */,
-				DAC8579D518F10E4C5E8F73A /* SignedInPlaceholderView.swift */,
 				31F166BBE63AD618FF7678CD /* SplashView.swift */,
 				D473E08AF146B063569B6AAB /* TaskManagerApp.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		529167F3B94BB70A736DB38C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6A9A5DA303A8484B6645FD2B /* SettingsView.swift */,
+				992A5699B0DBB4D11F0FAFB1 /* SettingsViewModel.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		5A6B8E94BF14284F88049175 /* Auth */ = {
@@ -266,14 +346,31 @@
 				0ADA6EAC0583CA01C8695B55 /* Auth */,
 				9155190408D618693B8A4807 /* Mocks */,
 				D4459571D9EF7343EB0B5AD1 /* Support */,
+				EBA4FBE874F7B586E8FF717B /* Tasks */,
 			);
 			path = TaskManagerTests;
+			sourceTree = "<group>";
+		};
+		7D9961B62B9206A844ABA811 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				D90778740BE78EE82576F679 /* TaskDetailView.swift */,
+				FBB538052B52E62C1B49F7FE /* TaskDetailViewModel.swift */,
+				8D930B3F6562CBD1A163CAC2 /* TaskEditorView.swift */,
+				D1729F8EB49483307617A0B1 /* TaskEditorViewModel.swift */,
+				A0458718BFF2AB775B9EC12C /* TaskFilterMenu.swift */,
+				B0AC7190FD59EAD7BD2D2473 /* TaskListView.swift */,
+				797275E6F2CA8305265E8C5F /* TaskListViewModel.swift */,
+			);
+			path = Tasks;
 			sourceTree = "<group>";
 		};
 		7E512AA072CFBF865F4A9F75 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				1426D230B02DA6CD6D29E2C4 /* Auth */,
+				2FEAF3F26AA7FBA9DDDC0694 /* Domain */,
+				CC124BAD1825B2A48A1E2193 /* Persistence */,
 				72C5486708BCA40FBE924A6D /* Remote */,
 				852CE985FC0270FB4A524AB8 /* Utilities */,
 			);
@@ -295,6 +392,8 @@
 			isa = PBXGroup;
 			children = (
 				5A6B8E94BF14284F88049175 /* Auth */,
+				529167F3B94BB70A736DB38C /* Settings */,
+				7D9961B62B9206A844ABA811 /* Tasks */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -303,6 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				BB456BB6680F7EF1DBE1CA72 /* MockAuthService.swift */,
+				8226F24F9303DA6148B64409 /* MockTaskRepository.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -323,20 +423,39 @@
 				41E2AC941698465E00CAEE3E /* ButtonStyles.swift */,
 				1192BE7B18566F939F76D04C /* DesignSystemCatalog.swift */,
 				529FCF06CD1FC13ED285241D /* EmptyStateView.swift */,
+				913D653F97889E357FEAEED4 /* FloatingAddButton.swift */,
 				468AF988507C73A1363CFBF4 /* FloatingGlass.swift */,
 				313A9A7E7A81A795A86D1977 /* FormField.swift */,
 				0907426701EB5A775C90639C /* MessageBanner.swift */,
 				DEBAE98AFA7C0A3A1AC709A8 /* PrimaryButton.swift */,
+				BB75D23B4362EA79FB479B97 /* StatusBadge.swift */,
+				417BF2A4F3EE3316AB32CCBB /* SyncStatusBanner.swift */,
+				B8397C8FA09C05031C66560D /* TaskRow.swift */,
 				2E0E7F6D117D66BE2CE99EC6 /* Tokens.swift */,
 				98415693C0FC5446497430E3 /* View+Accessibility.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
 		};
+		CC124BAD1825B2A48A1E2193 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				4547D5B6E5A1AA3BFE9520B5 /* LocalTaskRepository.swift */,
+				841E22E20127FA95B1FA016B /* SchemaV1.swift */,
+				B30FB106717EACA2BBCF2AF0 /* TaskCacheCleaner.swift */,
+				2A2CCCCB6B1406323D1DFF79 /* TaskManagerMigrationPlan.swift */,
+				49B05ACFC83E98CBEDB2D747 /* TaskRepository.swift */,
+				7360E1D71482F15186031AA6 /* TaskStore.swift */,
+				EB0558572EDDB761CBB89766 /* UnavailableTaskRepository.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		D4459571D9EF7343EB0B5AD1 /* Support */ = {
 			isa = PBXGroup;
 			children = (
 				EC0AA260604D2E88C0669FC3 /* Eventually.swift */,
+				5B0C9B096682FB16863C4DAE /* TestClock.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -349,10 +468,21 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		EBA4FBE874F7B586E8FF717B /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				2F81B84C63F8FD334EE3056F /* TaskQueryTests.swift */,
+				A5E9E4B236EA281022533334 /* TaskStoreTests.swift */,
+				1620D546A1F1EFA991182415 /* TaskViewModelTests.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
 		FA30CE4E3827804A747E4B33 /* Fakes */ = {
 			isa = PBXGroup;
 			children = (
 				485EDAAB3EB7348FED93D7BF /* FakeAuthService.swift */,
+				862E70184E9427B01B08169B /* TaskItem+Preview.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -541,6 +671,7 @@
 				ECE4597B3243398FAD3F5EA5 /* AppClock.swift in Sources */,
 				FC245058B1FD48863F5D109B /* AppDelegate.swift in Sources */,
 				C7E1C713C4439EE10378DB3C /* AppEnvironment.swift in Sources */,
+				F42587129A9DD0FD7A1B6E03 /* AppRouter.swift in Sources */,
 				67D322CA66F25B3585121E6F /* AuthError.swift in Sources */,
 				AAE960048F21DC33EAA594D1 /* AuthFlowView.swift in Sources */,
 				662493E34207E499C7F030E9 /* AuthHeader.swift in Sources */,
@@ -552,26 +683,50 @@
 				6C7C469F3886B9CDCA34F0A4 /* FirebaseAuthService.swift in Sources */,
 				7799F41D4491CF6A8E1DDD04 /* FirebaseBootstrap.swift in Sources */,
 				01D59524B9100BE87FD3A75C /* FirestoreUserProfileStore.swift in Sources */,
+				608A134384147A252A0CABC7 /* FloatingAddButton.swift in Sources */,
 				61E31A29469C7E414BC5BA13 /* FloatingGlass.swift in Sources */,
 				2DD65B79F9D264096892A165 /* ForgotPasswordView.swift in Sources */,
 				35E183D4B83FE76918BF7A88 /* ForgotPasswordViewModel.swift in Sources */,
 				357603FAEDA7AD1E7337A4D4 /* FormField.swift in Sources */,
 				9424E2CB1B3AB258FD326A66 /* InlineValidation.swift in Sources */,
+				EA0BB39F1396E2ABE96E4150 /* LocalTaskRepository.swift in Sources */,
 				648523F0A972278BE8A3C5D7 /* Log.swift in Sources */,
 				363D053D227DCF1A992E017B /* LoginView.swift in Sources */,
 				F35B985595DE91F8928BD95C /* LoginViewModel.swift in Sources */,
+				8E6A52C64E4D6DFFFE865E49 /* MainView.swift in Sources */,
 				D7D7F7F775F7F57D2BAC491C /* MessageBanner.swift in Sources */,
 				CBB13F73174BE6114878B48D /* PrimaryButton.swift in Sources */,
 				20AF41CBF2012BB5370AED27 /* RootView.swift in Sources */,
+				C769AFF84D3720F78D3B29E6 /* SchemaV1.swift in Sources */,
 				21FC3343A4575812BAE09F81 /* SessionController.swift in Sources */,
 				E22F40D9C9E67D2B849F7C1B /* SessionExpiryPolicy.swift in Sources */,
 				CBBF31D0A142C6417558C3C3 /* SessionLifecycleObserver.swift in Sources */,
+				25FC6747FEDA67E2DC9BE845 /* SettingsView.swift in Sources */,
+				CBE84143535076123382BB0D /* SettingsViewModel.swift in Sources */,
 				AB91F129E65C5899EE9B62E7 /* SignUpView.swift in Sources */,
 				AB23F1BB728C732B59EAD772 /* SignUpViewModel.swift in Sources */,
-				58BF1C67ABD4806B918010A6 /* SignedInPlaceholderView.swift in Sources */,
 				CD5173215CD48AD714B74C83 /* SplashView.swift in Sources */,
+				67D2BBC50F22598D74964534 /* StatusBadge.swift in Sources */,
+				B875C3E15BA50B2F07965B6D /* SyncStatusBanner.swift in Sources */,
+				097580E074AA0FD05AEDC368 /* TaskCacheCleaner.swift in Sources */,
+				B5B66C786F6C37BD062C9C75 /* TaskDetailView.swift in Sources */,
+				D8F782F1ED2FC2E09A827FD0 /* TaskDetailViewModel.swift in Sources */,
+				5B621F60731CB3068EE8EC0D /* TaskEditorView.swift in Sources */,
+				1CDBD0A26D4801F3ED1B73A0 /* TaskEditorViewModel.swift in Sources */,
+				9EED0286834935471148ECE0 /* TaskFilterMenu.swift in Sources */,
+				15DBB14EF4CBD53290D40E62 /* TaskItem+Preview.swift in Sources */,
+				8D010610631624B2453F0358 /* TaskItem.swift in Sources */,
+				CC4E681585890BDB565DEB33 /* TaskListView.swift in Sources */,
+				915DFD9F332410B3D0FC1294 /* TaskListViewModel.swift in Sources */,
 				97A6C5B4C057EDB09FC9C663 /* TaskManagerApp.swift in Sources */,
+				9EA96CF5E28CDB7B520CEB15 /* TaskManagerMigrationPlan.swift in Sources */,
+				A0CB2E304FDFDC77FDAC7AE5 /* TaskPermissions.swift in Sources */,
+				A2782B2270F9CF259FF328A8 /* TaskQuery.swift in Sources */,
+				BB7EF949FC7F1415E8C0D39C /* TaskRepository.swift in Sources */,
+				6B011E868FFE86660FA5BB09 /* TaskRow.swift in Sources */,
+				CD2BEB14655567A3CEF5656D /* TaskStore.swift in Sources */,
 				859C01C1707B1F59BBC632B5 /* Tokens.swift in Sources */,
+				54B2E3843A2265B013D266F9 /* UnavailableTaskRepository.swift in Sources */,
 				9BB2641E8B5162E9F7DB280E /* UnconfiguredAuthService.swift in Sources */,
 				DDA2BA33DC003D08890CAEF4 /* UserProfileStore.swift in Sources */,
 				52342FE7F2C321FF4CC0961A /* Validators.swift in Sources */,
@@ -588,8 +743,13 @@
 				FC4655C976AA110D09B49E39 /* AuthViewModelTests.swift in Sources */,
 				91B2215BA3EDC55B2AB8D098 /* Eventually.swift in Sources */,
 				60D559C985BF9B85D6A34E7E /* MockAuthService.swift in Sources */,
+				1FF3CB4F1251E810EB25131B /* MockTaskRepository.swift in Sources */,
 				CB340B10C5495082C6C06658 /* SessionControllerTests.swift in Sources */,
 				16D0414E0E161A3F525C1146 /* SessionExpiryPolicyTests.swift in Sources */,
+				19DAA32F8BA8CCD2818CEE23 /* TaskQueryTests.swift in Sources */,
+				495B4829C3F0B74FD0EC2312 /* TaskStoreTests.swift in Sources */,
+				6F656FC8CD871CD6F8E43BF2 /* TaskViewModelTests.swift in Sources */,
+				01F0472AE12BC55F21C857AB /* TestClock.swift in Sources */,
 				0A5C91BA5665A7ACF5FC01AE /* ValidatorsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

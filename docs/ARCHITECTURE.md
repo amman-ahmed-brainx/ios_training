@@ -64,6 +64,37 @@ FirebaseAuthService ──AsyncStream<SessionState>──▶ SessionController (
 - **Fakes.** `FakeAuthService` (Debug only) backs previews and `-uitest`; the UI test signs in as
   `test@example.com`. `UnconfiguredAuthService` keeps live mode usable without the Firebase plist.
 
+## Local tasks and persistence (Phase 3)
+
+```
+Views ◀── @MainActor view models ◀── AsyncStream<[TaskItem]> ◀── TaskStore (@ModelActor, background)
+                │                                                     │
+                └── TaskRepository (protocol) ── async calls ────────▶│ SwiftData (SchemaV1.TaskEntity)
+```
+
+- **SwiftData is the UI's source of truth.** View models never touch SwiftData or the network;
+  they observe `TaskRepository.observeTasks(for:)`, which re-emits after every write.
+- **`TaskStore` is the only owner of a `ModelContext`.** It is a `@ModelActor` created inside
+  `Task.detached`, because a `@ModelActor` built on the main thread runs its work on the main
+  thread. A unit test asserts the store's executor is not the main thread.
+- **Value types across actors.** `@Model` classes aren't `Sendable`; the store hands out
+  `TaskItem` structs and accepts `TaskDraft`s.
+- **Outbox in the row.** `TaskEntity` carries `syncState` (`synced`, `pendingCreate`,
+  `pendingUpdate`, `pendingDelete`), a `deletedAt` tombstone, `pendingSince` for ordering,
+  `syncAttempts`/`nextRetryAt`/`lastSyncError` for backoff, and `statusUpdatedAt` for the field-wise
+  status merge. They are in V1 so the sync phase needs no migration. Every write saves immediately,
+  so pending changes survive a crash (covered by an on-disk relaunch test).
+- **Rules mirrored locally.** `TaskPermissions` matches the Firestore rules: owners edit and delete,
+  collaborators change status. The store enforces it and the UI hides what isn't allowed.
+- **Per-user cache.** Every row records `cacheOwnerId` and every fetch filters by it.
+  `TaskCacheCleaner` (a `SessionLifecycleObserver`) wipes the whole store on sign-out.
+- **Migrations.** Models live in `SchemaV1`; `TaskManagerMigrationPlan` lists versions and stages.
+  To change the model, add `SchemaV2` and a stage. If the on-disk store can't be opened the app
+  falls back to an in-memory store for that launch (and to `UnavailableTaskRepository` if even that
+  fails) instead of crashing.
+- **Navigation.** `AppRouter` owns the signed-in `NavigationStack` path so later phases can deep link
+  from notifications.
+
 ## Decisions and trade-offs
 
 - **The project lives at the repository root** (`ios_training/`), not in a nested `TaskManager/`

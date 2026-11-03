@@ -26,10 +26,10 @@ struct RootView: View {
             AuthFlowView(environment: environment, signOutReason: reason)
                 .transition(.opacity)
         case .signedIn(let session):
-            SignedInPlaceholderView(session: session) {
-                await environment.session.signOut()
-            }
-            .transition(.opacity)
+            MainView(environment: environment, session: session)
+                // A different user gets a fresh view tree (and fresh view models).
+                .id(session.uid)
+                .transition(.opacity)
         }
     }
 }

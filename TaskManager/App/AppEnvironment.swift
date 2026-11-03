@@ -42,6 +42,8 @@ final class AppEnvironment {
     let backendStatus: BackendStatus
     let auth: any AuthService
     let session: SessionController
+    let tasks: any TaskRepository
+    let router = AppRouter()
 
     init(mode: Mode, clock: any AppClock = SystemClock()) {
         self.mode = mode
@@ -50,6 +52,9 @@ final class AppEnvironment {
         backendStatus = backend.status
         auth = backend.auth
         session = SessionController(auth: backend.auth, profiles: backend.profiles)
+        // Fakes get a fresh in-memory store each launch so previews and UI tests are deterministic.
+        tasks = Self.makeTaskRepository(inMemory: mode != .live, clock: clock)
+        session.register(TaskCacheCleaner(repository: tasks))
     }
 
     /// Creates the environment for the current process.
@@ -85,7 +90,38 @@ final class AppEnvironment {
         ForgotPasswordViewModel(auth: auth, email: email)
     }
 
+    func makeTaskListViewModel(session: AuthSession) -> TaskListViewModel {
+        TaskListViewModel(repository: tasks, userId: session.uid, clock: clock)
+    }
+
+    func makeTaskDetailViewModel(taskId: String, session: AuthSession) -> TaskDetailViewModel {
+        TaskDetailViewModel(taskId: taskId, repository: tasks, userId: session.uid, clock: clock)
+    }
+
+    func makeTaskEditorViewModel(editing task: TaskItem?, session: AuthSession) -> TaskEditorViewModel {
+        TaskEditorViewModel(editing: task, repository: tasks, userId: session.uid, clock: clock)
+    }
+
+    func makeSettingsViewModel(session: AuthSession) -> SettingsViewModel {
+        SettingsViewModel(session: session, sessionController: self.session)
+    }
+
     // MARK: - Backend selection
+
+    private static func makeTaskRepository(inMemory: Bool, clock: any AppClock) -> any TaskRepository {
+        do {
+            return LocalTaskRepository(container: try PersistenceContainer.make(inMemory: inMemory), clock: clock)
+        } catch {
+            Log.app.fault("Opening the task store failed: \(error.localizedDescription, privacy: .public)")
+        }
+        // A broken on-disk store must not stop the app: keep working in memory for this launch.
+        do {
+            return LocalTaskRepository(container: try PersistenceContainer.make(inMemory: true), clock: clock)
+        } catch {
+            Log.app.fault("Opening an in-memory task store failed: \(error.localizedDescription, privacy: .public)")
+            return UnavailableTaskRepository()
+        }
+    }
 
     private struct Backend {
         let status: BackendStatus

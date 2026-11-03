@@ -1,12 +1,142 @@
 {
   "sourceLanguage": "en",
   "strings": {
+    "%@ priority": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Priorität %@"
+          }
+        }
+      }
+    },
+    "%lld changes waiting to sync": {
+      "localizations": {
+        "de": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld Änderung wartet auf Synchronisierung"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld Änderungen warten auf Synchronisierung"
+                }
+              }
+            }
+          }
+        },
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld change waiting to sync"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld changes waiting to sync"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld people": {
+      "localizations": {
+        "de": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld Person"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld Personen"
+                }
+              }
+            }
+          }
+        },
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld person"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld people"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "A task needs a title.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eine Aufgabe braucht einen Titel."
+          }
+        }
+      }
+    },
+    "Account": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konto"
+          }
+        }
+      }
+    },
     "Add Task": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Aufgabe hinzufügen"
+          }
+        }
+      }
+    },
+    "All Tasks": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle Aufgaben"
+          }
+        }
+      }
+    },
+    "All changes synced": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle Änderungen synchronisiert"
           }
         }
       }
@@ -21,12 +151,52 @@
         }
       }
     },
+    "Any Due Date": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beliebige Fälligkeit"
+          }
+        }
+      }
+    },
+    "Any Priority": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beliebige Priorität"
+          }
+        }
+      }
+    },
+    "Any Status": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beliebiger Status"
+          }
+        }
+      }
+    },
     "At least 8 characters, with a letter and a number.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Mindestens 8 Zeichen, mit einem Buchstaben und einer Zahl."
+          }
+        }
+      }
+    },
+    "Cancel": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abbrechen"
           }
         }
       }
@@ -51,12 +221,32 @@
         }
       }
     },
+    "Clear Filters": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filter zurücksetzen"
+          }
+        }
+      }
+    },
     "Close": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Schließen"
+          }
+        }
+      }
+    },
+    "Complete": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erledigen"
           }
         }
       }
@@ -71,6 +261,16 @@
         }
       }
     },
+    "Couldn't Update Task": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgabe konnte nicht aktualisiert werden"
+          }
+        }
+      }
+    },
     "Create Account": {
       "localizations": {
         "de": {
@@ -81,12 +281,152 @@
         }
       }
     },
+    "Created": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erstellt"
+          }
+        }
+      }
+    },
+    "Delete": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Löschen"
+          }
+        }
+      }
+    },
+    "Delete Task": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgabe löschen"
+          }
+        }
+      }
+    },
+    "Delete this task?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Aufgabe löschen?"
+          }
+        }
+      }
+    },
+    "Details": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Details"
+          }
+        }
+      }
+    },
+    "Discard Changes": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Änderungen verwerfen"
+          }
+        }
+      }
+    },
+    "Discard your changes?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Änderungen verwerfen?"
+          }
+        }
+      }
+    },
     "Don't have an account?": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Noch kein Konto?"
+          }
+        }
+      }
+    },
+    "Done": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erledigt"
+          }
+        }
+      }
+    },
+    "Due": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fällig"
+          }
+        }
+      }
+    },
+    "Due %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fällig %@"
+          }
+        }
+      }
+    },
+    "Due Date": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fälligkeitsdatum"
+          }
+        }
+      }
+    },
+    "Due Today": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heute fällig"
+          }
+        }
+      }
+    },
+    "Edit": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bearbeiten"
+          }
+        }
+      }
+    },
+    "Edit Task": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgabe bearbeiten"
           }
         }
       }
@@ -107,6 +447,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Gib eine gültige E-Mail-Adresse ein, z. B. name@example.com."
+          }
+        }
+      }
+    },
+    "Filter and Sort": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filtern und sortieren"
+          }
+        }
+      }
+    },
+    "Filters on": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filter aktiv"
           }
         }
       }
@@ -161,12 +521,32 @@
         }
       }
     },
+    "High": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hoch"
+          }
+        }
+      }
+    },
     "If an account exists for %@, a reset link is on its way.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Falls ein Konto für %@ existiert, ist ein Link zum Zurücksetzen unterwegs."
+          }
+        }
+      }
+    },
+    "In Progress": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In Arbeit"
           }
         }
       }
@@ -191,12 +571,52 @@
         }
       }
     },
+    "It will be deleted for everyone it's shared with.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sie wird für alle gelöscht, mit denen sie geteilt ist."
+          }
+        }
+      }
+    },
+    "Keep Editing": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weiter bearbeiten"
+          }
+        }
+      }
+    },
+    "Keep it under %lld characters.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Höchstens %lld Zeichen."
+          }
+        }
+      }
+    },
     "Loading": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Wird geladen"
+          }
+        }
+      }
+    },
+    "Loading Tasks": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgaben werden geladen"
           }
         }
       }
@@ -221,6 +641,46 @@
         }
       }
     },
+    "Low": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Niedrig"
+          }
+        }
+      }
+    },
+    "Mark as To Do": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Als offen markieren"
+          }
+        }
+      }
+    },
+    "Medium": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mittel"
+          }
+        }
+      }
+    },
+    "Mine": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meine"
+          }
+        }
+      }
+    },
     "Name": {
       "localizations": {
         "de": {
@@ -231,12 +691,152 @@
         }
       }
     },
+    "New Task": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neue Aufgabe"
+          }
+        }
+      }
+    },
+    "No Matching Tasks": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine passenden Aufgaben"
+          }
+        }
+      }
+    },
     "No Tasks": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Keine Aufgaben"
+          }
+        }
+      }
+    },
+    "No due date": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kein Fälligkeitsdatum"
+          }
+        }
+      }
+    },
+    "No filters": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Filter"
+          }
+        }
+      }
+    },
+    "Notes": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notizen"
+          }
+        }
+      }
+    },
+    "OK": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        }
+      }
+    },
+    "Offline": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Offline"
+          }
+        }
+      }
+    },
+    "Offline · %lld changes will sync later": {
+      "localizations": {
+        "de": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Offline · %lld Änderung wird später synchronisiert"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Offline · %lld Änderungen werden später synchronisiert"
+                }
+              }
+            }
+          }
+        },
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Offline · %lld change will sync later"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Offline · %lld changes will sync later"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Only the owner can change the title, notes, priority and due date.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nur die Eigentümerin oder der Eigentümer kann Titel, Notizen, Priorität und Fälligkeit ändern."
+          }
+        }
+      }
+    },
+    "Overdue": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Überfällig"
+          }
+        }
+      }
+    },
+    "Overdue, was due %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Überfällig, war fällig %@"
           }
         }
       }
@@ -281,12 +881,62 @@
         }
       }
     },
+    "Priority": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Priorität"
+          }
+        }
+      }
+    },
+    "Priority: %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Priorität: %@"
+          }
+        }
+      }
+    },
+    "Recently Updated": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zuletzt geändert"
+          }
+        }
+      }
+    },
     "Reset Password": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Passwort zurücksetzen"
+          }
+        }
+      }
+    },
+    "Save": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sichern"
+          }
+        }
+      }
+    },
+    "Search titles and notes": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titel und Notizen durchsuchen"
           }
         }
       }
@@ -307,6 +957,56 @@
           "stringUnit": {
             "state": "translated",
             "value": "Link senden"
+          }
+        }
+      }
+    },
+    "Settings": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einstellungen"
+          }
+        }
+      }
+    },
+    "Shared with": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geteilt mit"
+          }
+        }
+      }
+    },
+    "Shared with Me": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit mir geteilt"
+          }
+        }
+      }
+    },
+    "Shared with you": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit dir geteilt"
+          }
+        }
+      }
+    },
+    "Show": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anzeigen"
           }
         }
       }
@@ -341,6 +1041,16 @@
         }
       }
     },
+    "Sign out?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abmelden?"
+          }
+        }
+      }
+    },
     "Sign-in is unavailable because the app isn't connected to a server.": {
       "localizations": {
         "de": {
@@ -351,12 +1061,22 @@
         }
       }
     },
-    "Signed In": {
+    "Signing out removes your tasks from this device, including changes that haven't synced yet.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Angemeldet"
+            "value": "Beim Abmelden werden deine Aufgaben von diesem Gerät entfernt, auch noch nicht synchronisierte Änderungen."
+          }
+        }
+      }
+    },
+    "Something Went Wrong": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Etwas ist schiefgelaufen"
           }
         }
       }
@@ -371,12 +1091,82 @@
         }
       }
     },
+    "Sort By": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sortieren nach"
+          }
+        }
+      }
+    },
+    "Status": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Status"
+          }
+        }
+      }
+    },
+    "Status: %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Status: %@"
+          }
+        }
+      }
+    },
+    "Sync": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synchronisierung"
+          }
+        }
+      }
+    },
+    "Synced": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synchronisiert"
+          }
+        }
+      }
+    },
     "Tap + to add your first task.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Tippe auf +, um deine erste Aufgabe hinzuzufügen."
+          }
+        }
+      }
+    },
+    "Task Deleted": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgabe gelöscht"
+          }
+        }
+      }
+    },
+    "Tasks": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgaben"
           }
         }
       }
@@ -411,6 +1201,56 @@
         }
       }
     },
+    "This task couldn't be loaded. Restart the app to try again.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Aufgabe konnte nicht geladen werden. Starte die App neu und versuche es erneut."
+          }
+        }
+      }
+    },
+    "This task is no longer available.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Aufgabe ist nicht mehr verfügbar."
+          }
+        }
+      }
+    },
+    "This task no longer exists.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Aufgabe existiert nicht mehr."
+          }
+        }
+      }
+    },
+    "Title": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titel"
+          }
+        }
+      }
+    },
+    "To Do": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Offen"
+          }
+        }
+      }
+    },
     "Too many attempts. Wait a moment and try again.": {
       "localizations": {
         "de": {
@@ -421,12 +1261,42 @@
         }
       }
     },
+    "Try a different search or clear the filters.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versuche eine andere Suche oder setze die Filter zurück."
+          }
+        }
+      }
+    },
+    "Updated": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geändert"
+          }
+        }
+      }
+    },
     "Use at least %lld characters.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Verwende mindestens %lld Zeichen."
+          }
+        }
+      }
+    },
+    "Waiting to sync": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wartet auf Synchronisierung"
           }
         }
       }
@@ -461,6 +1331,16 @@
         }
       }
     },
+    "You don't have permission to do that.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dazu fehlt dir die Berechtigung."
+          }
+        }
+      }
+    },
     "You're Offline": {
       "localizations": {
         "de": {
@@ -481,6 +1361,16 @@
         }
       }
     },
+    "Your change couldn't be saved on this device. Please try again.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deine Änderung konnte auf diesem Gerät nicht gespeichert werden. Bitte versuche es erneut."
+          }
+        }
+      }
+    },
     "Your session has expired. Please log in again.": {
       "localizations": {
         "de": {
@@ -491,12 +1381,22 @@
         }
       }
     },
-    "Your tasks will appear here.": {
+    "Your tasks couldn't be loaded. Restart the app to try again.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hier erscheinen deine Aufgaben."
+            "value": "Deine Aufgaben konnten nicht geladen werden. Starte die App neu und versuche es erneut."
+          }
+        }
+      }
+    },
+    "“%@” will be deleted for everyone it's shared with.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "„%@“ wird für alle gelöscht, mit denen die Aufgabe geteilt ist."
           }
         }
       }

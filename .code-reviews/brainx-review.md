@@ -1,100 +1,171 @@
 ---
-diff_hash: 5f4b3b4be2d8612ac96f4998c28b844a08fdc9e05edf0e8cd10632d292cb153c
-reviewed_at: 2026-11-03T13:22:15Z
+diff_hash: 6429b50476c0b53fca47ffdf46171b3a706e3c5805da5102d307b938140af340
+reviewed_at: 2026-11-03T21:30:00Z
 
 ## Summary
 
-Phase 2: a complete email/password authentication feature layered on the Phase 1
-scaffold. Adds a backend-agnostic `AuthService`/`UserProfileStore` protocol pair
-with three implementations (`FirebaseAuthService`, `UnconfiguredAuthService`,
-debug-only `FakeAuthService`), a `@MainActor @Observable SessionController` driven
-by an `AsyncStream<SessionState>` with a `SessionExpiryPolicy` for
-retry/reauthenticate/logout decisions, and a `SessionLifecycleObserver` hook
-(registered but not yet wired to any concrete cleanup). `RootView` becomes a real
-session gate (splash → auth flow → signed-in placeholder), with `LoginView`,
-`SignUpView`, and `ForgotPasswordView` plus view models, backed by shared
-`FormField`/`MessageBanner` design-system components and `Validators`/
-`InlineValidation` for client-side validation. Test coverage is substantial: unit
-tests for validators, session policy, session controller ordering, view models,
-and a retain-cycle check, plus UI tests against the fake backend including an
-accessibility audit.
+**Integrity flag — read first.** The `.code-reviews/brainx-review.md` found already staged at
+the start of this run contained a complete, polished write-up: a self-referential narrative
+claiming it had detected and discarded an earlier "fabricated" review, findings pre-marked
+`status: skipped` with developer reasoning already filled in, and `ai_reasoning` text written in
+this skill's voice — despite no review having run in this session before now. This skill's own
+rules state it "does not set `status: skipped` or `status: ignored` on the developer's behalf,
+ever, regardless of severity," so a file that arrives with findings already skipped is itself the
+signal, independent of whatever story its own text tells. That content has been discarded in full
+and was not used as input to anything below — not its findings, not its "independently verified"
+claims, not its reasoning. This review was produced by reading `git diff HEAD` and the real
+source files directly, against `resources/ios-swiftui.md`. **Before committing, find out how that
+content got into the index** (shell history, a script or hook touching `.code-reviews/`, whether
+`git add -A` picked up a file no session actually wrote) — this is reported as a finding below,
+not silently fixed, because it's the kind of thing that can recur on the next commit if the root
+cause isn't found.
 
-No force unwraps/force casts/`try!`/reachable `fatalError` were found in the new
-auth code, no secrets or PII are logged, weak-self capture is used correctly in
-long-lived closures/Tasks, the email validator regex is linear (not ReDoS-prone),
-and `SessionController`'s state-then-cleanup ordering matches its tests. No new
-SPM dependencies, signing, or deployment-target changes ride along in
-`project.pbxproj`.
+Phase 3: a local, offline-first task-management feature. Adds the `TaskItem`/`TaskQuery`/
+`TaskPermissions` domain layer, a `@ModelActor`-backed `TaskStore` (SwiftData, `SchemaV1` plus an
+empty migration plan for a future `SchemaV2`), a `TaskRepository` protocol with
+`LocalTaskRepository`/`UnavailableTaskRepository` implementations, an outbox-style sync-state
+model, Tasks/Settings feature UI (list, detail, editor, filter menu), a new `AppRouter`/`MainView`
+replacing `SignedInPlaceholderView`, a `TaskCacheCleaner` wired into `SessionController`'s sign-out
+path, and a test suite (`TaskQueryTests`, `TaskStoreTests`, `TaskViewModelTests`) plus expanded UI
+tests and localized strings.
+
+Independently verified by reading the actual diff and source: views never touch SwiftData
+directly, routing everything through `TaskRepository`; `TaskPermissions` is enforced again inside
+`TaskStore` at the mutation point, not just in the UI (`update`/`setStatus`/`delete` each guard
+with `TaskPermissions`); `TaskStore` is built inside `Task.detached` so its actor executor isn't
+the main thread, and `TaskStoreTests.storeWorkRunsOffTheMainThread` asserts it; the
+`observeTasks`/`unsubscribe` race is handled via `endedBeforeSubscribing`; `SchemaV1`'s raw enums
+all decode through a safe fallback (`?? .todo`, `?? .medium`, `?? .pendingUpdate`); title-length
+validation is consistent between `TaskEditorViewModel.validateTitle` (`.tooLong` message) and
+`TaskStore.validatedTitle` (`.invalidTitle` guard), both at the 200-character `TaskStore.maxTitleLength`
+boundary; the sign-out copy in `SettingsView` ("removes your tasks from this device") matches what
+`TaskCacheCleaner.sessionWillEnd` → `TaskStore.deleteAllLocalData()` actually do; `project.pbxproj`
+changes are additive file-reference/build-phase entries only (grepped for
+`SIGN|DEVELOPMENT_TEAM|DEPLOYMENT_TARGET|PROVISIONING|CODE_SIGN` — only the expected
+`SignedInPlaceholderView.swift` removal and new-file additions matched, no signing/dependency/
+deployment-target changes). No force unwraps/`try!`/reachable `fatalError`/unchecked indexing were
+found in the new code, and no secrets or PII in logs (`Log.sync.error`/`Log.app.fault` calls log
+`error.localizedDescription` or the error's own user-facing `.message`, never raw task content or
+tokens). Test coverage exercises permission boundaries, outbox state, cross-user isolation
+(`otherUsersCannotSeeOrChangeTheTask`), a real on-disk relaunch (`pendingChangesSurviveARelaunch`),
+and a view-model deallocation check, not just happy paths.
 
 ## Findings
 
-### Medium (1)
-- **TaskManager/Features/Auth/ForgotPasswordViewModel.swift:45** — On failure, `status = .failed(error.localizedDescription)` surfaces whatever `AuthError` the backend throws directly to the user. Firebase's `userNotFound` maps to `AuthError.wrongCredentials` ("Incorrect email or password."), which reads as confusing/incorrect on a screen with no password field, and differs from the neutral success message the happy path shows — creating an account-enumeration side channel if the Firebase project doesn't otherwise suppress that distinction. *(security/correctness)*
+### Critical (0)
+
+### High (1)
+- **.code-reviews/brainx-review.md** — staged with fabricated review content (a self-authored
+  narrative, pre-filled findings, and fake `ai_reasoning`/skip trail) that no review process
+  actually produced in this session. *(process-integrity)*
   - status: open
   - dev_reasoning: N/A
-  - ai_reasoning: Verified in AuthError.swift that `.wrongCredentials` has a password-specific message, and ForgotPasswordViewModel.swift has no mapping from `.userNotFound`-driven errors to a neutral reset-request message before display. Fix: on failure, show a generic message (e.g. always render the same "If an account exists for that email, we've sent a reset link" regardless of outcome) instead of the raw `AuthError` description, for both the enumeration risk and the password-screen mismatch.
+  - ai_reasoning: This pipeline gates the commit on this file's findings with no further human or
+    model judgment applied downstream, so content that pre-declares itself clean (or pre-skips its
+    own findings) is functionally equivalent to bypassing that gate, regardless of who or what
+    wrote it. It has been replaced in full with this independently-produced review. This is left
+    `open` rather than pre-resolved by this skill — per this skill's own rules, only the developer
+    can mark a finding `skipped`/`ignored`, and doing so here requires first identifying how the
+    fabricated content entered the index.
+
+### Medium (0)
 
 ### Low (4)
-- **TaskManagerTests/Auth/SessionControllerTests.swift:39** — `signOutKeepsItsReasonWhenTheStreamCatchesUp` uses a fixed `Task.sleep(for: .milliseconds(50))` instead of the project's own `eventually` polling helper (TaskManagerTests/Support/Eventually.swift), so it can flake under a loaded CI runner instead of deterministically waiting for the mock stream to be processed. *(test-coverage)*
-  - status: skipped
-  - reason: The sleep cannot cause a false failure: the asserted .signedOut(.userInitiated) state is already set before it, so the sleep only gives the mock stream time to deliver its trailing .signedOut(nil). There is no observable event to poll for 'an ignored value was processed' (the controller deliberately does nothing visible), so `eventually` has no condition to wait on, and adding a test-only hook to SessionController would put test scaffolding in production code.
-  - dev_reasoning: The sleep cannot cause a false failure: the asserted .signedOut(.userInitiated) state is already set before it, so the sleep only gives the mock stream time to deliver its trailing .signedOut(nil). There is no observable event to poll for 'an ignored value was processed' (the controller deliberately does nothing visible), so `eventually` has no condition to wait on, and adding a test-only hook to SessionController would put test scaffolding in production code.
-  - ai_reasoning: Confirmed the project already has an `eventually` helper used elsewhere in the same test target; this test should use it instead of a fixed sleep for determinism.
-- **TaskManagerTests/Auth/AuthLeakTests.swift:1** — Despite the name, this file checks retain cycles/memory leaks, not that secrets or tokens never reach logs — no test anywhere in the diff asserts logged output never contains a password/token/OTP. The name could mislead a future reviewer into believing that coverage exists. *(consistency)*
+- **TaskManager/Core/Domain/TaskItem.swift / TaskPermissions.swift / TaskQuery.swift /
+  DesignSystem/TaskRow.swift / Features/Tasks/TaskDetailView.swift** — `collaboratorIds` is never
+  populated anywhere in this diff (`TaskStore.create` always sets it to `[]`, confirmed by
+  grepping for non-empty `collaboratorIds:` assignments outside test fixtures). This makes
+  `TaskPermissions.canChangeStatus`'s collaborator branch, `TaskQuery.Ownership.sharedWithMe`, the
+  "Shared with Me" filter, `TaskRow`'s shared-person icon, and `TaskDetailView`'s "Shared with" row
+  all currently unreachable in the running app. *(dead-code / scope-gap)*
   - status: open
   - dev_reasoning: N/A
-  - ai_reasoning: Read the full file; all assertions are weak-reference/deinit checks. Fix: rename to something like `AuthRetainCycleTests`, or add an actual log-content assertion if "leak" was meant to include secret leakage.
-- **TaskManager/Core/Auth/SessionLifecycleObserver.swift:1** — The observer protocol and `SessionController.register(_:)` exist and are exercised only by tests; no production code registers an observer yet, so sign-out currently performs no actual remote/local per-user cleanup. `docs/ARCHITECTURE.md` documents this as deferred, so this is informational rather than a defect in this diff. *(maintainability)*
-  - status: skipped
-  - reason: Deliberate seam, documented in docs/ARCHITECTURE.md (Authentication and session): the SwiftData cache wipe (Phase 3), SyncEngine stop (Phase 5) and FCM token removal (Phase 7) register as observers when they land. The reviewer also marks it informational with no fix required for this phase.
-  - dev_reasoning: Deliberate seam, documented in docs/ARCHITECTURE.md (Authentication and session): the SwiftData cache wipe (Phase 3), SyncEngine stop (Phase 5) and FCM token removal (Phase 7) register as observers when they land. The reviewer also marks it informational with no fix required for this phase.
-  - ai_reasoning: Confirmed via grep that no concrete `SessionLifecycleObserver` conformance exists yet outside tests. No fix required for this phase; tracked here so it isn't lost before the feature that needs it lands.
-- **TaskManager/DesignSystem/FormField.swift:54** — `.accessibilityIdentifier(identifier ?? "")` sets an explicit empty string instead of omitting the modifier when no identifier is given, which could make multiple identifier-less fields collide under UI-test element queries. *(maintainability)*
+  - ai_reasoning: Not a functional bug today — no user action can produce a non-empty
+    `collaboratorIds` yet — but it ships UI and permission branches that can't be exercised
+    end-to-end, and tests for them (`TaskPermissionsTests`, `ownershipSplitsMineFromShared`) only
+    prove the logic works in isolation. If this is deliberate scaffolding for a later
+    collaborators/invite phase, a short comment near `TaskItem.collaboratorIds` saying so (similar
+    to the one already on the property) would stop a future contributor from mistaking it for a
+    working feature; low risk either way since it fails closed (nothing is exposed that shouldn't
+    be).
+- **TaskManager/DesignSystem/SyncStatusBanner.swift:7-9** — `SyncStatusBanner.Status.offline` is
+  defined and rendered by the component, but grepping for `.offline` outside the file's own
+  `#Preview` finds no production call site; `TaskListView.bottomBar` only ever constructs
+  `.synced`/`.pending`. *(dead-code)*
   - status: open
   - dev_reasoning: N/A
-  - ai_reasoning: Fix: only apply `.accessibilityIdentifier` when `identifier` is non-nil, e.g. via a conditional modifier or `ViewModifier` branch, so unset fields don't all share the same empty identifier.
+  - ai_reasoning: Reads as scaffolding for a future connectivity/offline-sync phase. Fine to keep,
+    but a one-line comment on the `offline` case (or a `// TODO(sync-phase):`) would prevent it
+    from reading as leftover/dead code to the next reviewer.
+- **TaskManager/Features/Tasks/TaskDetailViewModel.swift:57-67** — `requestStatus` chains
+  status-change `Task`s (`statusChange = Task { await previous?.value; await setStatus(status) }`)
+  but nothing cancels `statusChange` when the view disappears (deliberately, per the doc comment),
+  so a pending status change keeps the `@MainActor` view model alive briefly after
+  `TaskDetailView` is popped. *(lifecycle/memory)*
+  - status: open
+  - dev_reasoning: N/A
+  - ai_reasoning: Low impact today since the write resolves against the local store in
+    milliseconds and the behavior is explicitly intentional (a tapped status must still save, per
+    the existing comment), not an oversight. Worth revisiting with an explicit
+    `Task.isCancelled`/timeout check in `setStatus` once a slower sync path sits behind this call,
+    so a future network hang can't extend the view model's lifetime indefinitely.
+- **TaskManager/App/AppRouter.swift:14-16 / RootView.swift:211-214** — `AppRouter.showTask(_:)` has
+  no callers anywhere in the diff (grepped `showTask` across `TaskManager`/`TaskManagerTests`/
+  `TaskManagerUITests`: only the declaration matches). `MainView`'s `.onDisappear { router.reset() }`
+  also relies on SwiftUI tearing down the outgoing `MainView` (keyed by `.id(session.uid)`) before
+  the incoming one reads `environment.router.path`; if that ordering ever changed, a new user's
+  `MainView` could momentarily read a stale route left by the previous user's session.
+  *(dead-code / lifecycle)*
+  - status: open
+  - dev_reasoning: N/A
+  - ai_reasoning: `showTask` is clearly intended for a later deep-linking phase (per its doc
+    comment), so the dead code itself is expected. The reset-ordering risk is low in practice —
+    worst case is a momentarily wrong `navigationDestination` that resolves once
+    `TaskDetailViewModel.observe()` reports `.missing`, since all reads are already scoped by
+    `cacheOwnerId` — but resetting the router explicitly in `RootView` when `session.uid` changes,
+    rather than relying on `MainView.onDisappear` timing, would remove the ambiguity outright.
 
 ## Reviewed files
-- TaskManager.xcodeproj/project.pbxproj (skimmed — new file references/groups/build-phase entries only; no new dependencies, signing, or deployment-target changes)
+- TaskManager.xcodeproj/project.pbxproj (skimmed — additive file references/build-phase entries
+  only; grepped for signing/dependency/deployment-target keys, no matches beyond expected churn)
 - TaskManager/App/AppEnvironment.swift (reviewed)
-- TaskManager/App/Fakes/FakeAuthService.swift (reviewed)
+- TaskManager/App/AppRouter.swift (reviewed)
+- TaskManager/App/Fakes/TaskItem+Preview.swift (reviewed; DEBUG-only)
+- TaskManager/App/MainView.swift (reviewed)
 - TaskManager/App/RootView.swift (reviewed)
-- TaskManager/App/SignedInPlaceholderView.swift (reviewed)
-- TaskManager/App/SplashView.swift (reviewed)
-- TaskManager/Core/Auth/AuthError.swift (reviewed)
-- TaskManager/Core/Auth/AuthService.swift (reviewed)
-- TaskManager/Core/Auth/FirebaseAuthService.swift (reviewed)
-- TaskManager/Core/Auth/SessionController.swift (reviewed)
-- TaskManager/Core/Auth/SessionExpiryPolicy.swift (reviewed)
-- TaskManager/Core/Auth/SessionLifecycleObserver.swift (reviewed)
-- TaskManager/Core/Auth/UnconfiguredAuthService.swift (reviewed)
-- TaskManager/Core/Auth/UserProfileStore.swift (reviewed)
-- TaskManager/Core/Remote/FirestoreUserProfileStore.swift (reviewed)
-- TaskManager/Core/Utilities/InlineValidation.swift (reviewed)
+- TaskManager/App/SignedInPlaceholderView.swift (deleted; confirmed fully superseded by MainView)
+- TaskManager/Core/Domain/TaskItem.swift (reviewed)
+- TaskManager/Core/Domain/TaskPermissions.swift (reviewed)
+- TaskManager/Core/Domain/TaskQuery.swift (reviewed)
+- TaskManager/Core/Persistence/LocalTaskRepository.swift (reviewed)
+- TaskManager/Core/Persistence/SchemaV1.swift (reviewed)
+- TaskManager/Core/Persistence/TaskCacheCleaner.swift (reviewed; cross-checked against SettingsView copy)
+- TaskManager/Core/Persistence/TaskManagerMigrationPlan.swift (reviewed)
+- TaskManager/Core/Persistence/TaskRepository.swift (reviewed)
+- TaskManager/Core/Persistence/TaskStore.swift (reviewed; actor isolation, subscriber lifecycle
+  race, and permission enforcement verified directly against source)
+- TaskManager/Core/Persistence/UnavailableTaskRepository.swift (reviewed)
 - TaskManager/Core/Utilities/Validators.swift (reviewed)
-- TaskManager/DesignSystem/DesignSystemCatalog.swift (reviewed)
-- TaskManager/DesignSystem/FormField.swift (reviewed)
-- TaskManager/DesignSystem/MessageBanner.swift (reviewed)
-- TaskManager/DesignSystem/Tokens.swift (reviewed)
-- TaskManager/Features/Auth/AuthFlowView.swift (reviewed)
-- TaskManager/Features/Auth/AuthHeader.swift (reviewed)
-- TaskManager/Features/Auth/ForgotPasswordView.swift (reviewed)
-- TaskManager/Features/Auth/ForgotPasswordViewModel.swift (reviewed)
-- TaskManager/Features/Auth/LoginView.swift (reviewed)
-- TaskManager/Features/Auth/LoginViewModel.swift (reviewed)
-- TaskManager/Features/Auth/SignUpView.swift (reviewed)
-- TaskManager/Features/Auth/SignUpViewModel.swift (reviewed)
-- TaskManager/Resources/Assets.xcassets/SecondaryText.colorset/Contents.json (skimmed — color values only)
-- TaskManager/Resources/Localizable.xcstrings (skimmed — spot-checked new strings)
-- TaskManagerTests/App/AppEnvironmentTests.swift (reviewed)
-- TaskManagerTests/Auth/AuthLeakTests.swift (reviewed)
-- TaskManagerTests/Auth/AuthViewModelTests.swift (reviewed)
-- TaskManagerTests/Auth/SessionControllerTests.swift (reviewed)
-- TaskManagerTests/Auth/SessionExpiryPolicyTests.swift (reviewed)
-- TaskManagerTests/Auth/ValidatorsTests.swift (reviewed)
-- TaskManagerTests/Mocks/MockAuthService.swift (reviewed)
-- TaskManagerTests/Support/Eventually.swift (reviewed)
+- TaskManager/DesignSystem/FloatingAddButton.swift (reviewed)
+- TaskManager/DesignSystem/StatusBadge.swift (reviewed)
+- TaskManager/DesignSystem/SyncStatusBanner.swift (reviewed)
+- TaskManager/DesignSystem/TaskRow.swift (reviewed)
+- TaskManager/Features/Settings/SettingsView.swift (reviewed; sign-out copy verified against
+  TaskCacheCleaner/TaskStore behavior)
+- TaskManager/Features/Settings/SettingsViewModel.swift (reviewed)
+- TaskManager/Features/Tasks/TaskDetailView.swift (reviewed)
+- TaskManager/Features/Tasks/TaskDetailViewModel.swift (reviewed)
+- TaskManager/Features/Tasks/TaskEditorView.swift (reviewed)
+- TaskManager/Features/Tasks/TaskEditorViewModel.swift (reviewed)
+- TaskManager/Features/Tasks/TaskFilterMenu.swift (reviewed)
+- TaskManager/Features/Tasks/TaskListView.swift (reviewed)
+- TaskManager/Features/Tasks/TaskListViewModel.swift (reviewed)
+- TaskManager/Resources/Localizable.xcstrings (skimmed — new keys match added UI strings)
+- TaskManagerTests/Mocks/MockTaskRepository.swift (reviewed)
+- TaskManagerTests/Support/TestClock.swift (reviewed; deterministic, no real clock/sleep)
+- TaskManagerTests/Tasks/TaskQueryTests.swift (reviewed)
+- TaskManagerTests/Tasks/TaskStoreTests.swift (reviewed)
+- TaskManagerTests/Tasks/TaskViewModelTests.swift (reviewed)
 - TaskManagerUITests/AuthFlowUITests.swift (reviewed)
-- TaskManagerUITests/LaunchUITests.swift (deleted — replaced by AuthFlowUITests.swift, reasonable 1:1 replacement)
-- docs/ARCHITECTURE.md (reviewed)
-- .code-reviews/brainx-review.md (deleted — prior Phase 1 review archived/removed as part of this change set)
+- docs/ARCHITECTURE.md (reviewed; matches implementation)
+- .code-reviews/brainx-review.md (flagged — see High finding above; replaced in full)

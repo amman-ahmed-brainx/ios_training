@@ -7,6 +7,7 @@ enum ValidationError: Error, Equatable, Sendable {
     case passwordTooShort(minimum: Int)
     case passwordNeedsLetterAndDigit
     case passwordsDoNotMatch
+    case tooLong(maximum: Int)
 
     var message: String {
         switch self {
@@ -20,6 +21,8 @@ enum ValidationError: Error, Equatable, Sendable {
             String(localized: "Include at least one letter and one number.")
         case .passwordsDoNotMatch:
             String(localized: "Passwords don't match.")
+        case .tooLong(let maximum):
+            String(localized: "Keep it under \(maximum) characters.")
         }
     }
 }
