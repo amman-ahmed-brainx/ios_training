@@ -16,6 +16,7 @@
 		15DBB14EF4CBD53290D40E62 /* TaskItem+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862E70184E9427B01B08169B /* TaskItem+Preview.swift */; };
 		167C7347984BCCC087E46BE2 /* AttachmentsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2072786F9540C00AB963BD91 /* AttachmentsViewModelTests.swift */; };
 		16D0414E0E161A3F525C1146 /* SessionExpiryPolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC027A7BB1F52830F40FBE4 /* SessionExpiryPolicyTests.swift */; };
+		17F7382411A34D28D2C57440 /* UploadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB59031986F09B3E8831098 /* UploadState.swift */; };
 		191A604E24729F27E06C41B4 /* UserDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EAD58F8E502FEB10CD52D7 /* UserDirectory.swift */; };
 		19DAA32F8BA8CCD2818CEE23 /* TaskQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81B84C63F8FD334EE3056F /* TaskQueryTests.swift */; };
 		1C4E63B26102C168135399A8 /* FirestoreUserDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B69D7FD2D957F2E0ACBA9 /* FirestoreUserDirectory.swift */; };
@@ -72,6 +73,7 @@
 		97A6C5B4C057EDB09FC9C663 /* TaskManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D473E08AF146B063569B6AAB /* TaskManagerApp.swift */; };
 		99D92C859F6E439C9D22C389 /* FakeAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EDAAB3EB7348FED93D7BF /* FakeAuthService.swift */; };
 		9BB2641E8B5162E9F7DB280E /* UnconfiguredAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F188A500AD04ABC8E812603 /* UnconfiguredAuthService.swift */; };
+		9E83A9537AC4F533F2409F58 /* SchemaV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94C02638179D4D0F3532AB /* SchemaV2.swift */; };
 		9EA96CF5E28CDB7B520CEB15 /* TaskManagerMigrationPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2CCCCB6B1406323D1DFF79 /* TaskManagerMigrationPlan.swift */; };
 		9EED0286834935471148ECE0 /* TaskFilterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0458718BFF2AB775B9EC12C /* TaskFilterMenu.swift */; };
 		A0CB2E304FDFDC77FDAC7AE5 /* TaskPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3175D5B05C3028C531ED0C2 /* TaskPermissions.swift */; };
@@ -94,20 +96,24 @@
 		CBBF31D0A142C6417558C3C3 /* SessionLifecycleObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C727FB42B12281D508D2F11F /* SessionLifecycleObserver.swift */; };
 		CBE84143535076123382BB0D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A5699B0DBB4D11F0FAFB1 /* SettingsViewModel.swift */; };
 		CC4E681585890BDB565DEB33 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AC7190FD59EAD7BD2D2473 /* TaskListView.swift */; };
+		CC584D28A2578E5DA3687B45 /* BackgroundUploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854A32EE1B25B9C640FF84CE /* BackgroundUploadManager.swift */; };
 		CD2BEB14655567A3CEF5656D /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360E1D71482F15186031AA6 /* TaskStore.swift */; };
 		CD5173215CD48AD714B74C83 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F166BBE63AD618FF7678CD /* SplashView.swift */; };
 		D30708B39EE04FE3DEBAC168 /* TaskRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34848CBEAAA3DF8E456E7FD /* TaskRemote.swift */; };
+		D3E13E4E1A49FD269A9EAC4C /* UploadStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC00DF9E022B92C85780A070 /* UploadStore.swift */; };
 		D7D7F7F775F7F57D2BAC491C /* MessageBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0907426701EB5A775C90639C /* MessageBanner.swift */; };
 		D8F782F1ED2FC2E09A827FD0 /* TaskDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB538052B52E62C1B49F7FE /* TaskDetailViewModel.swift */; };
 		DB015F08E9389268677F9B61 /* FakeUserDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E33BDA8F8D5743372075067 /* FakeUserDirectory.swift */; };
 		DC8E00121E24A4D736D5C17C /* TaskDocumentMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141911EFB650AF04737CAC42 /* TaskDocumentMapper.swift */; };
 		DDA2BA33DC003D08890CAEF4 /* UserProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C723DBF8DE42EA1F63426 /* UserProfileStore.swift */; };
+		DDD1F7C5C1C7FF98B956D483 /* UploadStateMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057EDCEBA304BBD0132183AF /* UploadStateMachineTests.swift */; };
 		E22F40D9C9E67D2B849F7C1B /* SessionExpiryPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F76E4C56D4E4B950D1E4AB5 /* SessionExpiryPolicy.swift */; };
 		E52E6326381E1B9143A4CEF7 /* DesignSystemCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192BE7B18566F939F76D04C /* DesignSystemCatalog.swift */; };
 		E6B2BCD8CAE9A47FB3995A6A /* FirebasePushRegistrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654EB22AA064E990BAFC8224 /* FirebasePushRegistrar.swift */; };
 		EA0BB39F1396E2ABE96E4150 /* LocalTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4547D5B6E5A1AA3BFE9520B5 /* LocalTaskRepository.swift */; };
 		EAC7B609867081C00C41C026 /* AuthFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325403DAC2ABCACFA3D609B4 /* AuthFlowUITests.swift */; };
 		ECE4597B3243398FAD3F5EA5 /* AppClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C5E52BB7FC7D581F736529 /* AppClock.swift */; };
+		EECED4C9D9762DB856F93F01 /* BackgroundSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABB02BDF40A71AEE10483C /* BackgroundSync.swift */; };
 		F35B985595DE91F8928BD95C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E813BC4F61BBEA841988968E /* LoginViewModel.swift */; };
 		F3A5D6312EDABDA1C0417810 /* AttachmentsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441DBEFDEB0E669C8AB8177F /* AttachmentsSection.swift */; };
 		F42587129A9DD0FD7A1B6E03 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF41AB5084BF509026132D /* AppRouter.swift */; };
@@ -140,6 +146,7 @@
 /* Begin PBXFileReference section */
 		028080F0203BD8860723266E /* FirestoreTaskRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreTaskRemote.swift; sourceTree = "<group>"; };
 		034FB63DE4A2978146926274 /* AttachmentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentStorage.swift; sourceTree = "<group>"; };
+		057EDCEBA304BBD0132183AF /* UploadStateMachineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadStateMachineTests.swift; sourceTree = "<group>"; };
 		05B12295DA4AB152DE56892E /* FakeTaskRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeTaskRemote.swift; sourceTree = "<group>"; };
 		0606D07F5BC6056B2C044F62 /* SessionControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionControllerTests.swift; sourceTree = "<group>"; };
 		0907426701EB5A775C90639C /* MessageBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBanner.swift; sourceTree = "<group>"; };
@@ -160,6 +167,7 @@
 		31F166BBE63AD618FF7678CD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		325403DAC2ABCACFA3D609B4 /* AuthFlowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowUITests.swift; sourceTree = "<group>"; };
 		3AB85C314FA59D489D092864 /* ConflictResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConflictResolver.swift; sourceTree = "<group>"; };
+		3CABB02BDF40A71AEE10483C /* BackgroundSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSync.swift; sourceTree = "<group>"; };
 		412D7D504D08F37A9798094D /* AuthViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelTests.swift; sourceTree = "<group>"; };
 		417BF2A4F3EE3316AB32CCBB /* SyncStatusBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncStatusBanner.swift; sourceTree = "<group>"; };
 		41E2AC941698465E00CAEE3E /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
@@ -170,6 +178,7 @@
 		485EDAAB3EB7348FED93D7BF /* FakeAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAuthService.swift; sourceTree = "<group>"; };
 		49A8B3CA64C4160A356221BA /* FakeAttachmentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAttachmentStorage.swift; sourceTree = "<group>"; };
 		49B05ACFC83E98CBEDB2D747 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
+		4BB59031986F09B3E8831098 /* UploadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadState.swift; sourceTree = "<group>"; };
 		4D02EB976DE421312073A6BD /* InlineValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineValidation.swift; sourceTree = "<group>"; };
 		529FCF06CD1FC13ED285241D /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		53080C39B182410798098F92 /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
@@ -193,6 +202,7 @@
 		82DD8EC114F1C6B97F118CE4 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		841E22E20127FA95B1FA016B /* SchemaV1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaV1.swift; sourceTree = "<group>"; };
 		849281FB9BEDAB4E696EE358 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		854A32EE1B25B9C640FF84CE /* BackgroundUploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundUploadManager.swift; sourceTree = "<group>"; };
 		862E70184E9427B01B08169B /* TaskItem+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskItem+Preview.swift"; sourceTree = "<group>"; };
 		8D930B3F6562CBD1A163CAC2 /* TaskEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditorView.swift; sourceTree = "<group>"; };
 		90B95D848F03F168D91DCE47 /* AuthFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowView.swift; sourceTree = "<group>"; };
@@ -205,9 +215,10 @@
 		A0458718BFF2AB775B9EC12C /* TaskFilterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFilterMenu.swift; sourceTree = "<group>"; };
 		A3FE07CD27DB31BF80A97288 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A5E9E4B236EA281022533334 /* TaskStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStoreTests.swift; sourceTree = "<group>"; };
+		AB94C02638179D4D0F3532AB /* SchemaV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaV2.swift; sourceTree = "<group>"; };
 		B0AC7190FD59EAD7BD2D2473 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		B30FB106717EACA2BBCF2AF0 /* TaskCacheCleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCacheCleaner.swift; sourceTree = "<group>"; };
-		B33B4120D3DFEB82E1B07572 /* TaskManager.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TaskManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B33B4120D3DFEB82E1B07572 /* TaskManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8397C8FA09C05031C66560D /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		BAECB9B08532980A7D2B470F /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		BB456BB6680F7EF1DBE1CA72 /* MockAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthService.swift; sourceTree = "<group>"; };
@@ -222,6 +233,7 @@
 		C58202577956DA8E07A99209 /* TaskManagerUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = TaskManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C727FB42B12281D508D2F11F /* SessionLifecycleObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLifecycleObserver.swift; sourceTree = "<group>"; };
 		C7438AEFB9F17A10E002E32C /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
+		CC00DF9E022B92C85780A070 /* UploadStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadStore.swift; sourceTree = "<group>"; };
 		D1729F8EB49483307617A0B1 /* TaskEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditorViewModel.swift; sourceTree = "<group>"; };
 		D3C5E52BB7FC7D581F736529 /* AppClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppClock.swift; sourceTree = "<group>"; };
 		D473E08AF146B063569B6AAB /* TaskManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerApp.swift; sourceTree = "<group>"; };
@@ -355,6 +367,7 @@
 				22B02657CD64D787FA15DD4B /* AppDelegate.swift */,
 				BFE0DB547A51E088675C2261 /* AppEnvironment.swift */,
 				7CCF41AB5084BF509026132D /* AppRouter.swift */,
+				3CABB02BDF40A71AEE10483C /* BackgroundSync.swift */,
 				E1BE9A79BB160CAB2990ABBA /* MainView.swift */,
 				DFEA0F0D5383EBEB06B65EC0 /* NotificationCoordinator.swift */,
 				2C31C75483CE476B8D4EB824 /* RootView.swift */,
@@ -435,6 +448,7 @@
 				D4459571D9EF7343EB0B5AD1 /* Support */,
 				9B8C32561404E99B30DD2A09 /* Sync */,
 				EBA4FBE874F7B586E8FF717B /* Tasks */,
+				A8DFC596BC54812DC30CE98D /* Uploads */,
 			);
 			path = TaskManagerTests;
 			sourceTree = "<group>";
@@ -547,6 +561,14 @@
 			path = DesignSystem;
 			sourceTree = "<group>";
 		};
+		A8DFC596BC54812DC30CE98D /* Uploads */ = {
+			isa = PBXGroup;
+			children = (
+				057EDCEBA304BBD0132183AF /* UploadStateMachineTests.swift */,
+			);
+			path = Uploads;
+			sourceTree = "<group>";
+		};
 		B68EB4BD5006A82EA1971E57 /* Sync */ = {
 			isa = PBXGroup;
 			children = (
@@ -580,6 +602,7 @@
 			children = (
 				4547D5B6E5A1AA3BFE9520B5 /* LocalTaskRepository.swift */,
 				841E22E20127FA95B1FA016B /* SchemaV1.swift */,
+				AB94C02638179D4D0F3532AB /* SchemaV2.swift */,
 				B30FB106717EACA2BBCF2AF0 /* TaskCacheCleaner.swift */,
 				2A2CCCCB6B1406323D1DFF79 /* TaskManagerMigrationPlan.swift */,
 				49B05ACFC83E98CBEDB2D747 /* TaskRepository.swift */,
@@ -618,7 +641,10 @@
 			isa = PBXGroup;
 			children = (
 				034FB63DE4A2978146926274 /* AttachmentStorage.swift */,
+				854A32EE1B25B9C640FF84CE /* BackgroundUploadManager.swift */,
 				F2DAB36AD38FA55F68AA05BE /* FirebaseAttachmentStorage.swift */,
+				4BB59031986F09B3E8831098 /* UploadState.swift */,
+				CC00DF9E022B92C85780A070 /* UploadStore.swift */,
 			);
 			path = Uploads;
 			sourceTree = "<group>";
@@ -730,7 +756,6 @@
 						TestTargetID = D6AE5153AD9DCBC8A3CF4A63;
 					};
 					D6AE5153AD9DCBC8A3CF4A63 = {
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -837,6 +862,8 @@
 				AAE960048F21DC33EAA594D1 /* AuthFlowView.swift in Sources */,
 				662493E34207E499C7F030E9 /* AuthHeader.swift in Sources */,
 				F4EED7B9B1E1FAC2F74EB9F2 /* AuthService.swift in Sources */,
+				EECED4C9D9762DB856F93F01 /* BackgroundSync.swift in Sources */,
+				CC584D28A2578E5DA3687B45 /* BackgroundUploadManager.swift in Sources */,
 				B14989EB03160DD0089DD865 /* ButtonStyles.swift in Sources */,
 				4A45CAF692090216325C080A /* ConflictResolver.swift in Sources */,
 				E52E6326381E1B9143A4CEF7 /* DesignSystemCatalog.swift in Sources */,
@@ -873,6 +900,7 @@
 				5F51DE2B5EE67B52A390D63A /* ReminderScheduler.swift in Sources */,
 				20AF41CBF2012BB5370AED27 /* RootView.swift in Sources */,
 				C769AFF84D3720F78D3B29E6 /* SchemaV1.swift in Sources */,
+				9E83A9537AC4F533F2409F58 /* SchemaV2.swift in Sources */,
 				21FC3343A4575812BAE09F81 /* SessionController.swift in Sources */,
 				E22F40D9C9E67D2B849F7C1B /* SessionExpiryPolicy.swift in Sources */,
 				CBBF31D0A142C6417558C3C3 /* SessionLifecycleObserver.swift in Sources */,
@@ -907,6 +935,8 @@
 				859C01C1707B1F59BBC632B5 /* Tokens.swift in Sources */,
 				54B2E3843A2265B013D266F9 /* UnavailableTaskRepository.swift in Sources */,
 				9BB2641E8B5162E9F7DB280E /* UnconfiguredAuthService.swift in Sources */,
+				17F7382411A34D28D2C57440 /* UploadState.swift in Sources */,
+				D3E13E4E1A49FD269A9EAC4C /* UploadStore.swift in Sources */,
 				191A604E24729F27E06C41B4 /* UserDirectory.swift in Sources */,
 				DDA2BA33DC003D08890CAEF4 /* UserProfileStore.swift in Sources */,
 				52342FE7F2C321FF4CC0961A /* Validators.swift in Sources */,
@@ -934,6 +964,7 @@
 				495B4829C3F0B74FD0EC2312 /* TaskStoreTests.swift in Sources */,
 				6F656FC8CD871CD6F8E43BF2 /* TaskViewModelTests.swift in Sources */,
 				01F0472AE12BC55F21C857AB /* TestClock.swift in Sources */,
+				DDD1F7C5C1C7FF98B956D483 /* UploadStateMachineTests.swift in Sources */,
 				0A5C91BA5665A7ACF5FC01AE /* ValidatorsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1098,6 +1129,7 @@
 				CODE_SIGN_ENTITLEMENTS = TaskManager/Resources/TaskManager.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = MVBD6QQGZX;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TaskManager/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1192,6 +1224,7 @@
 				CODE_SIGN_ENTITLEMENTS = TaskManager/Resources/TaskManager.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = PVLD7V62U8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TaskManager/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

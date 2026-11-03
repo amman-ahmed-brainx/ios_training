@@ -31,16 +31,39 @@ final class AttachmentsViewModel {
     private let repository: any TaskRepository
     private let storage: any AttachmentStorage
     private let compressor: any ImageCompressing
+    private let uploader: (any UploadManaging)?
+    /// Large files uploading in the background (survive leaving the app).
+    private(set) var backgroundUploads: [UploadSnapshot] = []
+
+    /// Above this, files go through the background `URLSession` instead of the Storage SDK.
+    static let foregroundUploadLimit = 2 * 1024 * 1024
     /// Bytes kept for failed uploads so Retry doesn't need the original again.
     private var payloads: [String: (data: Data, contentType: String)] = [:]
 
     init(taskId: String, userId: String, repository: any TaskRepository,
-         storage: any AttachmentStorage, compressor: any ImageCompressing) {
+         storage: any AttachmentStorage, compressor: any ImageCompressing, uploader: (any UploadManaging)? = nil) {
         self.taskId = taskId
         self.userId = userId
         self.repository = repository
         self.storage = storage
         self.compressor = compressor
+        self.uploader = uploader
+    }
+
+    /// Follows background uploads for this task until cancelled (the view's `.task`).
+    func observeBackgroundUploads() async {
+        guard let uploader else { return }
+        for await uploads in uploader.uploads(for: taskId) {
+            backgroundUploads = uploads
+        }
+    }
+
+    func retryBackground(_ upload: UploadSnapshot) async {
+        await uploader?.retry(upload.attachmentId)
+    }
+
+    func discardBackground(_ upload: UploadSnapshot) async {
+        await uploader?.discard(upload.attachmentId)
     }
 
     /// From PhotosPicker: compress, then upload.
@@ -56,6 +79,18 @@ final class AttachmentsViewModel {
 
     /// From fileImporter: copy out of the security-scoped URL off the main thread, then upload.
     func addFile(at url: URL) async {
+        if let uploader, let copy = await copyIfLarge(url) {
+            do {
+                let type = UTType(filenameExtension: url.pathExtension)
+                try await uploader.enqueue(UploadJob(
+                    fileURL: copy, taskId: taskId, attachmentId: UUID().uuidString, fileName: url.lastPathComponent,
+                    contentType: type?.preferredMIMEType ?? "application/octet-stream", userId: userId
+                ))
+            } catch {
+                errorMessage = String(localized: "That file couldn't be prepared for upload.")
+            }
+            return
+        }
         do {
             let data = try await Task.detached(priority: .userInitiated) {
                 let accessing = url.startAccessingSecurityScopedResource()
@@ -99,6 +134,20 @@ final class AttachmentsViewModel {
         } catch {
             errorMessage = String(localized: "The attachment couldn't be downloaded.")
         }
+    }
+
+    /// Copies a large file out of its security scope (off the main thread) for the background
+    /// uploader; returns `nil` for small files, which upload in the foreground.
+    private func copyIfLarge(_ url: URL) async -> URL? {
+        let limit = Self.foregroundUploadLimit
+        return await Task.detached(priority: .userInitiated) { () -> URL? in
+            let accessing = url.startAccessingSecurityScopedResource()
+            defer { if accessing { url.stopAccessingSecurityScopedResource() } }
+            let size = (try? url.resourceValues(forKeys: [.fileSizeKey]).fileSize) ?? 0
+            guard size > limit else { return nil }
+            let copy = FileManager.default.temporaryDirectory.appending(path: "\(UUID().uuidString)-\(url.lastPathComponent)")
+            return (try? FileManager.default.copyItem(at: url, to: copy)) != nil ? copy : nil
+        }.value
     }
 
     /// The system file picker failed to hand over a file.

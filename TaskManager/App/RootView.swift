@@ -10,9 +10,11 @@ struct RootView: View {
         content
             .animation(reduceMotion ? nil : .default, value: environment.session.state)
             .onChange(of: scenePhase) { _, phase in
-                // Catch revoked or disabled accounts as soon as the user returns to the app.
-                if phase == .active {
-                    Task { await environment.session.validateSession() }
+                switch phase {
+                case .active: environment.didBecomeActive()
+                case .background: environment.didEnterBackground()
+                case .inactive: break
+                @unknown default: break
                 }
             }
     }

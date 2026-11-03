@@ -1,5 +1,7 @@
 import Foundation
 import Observation
+import SwiftData
+import UIKit
 
 /// Builds and owns the app's dependency graph. View models receive protocols from here
 /// through their initialisers; nothing reaches for a singleton.
@@ -56,6 +58,9 @@ final class AppEnvironment {
     /// `nil` unless Firebase is configured.
     let push: (any PushRegistering)?
     let notificationCoordinator: NotificationCoordinator
+    /// Background uploads for large attachments; `nil` without Firebase Storage.
+    let uploads: BackgroundUploadManager?
+    let backgroundSessionEvents = BackgroundSessionEvents()
 
     init(mode: Mode, clock: any AppClock = SystemClock()) {
         self.mode = mode
@@ -65,7 +70,8 @@ final class AppEnvironment {
         auth = backend.auth
         session = SessionController(auth: backend.auth, profiles: backend.profiles)
         // Fakes get a fresh in-memory store each launch so previews and UI tests are deterministic.
-        let local = Self.makeLocalRepository(inMemory: mode != .live, clock: clock)
+        let container = Self.makeContainer(inMemory: mode != .live)
+        let local = container.map { LocalTaskRepository(container: $0, clock: clock) }
         tasks = local ?? UnavailableTaskRepository()
         attachmentStorage = backend.storage
         if let local, let remote = backend.remote {
@@ -88,6 +94,19 @@ final class AppEnvironment {
         } else {
             push = nil
         }
+        if backend.status == .firebase, let container, let bucket = BackgroundUploadManager.configuredBucket {
+            let manager = BackgroundUploadManager(
+                container: ModelContainerHandle(container: container),
+                auth: backend.auth,
+                repository: tasks,
+                bucket: bucket,
+                sessionEvents: backgroundSessionEvents
+            )
+            uploads = manager
+            session.register(manager)
+        } else {
+            uploads = nil
+        }
         // Registered last: the cache is wiped only after sync has stopped (and flushed).
         session.register(TaskCacheCleaner(repository: tasks))
     }
@@ -109,6 +128,32 @@ final class AppEnvironment {
     /// Starts long-lived work (the session listener). Safe to call more than once.
     func bootstrap() {
         session.start()
+        if let uploads {
+            Task { await uploads.activate() }
+        }
+    }
+
+    // MARK: - App lifecycle
+
+    /// Leaving the foreground: get a little time to flush pending changes, and line up background sync.
+    func didEnterBackground() {
+        BackgroundSync.schedule()
+        guard let sync else { return }
+        let token = BackgroundTaskToken()
+        token.begin(name: "Flush pending changes")
+        Task {
+            await sync.pushPendingChanges()
+            token.end()
+        }
+    }
+
+    /// Back in the foreground: re-check the session, sync, and reconcile reminders.
+    func didBecomeActive() {
+        Task {
+            await session.validateSession()
+            await sync?.syncNow()
+            await reminderCoordinator.refresh()
+        }
     }
 
     // MARK: - View model factories
@@ -144,7 +189,8 @@ final class AppEnvironment {
             userId: session.uid,
             repository: tasks,
             storage: attachmentStorage,
-            compressor: imageCompressor
+            compressor: imageCompressor,
+            uploader: uploads
         )
     }
 
@@ -164,15 +210,15 @@ final class AppEnvironment {
 
     // MARK: - Backend selection
 
-    private static func makeLocalRepository(inMemory: Bool, clock: any AppClock) -> LocalTaskRepository? {
+    private static func makeContainer(inMemory: Bool) -> ModelContainer? {
         do {
-            return LocalTaskRepository(container: try PersistenceContainer.make(inMemory: inMemory), clock: clock)
+            return try PersistenceContainer.make(inMemory: inMemory)
         } catch {
             Log.app.fault("Opening the task store failed: \(error.localizedDescription, privacy: .public)")
         }
         // A broken on-disk store must not stop the app: keep working in memory for this launch.
         do {
-            return LocalTaskRepository(container: try PersistenceContainer.make(inMemory: true), clock: clock)
+            return try PersistenceContainer.make(inMemory: true)
         } catch {
             Log.app.fault("Opening an in-memory task store failed: \(error.localizedDescription, privacy: .public)")
             return nil
@@ -221,5 +267,23 @@ final class AppEnvironment {
         Log.app.notice("GoogleService-Info.plist missing; running without a backend.")
         let unconfigured = UnconfiguredAuthService()
         return Backend(status: .unconfigured, auth: unconfigured, profiles: unconfigured, remote: nil, storage: nil, directory: nil)
+    }
+}
+
+/// A `beginBackgroundTask` assertion that is always ended exactly once.
+@MainActor
+final class BackgroundTaskToken {
+    private var identifier = UIBackgroundTaskIdentifier.invalid
+
+    func begin(name: String) {
+        identifier = UIApplication.shared.beginBackgroundTask(withName: name) { [weak self] in
+            MainActor.assumeIsolated { self?.end() }
+        }
+    }
+
+    func end() {
+        guard identifier != .invalid else { return }
+        UIApplication.shared.endBackgroundTask(identifier)
+        identifier = .invalid
     }
 }

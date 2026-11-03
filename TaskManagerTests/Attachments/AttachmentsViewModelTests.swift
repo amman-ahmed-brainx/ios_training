@@ -95,3 +95,76 @@ struct AttachmentsViewModelTests {
         #expect(model.errorMessage != nil)
     }
 }
+
+actor MockUploader: UploadManaging {
+    private(set) var jobs: [UploadJob] = []
+    private(set) var retried: [String] = []
+    private(set) var discarded: [String] = []
+    private nonisolated let stream: AsyncStream<[UploadSnapshot]>
+    private nonisolated let continuation: AsyncStream<[UploadSnapshot]>.Continuation
+
+    init() { (stream, continuation) = AsyncStream.makeStream(of: [UploadSnapshot].self) }
+
+    nonisolated func emit(_ uploads: [UploadSnapshot]) { continuation.yield(uploads) }
+    func enqueue(_ job: UploadJob) async throws { jobs.append(job) }
+    nonisolated func uploads(for taskId: String) -> AsyncStream<[UploadSnapshot]> { stream }
+    func retry(_ attachmentId: String) async { retried.append(attachmentId) }
+    func discard(_ attachmentId: String) async { discarded.append(attachmentId) }
+}
+
+@MainActor
+struct BackgroundAttachmentRoutingTests {
+    private let repository = MockTaskRepository()
+    private let storage = MockAttachmentStorage()
+    private let uploader = MockUploader()
+
+    private func model() -> AttachmentsViewModel {
+        AttachmentsViewModel(taskId: "t1", userId: "uid-ada", repository: repository, storage: storage,
+                             compressor: MockCompressor(), uploader: uploader)
+    }
+
+    private func file(bytes: Int) throws -> URL {
+        let url = FileManager.default.temporaryDirectory.appending(path: "\(UUID().uuidString).pdf")
+        try Data(repeating: 7, count: bytes).write(to: url)
+        return url
+    }
+
+    @Test func largeFilesGoToTheBackgroundUploader() async throws {
+        let url = try file(bytes: AttachmentsViewModel.foregroundUploadLimit + 1)
+        defer { try? FileManager.default.removeItem(at: url) }
+
+        await model().addFile(at: url)
+
+        let jobs = await uploader.jobs
+        #expect(jobs.count == 1)
+        #expect(jobs.first?.contentType == "application/pdf")
+        #expect(await storage.uploadedPaths.isEmpty)
+    }
+
+    @Test func smallFilesUploadInTheForeground() async throws {
+        let url = try file(bytes: 1024)
+        defer { try? FileManager.default.removeItem(at: url) }
+
+        await model().addFile(at: url)
+
+        #expect(await uploader.jobs.isEmpty)
+        #expect(await storage.uploadedPaths.count == 1)
+    }
+
+    @Test func backgroundUploadsAreShownRetriedAndRemoved() async {
+        let model = model()
+        let observing = Task { await model.observeBackgroundUploads() }
+        let failed = UploadSnapshot(attachmentId: "a1", userId: "uid-ada", taskId: "t1", fileName: "big.mov",
+                                    contentType: "video/quicktime", size: 9, localPath: "/tmp/x", storagePath: "p",
+                                    state: .failed, lastError: "HTTP 403")
+        uploader.emit([failed])
+        await eventually { model.backgroundUploads == [failed] }
+
+        await model.retryBackground(failed)
+        await model.discardBackground(failed)
+
+        #expect(await uploader.retried == ["a1"])
+        #expect(await uploader.discarded == ["a1"])
+        observing.cancel()
+    }
+}

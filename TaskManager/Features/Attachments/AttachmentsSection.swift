@@ -26,9 +26,24 @@ struct AttachmentsSection: View {
                 .accessibilityHint(Text("Opens a preview"))
             }
             ForEach(model.uploads) { upload in
-                uploadRow(upload)
+                UploadStatusRow(
+                    name: upload.name, size: upload.size, isImage: upload.isImage,
+                    progress: { if case .uploading(let value) = upload.state { value } else { nil } }(),
+                    failure: { if case .failed(let message) = upload.state { message } else { nil } }(),
+                    onRetry: { Task { await model.retry(upload) } },
+                    onRemove: { model.discard(upload) }
+                )
             }
-            if attachments.isEmpty && model.uploads.isEmpty {
+            ForEach(model.backgroundUploads) { upload in
+                UploadStatusRow(
+                    name: upload.fileName, size: upload.size, isImage: upload.contentType.hasPrefix("image/"),
+                    progress: nil,
+                    failure: upload.state == .failed ? (upload.lastError ?? String(localized: "Upload failed")) : nil,
+                    onRetry: { Task { await model.retryBackground(upload) } },
+                    onRemove: { Task { await model.discardBackground(upload) } }
+                )
+            }
+            if attachments.isEmpty && model.uploads.isEmpty && model.backgroundUploads.isEmpty {
                 Text("No attachments").foregroundStyle(Palette.secondaryText)
             }
             if canEdit {
@@ -39,6 +54,7 @@ struct AttachmentsSection: View {
             }
         }
         .quickLookPreview($model.previewURL)
+        .task { await model.observeBackgroundUploads() }
         .fileImporter(isPresented: $isImportingFile, allowedContentTypes: [.item]) { result in
             switch result {
             case .success(let url): Task { await model.addFile(at: url) }
@@ -58,28 +74,6 @@ struct AttachmentsSection: View {
             Button("OK", role: .cancel) { model.dismissError() }
         } message: {
             Text(model.errorMessage ?? "")
-        }
-    }
-
-    @ViewBuilder
-    private func uploadRow(_ upload: AttachmentsViewModel.Upload) -> some View {
-        VStack(alignment: .leading, spacing: Spacing.xs) {
-            AttachmentRow(name: upload.name, size: upload.size, isImage: upload.isImage)
-            switch upload.state {
-            case .uploading(let fraction):
-                ProgressView(value: fraction)
-                    .accessibilityLabel(Text("Uploading"))
-            case .failed(let message):
-                HStack {
-                    Label(message, systemImage: "exclamationmark.triangle.fill")
-                        .foregroundStyle(Palette.danger)
-                        .font(.footnote)
-                    Spacer()
-                    Button("Retry") { Task { await model.retry(upload) } }
-                    Button("Remove", role: .destructive) { model.discard(upload) }
-                }
-                .buttonStyle(.borderless)
-            }
         }
     }
 
@@ -107,5 +101,39 @@ struct AttachmentRow: View {
                 .foregroundStyle(Palette.accent)
         }
         .accessibilityElement(children: .combine)
+    }
+}
+
+/// An attachment that is still uploading (with progress if known) or failed (with Retry/Remove).
+struct UploadStatusRow: View {
+    let name: String
+    let size: Int64
+    let isImage: Bool
+    /// `nil` while waiting with no measurable progress (background uploads).
+    let progress: Double?
+    /// Set when the upload failed; shown next to Retry and Remove.
+    let failure: String?
+    let onRetry: () -> Void
+    let onRemove: () -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: Spacing.xs) {
+            AttachmentRow(name: name, size: size, isImage: isImage)
+            if let failure {
+                HStack {
+                    Label(failure, systemImage: "exclamationmark.triangle.fill")
+                        .foregroundStyle(Palette.danger)
+                        .font(.footnote)
+                    Spacer()
+                    Button("Retry", action: onRetry)
+                    Button("Remove", role: .destructive, action: onRemove)
+                }
+                .buttonStyle(.borderless)
+            } else if let progress {
+                ProgressView(value: progress).accessibilityLabel(Text("Uploading"))
+            } else {
+                ProgressView().accessibilityLabel(Text("Uploading in the background"))
+            }
+        }
     }
 }
