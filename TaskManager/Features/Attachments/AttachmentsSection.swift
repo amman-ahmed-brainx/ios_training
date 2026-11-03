@@ -137,3 +137,13 @@ struct UploadStatusRow: View {
         }
     }
 }
+
+#Preview("Upload rows") {
+    List {
+        UploadStatusRow(name: "Receipt.pdf", size: 240_000, isImage: false, progress: 0.4, failure: nil, onRetry: {}, onRemove: {})
+        UploadStatusRow(name: "Holiday.mov", size: 48_000_000, isImage: false, progress: nil, failure: nil, onRetry: {}, onRemove: {})
+        UploadStatusRow(name: "Photo.jpg", size: 900_000, isImage: true, progress: nil, failure: "Upload failed",
+                        onRetry: {}, onRemove: {})
+    }
+    .dynamicTypeSize(.accessibility3)
+}

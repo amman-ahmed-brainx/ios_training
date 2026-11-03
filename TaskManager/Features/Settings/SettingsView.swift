@@ -59,3 +59,12 @@ struct SettingsView: View {
         }
     }
 }
+
+#if DEBUG
+#Preview("Settings, dark") {
+    SettingsView(model: AppEnvironment.preview.makeSettingsViewModel(
+        session: AuthSession(uid: "uitest-user", email: "test@example.com", displayName: "Test User")
+    ))
+    .preferredColorScheme(.dark)
+}
+#endif

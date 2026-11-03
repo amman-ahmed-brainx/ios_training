@@ -1,0 +1,12 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "CFBundleDisplayName" : {
+      "localizations" : {
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Aufgaben" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tasks" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

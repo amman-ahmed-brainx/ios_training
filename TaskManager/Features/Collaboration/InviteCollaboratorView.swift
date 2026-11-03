@@ -56,3 +56,16 @@ struct InviteCollaboratorView: View {
         }
     }
 }
+
+#if DEBUG
+#Preview("Shared, dark AX5") {
+    InviteCollaboratorView(model: InviteCollaboratorViewModel(
+        task: .preview(title: "Plan offsite"),
+        userId: "uitest-user",
+        repository: UnavailableTaskRepository(),
+        directory: FakeUserDirectory()
+    ))
+    .preferredColorScheme(.dark)
+    .dynamicTypeSize(.accessibility5)
+}
+#endif

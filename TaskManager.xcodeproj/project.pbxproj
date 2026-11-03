@@ -35,6 +35,7 @@
 		357603FAEDA7AD1E7337A4D4 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313A9A7E7A81A795A86D1977 /* FormField.swift */; };
 		35E183D4B83FE76918BF7A88 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0E68852D1ECFAB00F9AF08 /* ForgotPasswordViewModel.swift */; };
 		363D053D227DCF1A992E017B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FE07CD27DB31BF80A97288 /* LoginView.swift */; };
+		3BD105270BD13578F603F05F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A36320385584079394EFFDEF /* InfoPlist.xcstrings */; };
 		4137CA8111DB2E0FE50F36AE /* View+Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98415693C0FC5446497430E3 /* View+Accessibility.swift */; };
 		44FE1C19D649C7123C61EF27 /* FakeTaskRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B12295DA4AB152DE56892E /* FakeTaskRemote.swift */; };
 		495B4829C3F0B74FD0EC2312 /* TaskStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E9E4B236EA281022533334 /* TaskStoreTests.swift */; };
@@ -213,12 +214,13 @@
 		9B2DF0DED24F5A6ACBACA543 /* AuthMemoryLeakTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMemoryLeakTests.swift; sourceTree = "<group>"; };
 		9E9C6419C27FA4007B5514AA /* SessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
 		A0458718BFF2AB775B9EC12C /* TaskFilterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFilterMenu.swift; sourceTree = "<group>"; };
+		A36320385584079394EFFDEF /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		A3FE07CD27DB31BF80A97288 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A5E9E4B236EA281022533334 /* TaskStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStoreTests.swift; sourceTree = "<group>"; };
 		AB94C02638179D4D0F3532AB /* SchemaV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaV2.swift; sourceTree = "<group>"; };
 		B0AC7190FD59EAD7BD2D2473 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		B30FB106717EACA2BBCF2AF0 /* TaskCacheCleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCacheCleaner.swift; sourceTree = "<group>"; };
-		B33B4120D3DFEB82E1B07572 /* TaskManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B33B4120D3DFEB82E1B07572 /* TaskManager.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TaskManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8397C8FA09C05031C66560D /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		BAECB9B08532980A7D2B470F /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		BB456BB6680F7EF1DBE1CA72 /* MockAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthService.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				EAF37CDCD393904783FD40E7 /* Assets.xcassets */,
+				A36320385584079394EFFDEF /* InfoPlist.xcstrings */,
 				764DB92DE8BC93F9D3259568 /* Localizable.xcstrings */,
 				EDB10CA81851067DFD7498C8 /* TaskManager.entitlements */,
 			);
@@ -791,6 +794,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7886FC31A3DB73601A98144A /* Assets.xcassets in Resources */,
+				3BD105270BD13578F603F05F /* InfoPlist.xcstrings in Resources */,
 				1CC8879840859C3B1B3E3E89 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

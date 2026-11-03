@@ -1,6 +1,26 @@
 {
   "sourceLanguage": "en",
   "strings": {
+    "%@ can now see this task.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ kann diese Aufgabe jetzt sehen."
+          }
+        }
+      }
+    },
+    "%@ is already a collaborator.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ arbeitet bereits mit."
+          }
+        }
+      }
+    },
     "%@ priority": {
       "localizations": {
         "de": {
@@ -91,6 +111,36 @@
         }
       }
     },
+    "1 day before": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 Tag vorher"
+          }
+        }
+      }
+    },
+    "1 hour before": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 Stunde vorher"
+          }
+        }
+      }
+    },
+    "15 minutes before": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "15 Minuten vorher"
+          }
+        }
+      }
+    },
     "A task needs a title.": {
       "localizations": {
         "de": {
@@ -107,6 +157,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Konto"
+          }
+        }
+      }
+    },
+    "Add File": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datei hinzufügen"
+          }
+        }
+      }
+    },
+    "Add Photo": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto hinzufügen"
           }
         }
       }
@@ -137,6 +207,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Alle Änderungen synchronisiert"
+          }
+        }
+      }
+    },
+    "Allow Notifications": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mitteilungen erlauben"
           }
         }
       }
@@ -191,6 +271,26 @@
         }
       }
     },
+    "Attachment Problem": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Problem mit dem Anhang"
+          }
+        }
+      }
+    },
+    "Attachments": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anhänge"
+          }
+        }
+      }
+    },
     "Cancel": {
       "localizations": {
         "de": {
@@ -241,6 +341,16 @@
         }
       }
     },
+    "Collaborators can see the task and change its status. Only you can edit or delete it.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mitwirkende sehen die Aufgabe und können ihren Status ändern. Nur du kannst sie bearbeiten oder löschen."
+          }
+        }
+      }
+    },
     "Complete": {
       "localizations": {
         "de": {
@@ -267,6 +377,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aufgabe konnte nicht aktualisiert werden"
+          }
+        }
+      }
+    },
+    "Couldn't look that person up. Check your connection.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Person konnte nicht gefunden werden. Prüfe deine Verbindung."
           }
         }
       }
@@ -511,6 +631,16 @@
         }
       }
     },
+    "Get Deadline Reminders?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erinnerungen an Fälligkeiten erhalten?"
+          }
+        }
+      }
+    },
     "Hide password": {
       "localizations": {
         "de": {
@@ -567,6 +697,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "E-Mail-Adresse oder Passwort ist falsch."
+          }
+        }
+      }
+    },
+    "Invite": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einladen"
           }
         }
       }
@@ -721,6 +861,16 @@
         }
       }
     },
+    "No attachments": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Anhänge"
+          }
+        }
+      }
+    },
     "No due date": {
       "localizations": {
         "de": {
@@ -737,6 +887,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "Keine Filter"
+          }
+        }
+      }
+    },
+    "No one with that email uses Tasks yet.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit dieser E-Mail-Adresse nutzt noch niemand Tasks."
+          }
+        }
+      }
+    },
+    "Not Now": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht jetzt"
+          }
+        }
+      }
+    },
+    "Not shared yet": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch nicht geteilt"
           }
         }
       }
@@ -811,12 +991,32 @@
         }
       }
     },
+    "Online": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Online"
+          }
+        }
+      }
+    },
     "Only the owner can change the title, notes, priority and due date.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Nur die Eigentümerin oder der Eigentümer kann Titel, Notizen, Priorität und Fälligkeit ändern."
+          }
+        }
+      }
+    },
+    "Opens a preview": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öffnet eine Vorschau"
           }
         }
       }
@@ -857,6 +1057,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Die Passwörter stimmen nicht überein."
+          }
+        }
+      }
+    },
+    "Pending Changes": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausstehende Änderungen"
+          }
+        }
+      }
+    },
+    "People": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personen"
           }
         }
       }
@@ -911,12 +1131,62 @@
         }
       }
     },
+    "Remind Me": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erinnern"
+          }
+        }
+      }
+    },
+    "Reminders": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erinnerungen"
+          }
+        }
+      }
+    },
+    "Remove": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entfernen"
+          }
+        }
+      }
+    },
+    "Remove %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ entfernen"
+          }
+        }
+      }
+    },
     "Reset Password": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Passwort zurücksetzen"
+          }
+        }
+      }
+    },
+    "Retry": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erneut versuchen"
           }
         }
       }
@@ -967,6 +1237,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Einstellungen"
+          }
+        }
+      }
+    },
+    "Share": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teilen"
+          }
+        }
+      }
+    },
+    "Share Task": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgabe teilen"
           }
         }
       }
@@ -1121,6 +1411,16 @@
         }
       }
     },
+    "Stop sharing with this person?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht mehr mit dieser Person teilen?"
+          }
+        }
+      }
+    },
     "Sync": {
       "localizations": {
         "de": {
@@ -1131,12 +1431,32 @@
         }
       }
     },
+    "Sync Now": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jetzt synchronisieren"
+          }
+        }
+      }
+    },
     "Synced": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Synchronisiert"
+          }
+        }
+      }
+    },
+    "Syncing…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wird synchronisiert …"
           }
         }
       }
@@ -1171,12 +1491,62 @@
         }
       }
     },
+    "Tasks can remind you before they're due, and tell you when a collaborator updates a shared task.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tasks kann dich vor Fälligkeiten erinnern und dir mitteilen, wenn jemand eine geteilte Aufgabe aktualisiert."
+          }
+        }
+      }
+    },
     "That email address doesn't look right.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Diese E-Mail-Adresse scheint nicht zu stimmen."
+          }
+        }
+      }
+    },
+    "That file couldn't be opened.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Datei konnte nicht geöffnet werden."
+          }
+        }
+      }
+    },
+    "That file couldn't be prepared for upload.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Datei konnte nicht für den Upload vorbereitet werden."
+          }
+        }
+      }
+    },
+    "That photo couldn't be read.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieses Foto konnte nicht gelesen werden."
+          }
+        }
+      }
+    },
+    "The attachment couldn't be downloaded.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Anhang konnte nicht geladen werden."
           }
         }
       }
@@ -1271,12 +1641,62 @@
         }
       }
     },
+    "Turn on reminders for due dates": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erinnerungen für Fälligkeiten aktivieren"
+          }
+        }
+      }
+    },
+    "Unknown user": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unbekannte Person"
+          }
+        }
+      }
+    },
     "Updated": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Geändert"
+          }
+        }
+      }
+    },
+    "Upload failed": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upload fehlgeschlagen"
+          }
+        }
+      }
+    },
+    "Uploading": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wird hochgeladen"
+          }
+        }
+      }
+    },
+    "Uploading in the background": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wird im Hintergrund hochgeladen"
           }
         }
       }
@@ -1317,6 +1737,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Willkommen zurück"
+          }
+        }
+      }
+    },
+    "You already own this task.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Aufgabe gehört bereits dir."
           }
         }
       }
