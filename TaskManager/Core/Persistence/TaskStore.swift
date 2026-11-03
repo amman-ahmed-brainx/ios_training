@@ -131,6 +131,22 @@ actor TaskStore {
         try save(notifying: userId)
     }
 
+    func addAttachment(_ attachment: TaskAttachment, toTask taskId: String, by userId: String) throws(TaskRepositoryError) {
+        let entity = try visibleEntity(taskId, for: userId)
+        guard TaskPermissions.canEditDetails(entity.item, userId: userId) else { throw .notPermitted }
+        entity.attachments = entity.attachments.filter { $0.id != attachment.id } + [attachment]
+        markPending(entity, by: userId, at: clock.now)
+        try save(notifying: userId)
+    }
+
+    func removeAttachment(id attachmentId: String, fromTask taskId: String, by userId: String) throws(TaskRepositoryError) {
+        let entity = try visibleEntity(taskId, for: userId)
+        guard TaskPermissions.canEditDetails(entity.item, userId: userId) else { throw .notPermitted }
+        entity.attachments = entity.attachments.filter { $0.id != attachmentId }
+        markPending(entity, by: userId, at: clock.now)
+        try save(notifying: userId)
+    }
+
     func deleteAllLocalData() throws(TaskRepositoryError) {
         do {
             try modelContext.delete(model: TaskEntity.self)

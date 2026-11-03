@@ -3,12 +3,14 @@ import SwiftUI
 /// Read view of one task with quick status changes; owners can edit and delete.
 struct TaskDetailView: View {
     @State private var model: TaskDetailViewModel
+    @State private var attachments: AttachmentsViewModel?
     @State private var isConfirmingDelete = false
     @Environment(\.dismiss) private var dismiss
     private let onEdit: (TaskItem) -> Void
 
-    init(model: TaskDetailViewModel, onEdit: @escaping (TaskItem) -> Void) {
+    init(model: TaskDetailViewModel, attachments: AttachmentsViewModel?, onEdit: @escaping (TaskItem) -> Void) {
         _model = State(initialValue: model)
+        _attachments = State(initialValue: attachments)
         self.onEdit = onEdit
     }
 
@@ -52,6 +54,9 @@ struct TaskDetailView: View {
             headerSection(for: task)
             statusSection(for: task)
             detailsSection(for: task)
+            if let attachments {
+                AttachmentsSection(model: attachments, attachments: task.attachments, canEdit: model.canEditDetails)
+            }
             historySection(for: task)
         }
     }

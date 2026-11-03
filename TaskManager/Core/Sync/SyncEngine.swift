@@ -9,6 +9,7 @@ actor SyncEngine: SessionLifecycleObserver, SyncControlling {
     private let repository: LocalTaskRepository
     private let network: NetworkMonitor
     private let clock: any AppClock
+    private let storage: (any AttachmentStorage)?
     private var userId: String?
     private var tasks: [Task<Void, Never>] = []
     private var retryTask: Task<Void, Never>?
@@ -17,9 +18,16 @@ actor SyncEngine: SessionLifecycleObserver, SyncControlling {
     private var status = SyncStatus.idle
     private var statusSubscribers: [UUID: AsyncStream<SyncStatus>.Continuation] = [:]
 
-    init(remote: any TaskRemote, repository: LocalTaskRepository, network: NetworkMonitor = NetworkMonitor(), clock: any AppClock) {
+    init(
+        remote: any TaskRemote,
+        repository: LocalTaskRepository,
+        storage: (any AttachmentStorage)?,
+        network: NetworkMonitor = NetworkMonitor(),
+        clock: any AppClock
+    ) {
         self.remote = remote
         self.repository = repository
+        self.storage = storage
         self.network = network
         self.clock = clock
     }
@@ -132,7 +140,9 @@ actor SyncEngine: SessionLifecycleObserver, SyncControlling {
             switch change.kind {
             case .save: try await remote.save(change.task)
             case .statusOnly: try await remote.saveStatus(of: change.task)
-            case .delete: try await remote.delete(taskId: change.task.item.id)
+            case .delete:
+                try await remote.delete(taskId: change.task.item.id)
+                await deleteStoredFiles(of: change.task.item)
             }
             try await store.markPushed(change, for: userId)
         } catch let error as RemoteError {
@@ -140,6 +150,18 @@ actor SyncEngine: SessionLifecycleObserver, SyncControlling {
             try? await store.markFailed(change, for: userId, error: error, now: clock.now)
         } catch {
             Log.sync.error("Recording a push result failed: \(String(describing: error), privacy: .public)")
+        }
+    }
+
+    /// Best effort: an orphaned file only costs storage, and only members could ever read it.
+    private func deleteStoredFiles(of task: TaskItem) async {
+        guard let storage else { return }
+        for attachment in task.attachments {
+            do {
+                try await storage.delete(attachment.storagePath)
+            } catch {
+                Log.uploads.notice("Deleting a stored attachment failed: \(error.localizedDescription, privacy: .public)")
+            }
         }
     }
 

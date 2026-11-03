@@ -21,5 +21,13 @@ struct UnavailableTaskRepository: TaskRepository {
         throw .storageFailed
     }
 
+    func addAttachment(_ attachment: TaskAttachment, toTask taskId: String, by userId: String) async throws(TaskRepositoryError) {
+        throw .storageFailed
+    }
+
+    func removeAttachment(id attachmentId: String, fromTask taskId: String, by userId: String) async throws(TaskRepositoryError) {
+        throw .storageFailed
+    }
+
     func deleteAllLocalData() async throws(TaskRepositoryError) {}
 }

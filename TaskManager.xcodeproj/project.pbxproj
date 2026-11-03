@@ -11,7 +11,9 @@
 		01F0472AE12BC55F21C857AB /* TestClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0C9B096682FB16863C4DAE /* TestClock.swift */; };
 		097580E074AA0FD05AEDC368 /* TaskCacheCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30FB106717EACA2BBCF2AF0 /* TaskCacheCleaner.swift */; };
 		0A5C91BA5665A7ACF5FC01AE /* ValidatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D704EB0CFC78F72211CA8F7D /* ValidatorsTests.swift */; };
+		0A9EA1A4CB5E46FDCF3382C5 /* FirebaseAttachmentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DAB36AD38FA55F68AA05BE /* FirebaseAttachmentStorage.swift */; };
 		15DBB14EF4CBD53290D40E62 /* TaskItem+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862E70184E9427B01B08169B /* TaskItem+Preview.swift */; };
+		167C7347984BCCC087E46BE2 /* AttachmentsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2072786F9540C00AB963BD91 /* AttachmentsViewModelTests.swift */; };
 		16D0414E0E161A3F525C1146 /* SessionExpiryPolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC027A7BB1F52830F40FBE4 /* SessionExpiryPolicyTests.swift */; };
 		19DAA32F8BA8CCD2818CEE23 /* TaskQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81B84C63F8FD334EE3056F /* TaskQueryTests.swift */; };
 		1CC8879840859C3B1B3E3E89 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 764DB92DE8BC93F9D3259568 /* Localizable.xcstrings */; };
@@ -24,6 +26,7 @@
 		28281B2049EA5961ADDA1E06 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 0B453C0F14541B8EFDB5A82F /* FirebaseMessaging */; };
 		2D94ADB396D0AEB241950303 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2DC663564D6237204A4F3FA8 /* FirebaseStorage */; };
 		2DD65B79F9D264096892A165 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DD8EC114F1C6B97F118CE4 /* ForgotPasswordView.swift */; };
+		353CF61126AC8FC096650D78 /* ImageCompressorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647625382B9372A0B9AD44E /* ImageCompressorTests.swift */; };
 		357603FAEDA7AD1E7337A4D4 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313A9A7E7A81A795A86D1977 /* FormField.swift */; };
 		35E183D4B83FE76918BF7A88 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0E68852D1ECFAB00F9AF08 /* ForgotPasswordViewModel.swift */; };
 		363D053D227DCF1A992E017B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FE07CD27DB31BF80A97288 /* LoginView.swift */; };
@@ -31,6 +34,7 @@
 		44FE1C19D649C7123C61EF27 /* FakeTaskRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B12295DA4AB152DE56892E /* FakeTaskRemote.swift */; };
 		495B4829C3F0B74FD0EC2312 /* TaskStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E9E4B236EA281022533334 /* TaskStoreTests.swift */; };
 		4A45CAF692090216325C080A /* ConflictResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB85C314FA59D489D092864 /* ConflictResolver.swift */; };
+		51D701EF7399865ABA539C0A /* ImageCompressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3D65E4B3A70692F36E6982 /* ImageCompressor.swift */; };
 		52342FE7F2C321FF4CC0961A /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7438AEFB9F17A10E002E32C /* Validators.swift */; };
 		54B2E3843A2265B013D266F9 /* UnavailableTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0558572EDDB761CBB89766 /* UnavailableTaskRepository.swift */; };
 		5B621F60731CB3068EE8EC0D /* TaskEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D930B3F6562CBD1A163CAC2 /* TaskEditorView.swift */; };
@@ -49,6 +53,7 @@
 		6C7C469F3886B9CDCA34F0A4 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994178C3E88FF1BC35F36A74 /* FirebaseAuthService.swift */; };
 		6F656FC8CD871CD6F8E43BF2 /* TaskViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620D546A1F1EFA991182415 /* TaskViewModelTests.swift */; };
 		706C413D90D3B247CB6AE313 /* ConflictResolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EE76C6741DA90912796D0E /* ConflictResolverTests.swift */; };
+		740747C7F3925D69C045FB35 /* AttachmentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6923543679805C5B98A8F6D /* AttachmentsViewModel.swift */; };
 		7799F41D4491CF6A8E1DDD04 /* FirebaseBootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE2A02528379C8F82EDC307 /* FirebaseBootstrap.swift */; };
 		7886FC31A3DB73601A98144A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAF37CDCD393904783FD40E7 /* Assets.xcassets */; };
 		859C01C1707B1F59BBC632B5 /* Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0E7F6D117D66BE2CE99EC6 /* Tokens.swift */; };
@@ -96,11 +101,14 @@
 		EAC7B609867081C00C41C026 /* AuthFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325403DAC2ABCACFA3D609B4 /* AuthFlowUITests.swift */; };
 		ECE4597B3243398FAD3F5EA5 /* AppClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C5E52BB7FC7D581F736529 /* AppClock.swift */; };
 		F35B985595DE91F8928BD95C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E813BC4F61BBEA841988968E /* LoginViewModel.swift */; };
+		F3A5D6312EDABDA1C0417810 /* AttachmentsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441DBEFDEB0E669C8AB8177F /* AttachmentsSection.swift */; };
 		F42587129A9DD0FD7A1B6E03 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF41AB5084BF509026132D /* AppRouter.swift */; };
 		F4EED7B9B1E1FAC2F74EB9F2 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA031436EDBCDBC641B555D4 /* AuthService.swift */; };
+		F72F2527055E7C4C595ADDE3 /* AttachmentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034FB63DE4A2978146926274 /* AttachmentStorage.swift */; };
 		F9736DE162292541325FFCAF /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2CEC9DB08D4DABCD580C4B5E /* FirebaseCrashlytics */; };
 		FC245058B1FD48863F5D109B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B02657CD64D787FA15DD4B /* AppDelegate.swift */; };
 		FC4655C976AA110D09B49E39 /* AuthViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D7D504D08F37A9798094D /* AuthViewModelTests.swift */; };
+		FE12BCF6E434D24A33E71A5F /* FakeAttachmentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A8B3CA64C4160A356221BA /* FakeAttachmentStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +130,7 @@
 
 /* Begin PBXFileReference section */
 		028080F0203BD8860723266E /* FirestoreTaskRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreTaskRemote.swift; sourceTree = "<group>"; };
+		034FB63DE4A2978146926274 /* AttachmentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentStorage.swift; sourceTree = "<group>"; };
 		05B12295DA4AB152DE56892E /* FakeTaskRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeTaskRemote.swift; sourceTree = "<group>"; };
 		0606D07F5BC6056B2C044F62 /* SessionControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionControllerTests.swift; sourceTree = "<group>"; };
 		0907426701EB5A775C90639C /* MessageBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBanner.swift; sourceTree = "<group>"; };
@@ -129,6 +138,7 @@
 		141911EFB650AF04737CAC42 /* TaskDocumentMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDocumentMapper.swift; sourceTree = "<group>"; };
 		1620D546A1F1EFA991182415 /* TaskViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModelTests.swift; sourceTree = "<group>"; };
 		1B971589CF1EC35F496A0472 /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
+		2072786F9540C00AB963BD91 /* AttachmentsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentsViewModelTests.swift; sourceTree = "<group>"; };
 		21257C6B536E173B5E280A58 /* AppEnvironmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironmentTests.swift; sourceTree = "<group>"; };
 		22B02657CD64D787FA15DD4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A0E68852D1ECFAB00F9AF08 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
@@ -143,9 +153,11 @@
 		412D7D504D08F37A9798094D /* AuthViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelTests.swift; sourceTree = "<group>"; };
 		417BF2A4F3EE3316AB32CCBB /* SyncStatusBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncStatusBanner.swift; sourceTree = "<group>"; };
 		41E2AC941698465E00CAEE3E /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		441DBEFDEB0E669C8AB8177F /* AttachmentsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentsSection.swift; sourceTree = "<group>"; };
 		4547D5B6E5A1AA3BFE9520B5 /* LocalTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTaskRepository.swift; sourceTree = "<group>"; };
 		468AF988507C73A1363CFBF4 /* FloatingGlass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingGlass.swift; sourceTree = "<group>"; };
 		485EDAAB3EB7348FED93D7BF /* FakeAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAuthService.swift; sourceTree = "<group>"; };
+		49A8B3CA64C4160A356221BA /* FakeAttachmentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAttachmentStorage.swift; sourceTree = "<group>"; };
 		49B05ACFC83E98CBEDB2D747 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		4D02EB976DE421312073A6BD /* InlineValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineValidation.swift; sourceTree = "<group>"; };
 		529FCF06CD1FC13ED285241D /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
@@ -162,6 +174,7 @@
 		797275E6F2CA8305265E8C5F /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
 		7A0DF6CD10B9F5B68EAAE5C8 /* SyncEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncEngine.swift; sourceTree = "<group>"; };
 		7CCF41AB5084BF509026132D /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		7E3D65E4B3A70692F36E6982 /* ImageCompressor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompressor.swift; sourceTree = "<group>"; };
 		8226F24F9303DA6148B64409 /* MockTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTaskRepository.swift; sourceTree = "<group>"; };
 		82DD8EC114F1C6B97F118CE4 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		841E22E20127FA95B1FA016B /* SchemaV1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaV1.swift; sourceTree = "<group>"; };
@@ -197,6 +210,8 @@
 		D3C5E52BB7FC7D581F736529 /* AppClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppClock.swift; sourceTree = "<group>"; };
 		D473E08AF146B063569B6AAB /* TaskManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerApp.swift; sourceTree = "<group>"; };
 		D52CFE0C6F353D20CE45C228 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		D647625382B9372A0B9AD44E /* ImageCompressorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompressorTests.swift; sourceTree = "<group>"; };
+		D6923543679805C5B98A8F6D /* AttachmentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentsViewModel.swift; sourceTree = "<group>"; };
 		D6EE76C6741DA90912796D0E /* ConflictResolverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConflictResolverTests.swift; sourceTree = "<group>"; };
 		D704EB0CFC78F72211CA8F7D /* ValidatorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorsTests.swift; sourceTree = "<group>"; };
 		D90778740BE78EE82576F679 /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
@@ -210,6 +225,7 @@
 		EBE2A02528379C8F82EDC307 /* FirebaseBootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseBootstrap.swift; sourceTree = "<group>"; };
 		EC0AA260604D2E88C0669FC3 /* Eventually.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eventually.swift; sourceTree = "<group>"; };
 		EDB10CA81851067DFD7498C8 /* TaskManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TaskManager.entitlements; sourceTree = "<group>"; };
+		F2DAB36AD38FA55F68AA05BE /* FirebaseAttachmentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAttachmentStorage.swift; sourceTree = "<group>"; };
 		F34848CBEAAA3DF8E456E7FD /* TaskRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRemote.swift; sourceTree = "<group>"; };
 		F9E45A1FA6069368C351B60B /* TaskQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskQuery.swift; sourceTree = "<group>"; };
 		FBB538052B52E62C1B49F7FE /* TaskDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewModel.swift; sourceTree = "<group>"; };
@@ -269,6 +285,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		1AB380261CF31A993C4B9741 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				7E3D65E4B3A70692F36E6982 /* ImageCompressor.swift */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
 		1D12EE8283BBB7DD015338B4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +334,14 @@
 				D473E08AF146B063569B6AAB /* TaskManagerApp.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		3F4E9AB0975864C74C6D37EC /* Attachments */ = {
+			isa = PBXGroup;
+			children = (
+				2072786F9540C00AB963BD91 /* AttachmentsViewModelTests.swift */,
+			);
+			path = Attachments;
 			sourceTree = "<group>";
 		};
 		529167F3B94BB70A736DB38C /* Settings */ = {
@@ -364,7 +396,9 @@
 			isa = PBXGroup;
 			children = (
 				E0A3F317B828A55987E44A80 /* App */,
+				3F4E9AB0975864C74C6D37EC /* Attachments */,
 				0ADA6EAC0583CA01C8695B55 /* Auth */,
+				9D976D037A963609532BCC1E /* Media */,
 				9155190408D618693B8A4807 /* Mocks */,
 				D4459571D9EF7343EB0B5AD1 /* Support */,
 				9B8C32561404E99B30DD2A09 /* Sync */,
@@ -392,9 +426,11 @@
 			children = (
 				1426D230B02DA6CD6D29E2C4 /* Auth */,
 				2FEAF3F26AA7FBA9DDDC0694 /* Domain */,
+				1AB380261CF31A993C4B9741 /* Media */,
 				CC124BAD1825B2A48A1E2193 /* Persistence */,
 				72C5486708BCA40FBE924A6D /* Remote */,
 				B68EB4BD5006A82EA1971E57 /* Sync */,
+				E827DB1C75BCFC8E6A350F07 /* Uploads */,
 				852CE985FC0270FB4A524AB8 /* Utilities */,
 			);
 			path = Core;
@@ -414,6 +450,7 @@
 		8F77F738ECA6A725D0DF5258 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				CBF872AF62A7283A963F8431 /* Attachments */,
 				5A6B8E94BF14284F88049175 /* Auth */,
 				529167F3B94BB70A736DB38C /* Settings */,
 				7D9961B62B9206A844ABA811 /* Tasks */,
@@ -448,6 +485,14 @@
 			);
 			sourceTree = "<group>";
 		};
+		9D976D037A963609532BCC1E /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				D647625382B9372A0B9AD44E /* ImageCompressorTests.swift */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
 		A6920559FAEACE8FA5EC5FC5 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,6 +522,15 @@
 				7A0DF6CD10B9F5B68EAAE5C8 /* SyncEngine.swift */,
 			);
 			path = Sync;
+			sourceTree = "<group>";
+		};
+		CBF872AF62A7283A963F8431 /* Attachments */ = {
+			isa = PBXGroup;
+			children = (
+				441DBEFDEB0E669C8AB8177F /* AttachmentsSection.swift */,
+				D6923543679805C5B98A8F6D /* AttachmentsViewModel.swift */,
+			);
+			path = Attachments;
 			sourceTree = "<group>";
 		};
 		CC124BAD1825B2A48A1E2193 /* Persistence */ = {
@@ -510,6 +564,15 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		E827DB1C75BCFC8E6A350F07 /* Uploads */ = {
+			isa = PBXGroup;
+			children = (
+				034FB63DE4A2978146926274 /* AttachmentStorage.swift */,
+				F2DAB36AD38FA55F68AA05BE /* FirebaseAttachmentStorage.swift */,
+			);
+			path = Uploads;
+			sourceTree = "<group>";
+		};
 		EBA4FBE874F7B586E8FF717B /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
@@ -523,6 +586,7 @@
 		FA30CE4E3827804A747E4B33 /* Fakes */ = {
 			isa = PBXGroup;
 			children = (
+				49A8B3CA64C4160A356221BA /* FakeAttachmentStorage.swift */,
 				485EDAAB3EB7348FED93D7BF /* FakeAuthService.swift */,
 				05B12295DA4AB152DE56892E /* FakeTaskRemote.swift */,
 				862E70184E9427B01B08169B /* TaskItem+Preview.swift */,
@@ -715,6 +779,9 @@
 				FC245058B1FD48863F5D109B /* AppDelegate.swift in Sources */,
 				C7E1C713C4439EE10378DB3C /* AppEnvironment.swift in Sources */,
 				F42587129A9DD0FD7A1B6E03 /* AppRouter.swift in Sources */,
+				F72F2527055E7C4C595ADDE3 /* AttachmentStorage.swift in Sources */,
+				F3A5D6312EDABDA1C0417810 /* AttachmentsSection.swift in Sources */,
+				740747C7F3925D69C045FB35 /* AttachmentsViewModel.swift in Sources */,
 				67D322CA66F25B3585121E6F /* AuthError.swift in Sources */,
 				AAE960048F21DC33EAA594D1 /* AuthFlowView.swift in Sources */,
 				662493E34207E499C7F030E9 /* AuthHeader.swift in Sources */,
@@ -723,8 +790,10 @@
 				4A45CAF692090216325C080A /* ConflictResolver.swift in Sources */,
 				E52E6326381E1B9143A4CEF7 /* DesignSystemCatalog.swift in Sources */,
 				266D931D8FCF0F81E3BEA527 /* EmptyStateView.swift in Sources */,
+				FE12BCF6E434D24A33E71A5F /* FakeAttachmentStorage.swift in Sources */,
 				99D92C859F6E439C9D22C389 /* FakeAuthService.swift in Sources */,
 				44FE1C19D649C7123C61EF27 /* FakeTaskRemote.swift in Sources */,
+				0A9EA1A4CB5E46FDCF3382C5 /* FirebaseAttachmentStorage.swift in Sources */,
 				6C7C469F3886B9CDCA34F0A4 /* FirebaseAuthService.swift in Sources */,
 				7799F41D4491CF6A8E1DDD04 /* FirebaseBootstrap.swift in Sources */,
 				8EF791F47BEF7A40C238570B /* FirestoreTaskRemote.swift in Sources */,
@@ -734,6 +803,7 @@
 				2DD65B79F9D264096892A165 /* ForgotPasswordView.swift in Sources */,
 				35E183D4B83FE76918BF7A88 /* ForgotPasswordViewModel.swift in Sources */,
 				357603FAEDA7AD1E7337A4D4 /* FormField.swift in Sources */,
+				51D701EF7399865ABA539C0A /* ImageCompressor.swift in Sources */,
 				9424E2CB1B3AB258FD326A66 /* InlineValidation.swift in Sources */,
 				EA0BB39F1396E2ABE96E4150 /* LocalTaskRepository.swift in Sources */,
 				648523F0A972278BE8A3C5D7 /* Log.swift in Sources */,
@@ -790,10 +860,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D63B347D9760A3304B6A73D /* AppEnvironmentTests.swift in Sources */,
+				167C7347984BCCC087E46BE2 /* AttachmentsViewModelTests.swift in Sources */,
 				BDA44C689F059B7C32CFE705 /* AuthMemoryLeakTests.swift in Sources */,
 				FC4655C976AA110D09B49E39 /* AuthViewModelTests.swift in Sources */,
 				706C413D90D3B247CB6AE313 /* ConflictResolverTests.swift in Sources */,
 				91B2215BA3EDC55B2AB8D098 /* Eventually.swift in Sources */,
+				353CF61126AC8FC096650D78 /* ImageCompressorTests.swift in Sources */,
 				60D559C985BF9B85D6A34E7E /* MockAuthService.swift in Sources */,
 				1FF3CB4F1251E810EB25131B /* MockTaskRepository.swift in Sources */,
 				CB340B10C5495082C6C06658 /* SessionControllerTests.swift in Sources */,

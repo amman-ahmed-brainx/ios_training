@@ -30,6 +30,10 @@ protocol TaskRepository: Sendable {
     func setStatus(_ status: TaskStatus, taskId: String, by userId: String) async throws(TaskRepositoryError)
     /// Owner only.
     func delete(taskId: String, by userId: String) async throws(TaskRepositoryError)
+    /// Owner only: records an uploaded attachment on the task.
+    func addAttachment(_ attachment: TaskAttachment, toTask taskId: String, by userId: String) async throws(TaskRepositoryError)
+    /// Owner only: removes an attachment's metadata (the caller deletes the stored bytes).
+    func removeAttachment(id attachmentId: String, fromTask taskId: String, by userId: String) async throws(TaskRepositoryError)
     /// Removes every cached row, for every user. Used on sign-out.
     func deleteAllLocalData() async throws(TaskRepositoryError)
 }

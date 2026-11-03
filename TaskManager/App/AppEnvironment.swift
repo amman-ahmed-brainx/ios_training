@@ -45,6 +45,9 @@ final class AppEnvironment {
     let tasks: any TaskRepository
     /// `nil` when there is no backend (no Firebase plist) or no local store.
     let sync: SyncEngine?
+    /// `nil` without a backend; attachments are then hidden.
+    let attachmentStorage: (any AttachmentStorage)?
+    let imageCompressor = ImageCompressor()
     let router = AppRouter()
 
     init(mode: Mode, clock: any AppClock = SystemClock()) {
@@ -57,8 +60,9 @@ final class AppEnvironment {
         // Fakes get a fresh in-memory store each launch so previews and UI tests are deterministic.
         let local = Self.makeLocalRepository(inMemory: mode != .live, clock: clock)
         tasks = local ?? UnavailableTaskRepository()
+        attachmentStorage = backend.storage
         if let local, let remote = backend.remote {
-            let engine = SyncEngine(remote: remote, repository: local, clock: clock)
+            let engine = SyncEngine(remote: remote, repository: local, storage: backend.storage, clock: clock)
             sync = engine
             session.register(engine)
         } else {
@@ -113,6 +117,17 @@ final class AppEnvironment {
         TaskEditorViewModel(editing: task, repository: tasks, userId: session.uid, clock: clock)
     }
 
+    func makeAttachmentsViewModel(taskId: String, session: AuthSession) -> AttachmentsViewModel? {
+        guard let attachmentStorage else { return nil }
+        return AttachmentsViewModel(
+            taskId: taskId,
+            userId: session.uid,
+            repository: tasks,
+            storage: attachmentStorage,
+            compressor: imageCompressor
+        )
+    }
+
     func makeSettingsViewModel(session: AuthSession) -> SettingsViewModel {
         SettingsViewModel(session: session, sessionController: self.session, sync: sync)
     }
@@ -139,6 +154,7 @@ final class AppEnvironment {
         let auth: any AuthService
         let profiles: any UserProfileStore
         let remote: (any TaskRemote)?
+        let storage: (any AttachmentStorage)?
     }
 
     private static func makeBackend(for mode: Mode) -> Backend {
@@ -146,10 +162,10 @@ final class AppEnvironment {
         switch mode {
         case .preview:
             let fake = FakeAuthService(signedIn: true)
-            return Backend(status: .fake, auth: fake, profiles: fake, remote: FakeTaskRemote())
+            return Backend(status: .fake, auth: fake, profiles: fake, remote: FakeTaskRemote(), storage: FakeAttachmentStorage())
         case .uiTest:
             let fake = FakeAuthService()
-            return Backend(status: .fake, auth: fake, profiles: fake, remote: FakeTaskRemote())
+            return Backend(status: .fake, auth: fake, profiles: fake, remote: FakeTaskRemote(), storage: FakeAttachmentStorage())
         case .live:
             break
         }
@@ -159,11 +175,12 @@ final class AppEnvironment {
                 status: .firebase,
                 auth: FirebaseAuthService(),
                 profiles: FirestoreUserProfileStore(),
-                remote: FirestoreTaskRemote()
+                remote: FirestoreTaskRemote(),
+                storage: FirebaseAttachmentStorage()
             )
         }
         Log.app.notice("GoogleService-Info.plist missing; running without a backend.")
         let unconfigured = UnconfiguredAuthService()
-        return Backend(status: .unconfigured, auth: unconfigured, profiles: unconfigured, remote: nil)
+        return Backend(status: .unconfigured, auth: unconfigured, profiles: unconfigured, remote: nil, storage: nil)
     }
 }
