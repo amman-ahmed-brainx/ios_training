@@ -4,12 +4,18 @@
 2. **iOS app.** Add an Apple app with bundle ID `com.brainxtech.taskmanager`. Download
    `GoogleService-Info.plist` into `TaskManager/Resources/` (it is gitignored; a build phase copies it).
 3. **Auth.** Authentication → Sign-in method → enable Email/Password.
-4. **Firestore and Storage.** Create a Firestore database and a Storage bucket (production mode).
+4. **Firestore and Storage.** Create the Firestore database *before* the first deploy, choosing its
+   location (it can't be changed; a bare `firebase deploy` silently creates it in `nam5`):
+   ```bash
+   firebase firestore:databases:create "(default)" --location asia-south1
+   ```
+   Storage buckets for new projects require the **Blaze** plan; without it, attachments (and push)
+   stay unavailable while tasks, sync, sharing and reminders work.
 5. **Rules.**
    ```bash
    firebase login
-   firebase use --add            # pick the project
-   firebase deploy --only firestore:rules,firestore:indexes,storage
+   firebase deploy --only firestore           # rules + indexes (project in .firebaserc)
+   firebase deploy --only storage             # after enabling Blaze and Storage
    ```
 6. **Push.** In the Apple Developer portal create an APNs auth key (`.p8`); in Firebase → Project
    settings → Cloud Messaging upload it with its Key ID and your Team ID. In Xcode the target already
