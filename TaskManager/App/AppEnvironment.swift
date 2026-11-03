@@ -171,7 +171,7 @@ final class AppEnvironment {
     }
 
     func makeTaskListViewModel(session: AuthSession) -> TaskListViewModel {
-        TaskListViewModel(repository: tasks, userId: session.uid, clock: clock, sync: sync, reminders: reminders)
+        TaskListViewModel(repository: tasks, userId: session.uid, clock: clock, sync: sync, reminders: reminderCoordinator)
     }
 
     func makeTaskDetailViewModel(taskId: String, session: AuthSession) -> TaskDetailViewModel {

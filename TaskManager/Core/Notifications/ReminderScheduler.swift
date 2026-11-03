@@ -125,13 +125,16 @@ actor ReminderScheduler: ReminderScheduling {
         let ours = await center.pendingIdentifiers().filter { $0.hasPrefix(Self.prefix) }
         // Replace rather than diff: re-adding with the same identifier updates title and time.
         await center.removePending(ours)
+        var scheduled = 0
         for reminder in desired {
             do {
                 try await center.add(reminder)
+                scheduled += 1
             } catch {
                 Log.notifications.error("Scheduling a reminder failed: \(error.localizedDescription, privacy: .public)")
             }
         }
+        Log.notifications.debug("Scheduled \(scheduled) of \(desired.count) reminders")
     }
 
     func removeAll() async {
@@ -148,9 +151,16 @@ actor ReminderScheduler: ReminderScheduling {
     }
 }
 
+/// Notification permission as the task list asks for it.
+protocol ReminderPermissionControlling: Sendable {
+    func authorizationStatus() async -> UNAuthorizationStatus
+    /// Asks for permission and, if granted, schedules reminders for the existing tasks right away.
+    func requestAuthorization() async -> Bool
+}
+
 /// Keeps reminders in step with the user's tasks: on launch, after every local or synced change,
-/// and when the lead time changes. Clears them on sign-out.
-actor ReminderCoordinator: SessionLifecycleObserver {
+/// when the lead time changes, and as soon as permission is granted. Clears them on sign-out.
+actor ReminderCoordinator: SessionLifecycleObserver, ReminderPermissionControlling {
     private let scheduler: any ReminderScheduling
     private let repository: any TaskRepository
     private let preferences: ReminderPreferences
@@ -178,6 +188,17 @@ actor ReminderCoordinator: SessionLifecycleObserver {
         observeTask = nil
         latest = []
         await scheduler.removeAll()
+    }
+
+    func authorizationStatus() async -> UNAuthorizationStatus {
+        await scheduler.authorizationStatus()
+    }
+
+    func requestAuthorization() async -> Bool {
+        let granted = await scheduler.requestAuthorization()
+        // Reminders for tasks created before the grant failed to schedule; add them now.
+        if granted { await refresh() }
+        return granted
     }
 
     /// Re-applies the current lead time (called after Settings changes it).

@@ -5,7 +5,10 @@ import Observation
 @MainActor
 @Observable
 final class InviteCollaboratorViewModel {
-    var email = ""
+    var email = "" {
+        // A previous attempt's error shouldn't linger while the user corrects the address.
+        didSet { if email != oldValue { emailError = nil } }
+    }
     private(set) var collaborators: [UserSummary] = []
     private(set) var isInviting = false
     private(set) var emailError: String?

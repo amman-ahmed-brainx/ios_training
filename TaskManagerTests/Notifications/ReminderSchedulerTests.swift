@@ -111,6 +111,17 @@ struct InviteCollaboratorViewModelTests {
         #expect(await repository.calls.isEmpty)
     }
 
+    @Test func editingTheEmailClearsAPreviousError() async {
+        let model = model()
+        model.email = "bad"
+        await model.invite()
+        #expect(model.emailError != nil)
+
+        model.email = "grace@example.com"
+
+        #expect(model.emailError == nil)
+    }
+
     @Test func removingACollaborator() async {
         let model = model(collaborators: ["uid-grace"])
         await model.loadCollaborators()
@@ -133,5 +144,31 @@ struct NotificationPayloadTests {
         #expect(NotificationCoordinator.taskId(from: ["taskId": ""]) == nil)
         #expect(NotificationCoordinator.taskId(from: ["taskId": 42]) == nil)
         #expect(NotificationCoordinator.taskId(from: ["taskId": "../etc"]) == nil)
+    }
+}
+
+actor MockReminderScheduler: ReminderScheduling {
+    private(set) var reconciled: [[TaskItem]] = []
+    var grant = true
+    func reconcile(tasks: [TaskItem], leadTime: ReminderLeadTime) async { reconciled.append(tasks) }
+    func removeAll() async {}
+    func authorizationStatus() async -> UNAuthorizationStatus { .notDetermined }
+    func requestAuthorization() async -> Bool { grant }
+}
+
+struct ReminderCoordinatorTests {
+    @Test func grantingPermissionSchedulesExistingTasksImmediately() async {
+        let scheduler = MockReminderScheduler()
+        let repository = MockTaskRepository()
+        let coordinator = ReminderCoordinator(scheduler: scheduler, repository: repository)
+        await coordinator.sessionDidStart(.ada)
+        repository.emit([.make(id: "t1", dueDate: Date().addingTimeInterval(86_400))])
+        await eventually { await scheduler.reconciled.count == 1 }
+
+        #expect(await coordinator.requestAuthorization())
+
+        #expect(await scheduler.reconciled.count == 2)
+        #expect(await scheduler.reconciled.last?.map(\.id) == ["t1"])
+        await coordinator.sessionWillEnd(uid: "uid-ada", reason: .userInitiated)
     }
 }

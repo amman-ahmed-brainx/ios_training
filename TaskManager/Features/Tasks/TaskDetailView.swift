@@ -110,7 +110,12 @@ struct TaskDetailView: View {
 
     private func detailsSection(for task: TaskItem) -> some View {
         Section("Details") {
-            LabeledContent("Priority") { PriorityBadge(priority: task.priority) }
+            // An explicit row: LabeledContent mis-measures the badge's Label and leaves a tall gap.
+            HStack {
+                Text("Priority")
+                Spacer()
+                PriorityBadge(priority: task.priority)
+            }
             LabeledContent("Due") {
                 if let dueDate = task.dueDate {
                     VStack(alignment: .trailing) {

@@ -27,7 +27,7 @@ final class TaskListViewModel {
     private let repository: any TaskRepository
     private let clock: any AppClock
     private let sync: (any SyncControlling)?
-    private let reminders: (any ReminderScheduling)?
+    private let reminders: (any ReminderPermissionControlling)?
     private var notificationStatus: UNAuthorizationStatus?
 
     init(
@@ -35,7 +35,7 @@ final class TaskListViewModel {
         userId: String,
         clock: any AppClock,
         sync: (any SyncControlling)? = nil,
-        reminders: (any ReminderScheduling)? = nil
+        reminders: (any ReminderPermissionControlling)? = nil
     ) {
         self.repository = repository
         self.userId = userId
