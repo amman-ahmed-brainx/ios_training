@@ -10,6 +10,8 @@ actor MockTaskRepository: TaskRepository {
         case deleteAll
         case addAttachment(TaskAttachment, taskId: String, userId: String)
         case removeAttachment(id: String, taskId: String, userId: String)
+        case addCollaborator(String, taskId: String)
+        case removeCollaborator(String, taskId: String)
     }
 
     private nonisolated let stream: AsyncStream<[TaskItem]>
@@ -55,6 +57,16 @@ actor MockTaskRepository: TaskRepository {
 
     func removeAttachment(id attachmentId: String, fromTask taskId: String, by userId: String) async throws(TaskRepositoryError) {
         calls.append(.removeAttachment(id: attachmentId, taskId: taskId, userId: userId))
+        if let failure { throw failure }
+    }
+
+    func addCollaborator(_ collaboratorId: String, toTask taskId: String, by userId: String) async throws(TaskRepositoryError) {
+        calls.append(.addCollaborator(collaboratorId, taskId: taskId))
+        if let failure { throw failure }
+    }
+
+    func removeCollaborator(_ collaboratorId: String, fromTask taskId: String, by userId: String) async throws(TaskRepositoryError) {
+        calls.append(.removeCollaborator(collaboratorId, taskId: taskId))
         if let failure { throw failure }
     }
 

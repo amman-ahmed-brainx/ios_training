@@ -51,6 +51,14 @@ struct LocalTaskRepository: TaskRepository {
         try await store.removeAttachment(id: attachmentId, fromTask: taskId, by: userId)
     }
 
+    func addCollaborator(_ collaboratorId: String, toTask taskId: String, by userId: String) async throws(TaskRepositoryError) {
+        try await store.addCollaborator(collaboratorId, toTask: taskId, by: userId)
+    }
+
+    func removeCollaborator(_ collaboratorId: String, fromTask taskId: String, by userId: String) async throws(TaskRepositoryError) {
+        try await store.removeCollaborator(collaboratorId, fromTask: taskId, by: userId)
+    }
+
     func deleteAllLocalData() async throws(TaskRepositoryError) {
         try await store.deleteAllLocalData()
     }

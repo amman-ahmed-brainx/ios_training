@@ -4,6 +4,7 @@ import SwiftUI
 struct TaskListView: View {
     @State private var model: TaskListViewModel
     @State private var pendingDeletion: TaskItem?
+    @State private var isExplainingReminders = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private let onAdd: () -> Void
     private let onShowSettings: () -> Void
@@ -30,6 +31,13 @@ struct TaskListView: View {
             .safeAreaInset(edge: .bottom) { bottomBar }
             .task { await model.observe() }
             .task { await model.observeSync() }
+            .task { await model.checkNotificationPermission() }
+            .alert("Get Deadline Reminders?", isPresented: $isExplainingReminders) {
+                Button("Allow Notifications") { Task { await model.enableReminders() } }
+                Button("Not Now", role: .cancel) {}
+            } message: {
+                Text("Tasks can remind you before they're due, and tell you when a collaborator updates a shared task.")
+            }
             .confirmationDialog(
                 "Delete this task?",
                 isPresented: isConfirmingDeletion,
@@ -82,7 +90,26 @@ struct TaskListView: View {
     }
 
     private var list: some View {
-        List(model.visibleTasks) { task in
+        List {
+            if model.showsReminderPrompt {
+                Button {
+                    isExplainingReminders = true
+                } label: {
+                    Label("Turn on reminders for due dates", systemImage: "bell.badge")
+                }
+                .accessibilityIdentifier("taskList.enableReminders")
+            }
+            ForEach(model.visibleTasks) { task in
+                row(for: task)
+            }
+        }
+        .listStyle(.plain)
+        .refreshable { await model.refresh() }
+        .animation(reduceMotion ? nil : .default, value: model.visibleTasks)
+    }
+
+    private func row(for task: TaskItem) -> some View {
+        Group {
             NavigationLink(value: AppRoute.taskDetail(taskId: task.id)) {
                 TaskRow(task: task, isOverdue: model.isOverdue(task), isShared: task.ownerId != model.userId)
             }
@@ -120,9 +147,6 @@ struct TaskListView: View {
             // The id, not the title: titles are user-editable and can repeat.
             .accessibilityIdentifier("taskRow.\(task.id)")
         }
-        .listStyle(.plain)
-        .refreshable { await model.refresh() }
-        .animation(reduceMotion ? nil : .default, value: model.visibleTasks)
     }
 
     @ViewBuilder

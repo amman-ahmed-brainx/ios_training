@@ -19,6 +19,11 @@ struct SettingsView: View {
                     }
                     LabeledContent("Email") { Text(verbatim: model.session.email) }
                 }
+                Section("Reminders") {
+                    Picker("Remind Me", selection: $model.leadTime) {
+                        ForEach(ReminderLeadTime.allCases, id: \.self) { Text($0.title).tag($0) }
+                    }
+                }
                 if model.isSyncAvailable {
                     Section("Sync") {
                         LabeledContent("Status") {

@@ -29,5 +29,13 @@ struct UnavailableTaskRepository: TaskRepository {
         throw .storageFailed
     }
 
+    func addCollaborator(_ collaboratorId: String, toTask taskId: String, by userId: String) async throws(TaskRepositoryError) {
+        throw .storageFailed
+    }
+
+    func removeCollaborator(_ collaboratorId: String, fromTask taskId: String, by userId: String) async throws(TaskRepositoryError) {
+        throw .storageFailed
+    }
+
     func deleteAllLocalData() async throws(TaskRepositoryError) {}
 }

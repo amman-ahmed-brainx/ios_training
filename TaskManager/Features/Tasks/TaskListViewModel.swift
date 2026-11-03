@@ -1,5 +1,6 @@
 import Foundation
 import Observation
+import UserNotifications
 
 /// Task list state: the user's tasks from the local store, narrowed by search, filters and sort.
 @MainActor
@@ -26,12 +27,36 @@ final class TaskListViewModel {
     private let repository: any TaskRepository
     private let clock: any AppClock
     private let sync: (any SyncControlling)?
+    private let reminders: (any ReminderScheduling)?
+    private var notificationStatus: UNAuthorizationStatus?
 
-    init(repository: any TaskRepository, userId: String, clock: any AppClock, sync: (any SyncControlling)? = nil) {
+    init(
+        repository: any TaskRepository,
+        userId: String,
+        clock: any AppClock,
+        sync: (any SyncControlling)? = nil,
+        reminders: (any ReminderScheduling)? = nil
+    ) {
         self.repository = repository
         self.userId = userId
         self.clock = clock
         self.sync = sync
+        self.reminders = reminders
+    }
+
+    /// Ask for notification permission only once the user has a task with a due date, and only
+    /// after explaining why (the pre-prompt), never at launch.
+    var showsReminderPrompt: Bool {
+        notificationStatus == .notDetermined && tasks.contains { $0.dueDate != nil && $0.status != .done }
+    }
+
+    func checkNotificationPermission() async {
+        notificationStatus = await reminders?.authorizationStatus()
+    }
+
+    func enableReminders() async {
+        _ = await reminders?.requestAuthorization()
+        await checkNotificationPermission()
     }
 
     /// The banner state: offline wins over pending.

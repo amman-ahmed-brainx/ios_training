@@ -42,10 +42,11 @@ struct MainView: View {
                 case .taskDetail(let taskId):
                     TaskDetailView(
                         model: environment.makeTaskDetailViewModel(taskId: taskId, session: session),
-                        attachments: environment.makeAttachmentsViewModel(taskId: taskId, session: session)
-                    ) {
-                        editor = .edit($0)
-                    }
+                        attachments: environment.makeAttachmentsViewModel(taskId: taskId, session: session),
+                        canShare: environment.directory != nil,
+                        makeInvite: { environment.makeInviteViewModel(task: $0, session: session) },
+                        onEdit: { editor = .edit($0) }
+                    )
                 }
             }
         }

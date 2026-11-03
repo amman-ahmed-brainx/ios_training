@@ -42,7 +42,13 @@ service cloud.firestore {
       allow delete: if isOwner();
     }
 
+    // Device tokens are private to their owner (the Cloud Function reads them with admin rights).
+    match /userTokens/{uid} {
+      allow read, write: if signedIn() && request.auth.uid == uid;
+    }
+
     // Any signed-in user may read profiles so invite-by-email can find people (see README).
+    // Profiles hold only email and display name; push tokens live in userTokens/{uid}.
     match /users/{uid} {
       allow read: if signedIn();
       allow create, update: if signedIn() && request.auth.uid == uid;

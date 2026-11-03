@@ -9,11 +9,27 @@ final class SettingsViewModel {
     private(set) var syncStatus = SyncStatus.idle
     private let sessionController: SessionController
     private let sync: (any SyncControlling)?
+    private let reminderCoordinator: ReminderCoordinator?
+    private let preferences = ReminderPreferences()
 
-    init(session: AuthSession, sessionController: SessionController, sync: (any SyncControlling)? = nil) {
+    var leadTime: ReminderLeadTime {
+        didSet {
+            preferences.leadTime = leadTime
+            Task { [reminderCoordinator] in await reminderCoordinator?.refresh() }
+        }
+    }
+
+    init(
+        session: AuthSession,
+        sessionController: SessionController,
+        sync: (any SyncControlling)? = nil,
+        reminderCoordinator: ReminderCoordinator? = nil
+    ) {
         self.session = session
         self.sessionController = sessionController
         self.sync = sync
+        self.reminderCoordinator = reminderCoordinator
+        leadTime = ReminderPreferences().leadTime
     }
 
     var isSyncAvailable: Bool { sync != nil }

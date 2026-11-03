@@ -48,7 +48,14 @@ final class AppEnvironment {
     /// `nil` without a backend; attachments are then hidden.
     let attachmentStorage: (any AttachmentStorage)?
     let imageCompressor = ImageCompressor()
-    let router = AppRouter()
+    let router: AppRouter
+    /// `nil` without a backend; sharing is then hidden.
+    let directory: (any UserDirectory)?
+    let reminders: ReminderScheduler
+    let reminderCoordinator: ReminderCoordinator
+    /// `nil` unless Firebase is configured.
+    let push: (any PushRegistering)?
+    let notificationCoordinator: NotificationCoordinator
 
     init(mode: Mode, clock: any AppClock = SystemClock()) {
         self.mode = mode
@@ -67,6 +74,19 @@ final class AppEnvironment {
             session.register(engine)
         } else {
             sync = nil
+        }
+        router = AppRouter()
+        notificationCoordinator = NotificationCoordinator(router: router)
+        directory = backend.directory
+        reminders = ReminderScheduler(clock: clock)
+        reminderCoordinator = ReminderCoordinator(scheduler: reminders, repository: tasks)
+        session.register(reminderCoordinator)
+        if backend.status == .firebase {
+            let registrar = FirebasePushRegistrar()
+            push = registrar
+            session.register(registrar)
+        } else {
+            push = nil
         }
         // Registered last: the cache is wiped only after sync has stopped (and flushed).
         session.register(TaskCacheCleaner(repository: tasks))
@@ -106,7 +126,7 @@ final class AppEnvironment {
     }
 
     func makeTaskListViewModel(session: AuthSession) -> TaskListViewModel {
-        TaskListViewModel(repository: tasks, userId: session.uid, clock: clock, sync: sync)
+        TaskListViewModel(repository: tasks, userId: session.uid, clock: clock, sync: sync, reminders: reminders)
     }
 
     func makeTaskDetailViewModel(taskId: String, session: AuthSession) -> TaskDetailViewModel {
@@ -128,8 +148,18 @@ final class AppEnvironment {
         )
     }
 
+    func makeInviteViewModel(task: TaskItem, session: AuthSession) -> InviteCollaboratorViewModel? {
+        guard let directory else { return nil }
+        return InviteCollaboratorViewModel(task: task, userId: session.uid, repository: tasks, directory: directory)
+    }
+
     func makeSettingsViewModel(session: AuthSession) -> SettingsViewModel {
-        SettingsViewModel(session: session, sessionController: self.session, sync: sync)
+        SettingsViewModel(
+            session: session,
+            sessionController: self.session,
+            sync: sync,
+            reminderCoordinator: reminderCoordinator
+        )
     }
 
     // MARK: - Backend selection
@@ -155,17 +185,25 @@ final class AppEnvironment {
         let profiles: any UserProfileStore
         let remote: (any TaskRemote)?
         let storage: (any AttachmentStorage)?
+        let directory: (any UserDirectory)?
     }
+
+    #if DEBUG
+    private static func fakeBackend(auth: FakeAuthService) -> Backend {
+        Backend(status: .fake, auth: auth, profiles: auth, remote: FakeTaskRemote(),
+                storage: FakeAttachmentStorage(), directory: FakeUserDirectory())
+    }
+    #endif
 
     private static func makeBackend(for mode: Mode) -> Backend {
         #if DEBUG
         switch mode {
         case .preview:
             let fake = FakeAuthService(signedIn: true)
-            return Backend(status: .fake, auth: fake, profiles: fake, remote: FakeTaskRemote(), storage: FakeAttachmentStorage())
+            return Self.fakeBackend(auth: fake)
         case .uiTest:
             let fake = FakeAuthService()
-            return Backend(status: .fake, auth: fake, profiles: fake, remote: FakeTaskRemote(), storage: FakeAttachmentStorage())
+            return Self.fakeBackend(auth: fake)
         case .live:
             break
         }
@@ -176,11 +214,12 @@ final class AppEnvironment {
                 auth: FirebaseAuthService(),
                 profiles: FirestoreUserProfileStore(),
                 remote: FirestoreTaskRemote(),
-                storage: FirebaseAttachmentStorage()
+                storage: FirebaseAttachmentStorage(),
+                directory: FirestoreUserDirectory()
             )
         }
         Log.app.notice("GoogleService-Info.plist missing; running without a backend.")
         let unconfigured = UnconfiguredAuthService()
-        return Backend(status: .unconfigured, auth: unconfigured, profiles: unconfigured, remote: nil, storage: nil)
+        return Backend(status: .unconfigured, auth: unconfigured, profiles: unconfigured, remote: nil, storage: nil, directory: nil)
     }
 }

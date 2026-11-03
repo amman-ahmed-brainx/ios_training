@@ -11,10 +11,9 @@ struct FirestoreUserProfileStore: UserProfileStore {
             "displayName": session.displayName ?? "",
             "updatedAt": FieldValue.serverTimestamp()
         ]
-        // Only seed these on creation: re-running must not wipe registered push tokens.
+        // Only seed on creation. Push tokens live in the owner-only userTokens/{uid} document.
         if try await !document.getDocument().exists {
             fields["createdAt"] = FieldValue.serverTimestamp()
-            fields["fcmTokens"] = [String]()
         }
         try await document.setData(fields, merge: true)
     }

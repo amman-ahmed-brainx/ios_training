@@ -4,13 +4,24 @@ import SwiftUI
 struct TaskDetailView: View {
     @State private var model: TaskDetailViewModel
     @State private var attachments: AttachmentsViewModel?
+    @State private var isSharing = false
+    private let canShare: Bool
+    private let makeInvite: (TaskItem) -> InviteCollaboratorViewModel?
     @State private var isConfirmingDelete = false
     @Environment(\.dismiss) private var dismiss
     private let onEdit: (TaskItem) -> Void
 
-    init(model: TaskDetailViewModel, attachments: AttachmentsViewModel?, onEdit: @escaping (TaskItem) -> Void) {
+    init(
+        model: TaskDetailViewModel,
+        attachments: AttachmentsViewModel?,
+        canShare: Bool,
+        makeInvite: @escaping (TaskItem) -> InviteCollaboratorViewModel?,
+        onEdit: @escaping (TaskItem) -> Void
+    ) {
         _model = State(initialValue: model)
         _attachments = State(initialValue: attachments)
+        self.canShare = canShare
+        self.makeInvite = makeInvite
         self.onEdit = onEdit
     }
 
@@ -18,6 +29,11 @@ struct TaskDetailView: View {
         content
             .navigationBarTitleDisplayMode(.inline)
             .task { await model.observe() }
+            .sheet(isPresented: $isSharing) {
+                if let task = model.task, let invite = makeInvite(task) {
+                    InviteCollaboratorView(model: invite)
+                }
+            }
             .confirmationDialog("Delete this task?", isPresented: $isConfirmingDelete, titleVisibility: .visible) {
                 Button("Delete", role: .destructive) {
                     Task {
@@ -134,6 +150,12 @@ struct TaskDetailView: View {
             ToolbarItem(placement: .primaryAction) {
                 Button("Edit") { onEdit(task) }
                     .accessibilityIdentifier("taskDetail.edit")
+            }
+        }
+        if model.canEditDetails, canShare {
+            ToolbarItem(placement: .secondaryAction) {
+                Button("Share", systemImage: "person.crop.circle.badge.plus") { isSharing = true }
+                    .accessibilityIdentifier("taskDetail.share")
             }
         }
         if model.canDelete {

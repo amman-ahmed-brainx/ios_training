@@ -63,6 +63,11 @@ test('only the owner can delete', async () => {
   await assertSucceeds(deleteDoc(doc(db('ada'), 'tasks/t1')));
 });
 
+test('device tokens are private to their owner', async () => {
+  await assertSucceeds(setDoc(doc(db('ada'), 'userTokens/ada'), { fcmTokens: ['t'] }));
+  await assertFails(getDoc(doc(db('grace'), 'userTokens/ada')));
+});
+
 test('users write only their own profile', async () => {
   await assertSucceeds(setDoc(doc(db('ada'), 'users/ada'), { email: 'ada@example.com' }));
   await assertFails(setDoc(doc(db('ada'), 'users/grace'), { email: 'x@example.com' }));
