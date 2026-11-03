@@ -29,6 +29,8 @@ enum Palette {
     static let accent = Color(.accent)
     static let onAccent = Color(.onAccent)
     static let card = Color(.cardBackground)
+    /// Secondary text with at least 4.5:1 contrast; the system `.secondary` grey falls just short on white.
+    static let secondaryText = Color(.secondaryText)
     static let danger = Color(.danger)
     static let statusTodo = Color(.statusTodo)
     static let statusInProgress = Color(.statusInProgress)

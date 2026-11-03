@@ -1,31 +1,506 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "Connected to Firebase." : {
-      "localizations" : {
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "Mit Firebase verbunden." } }
+  "sourceLanguage": "en",
+  "strings": {
+    "Add Task": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgabe hinzufügen"
+          }
+        }
       }
     },
-    "Firebase is not configured. Running offline." : {
-      "localizations" : {
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "Firebase ist nicht eingerichtet. Die App läuft offline." } }
+    "An account with this email already exists.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für diese E-Mail-Adresse gibt es bereits ein Konto."
+          }
+        }
       }
     },
-    "Loading" : {
-      "localizations" : {
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wird geladen" } }
+    "At least 8 characters, with a letter and a number.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mindestens 8 Zeichen, mit einem Buchstaben und einer Zahl."
+          }
+        }
       }
     },
-    "Running with sample data." : {
-      "localizations" : {
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "Die App verwendet Beispieldaten." } }
+    "Changes will sync later.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Änderungen werden später synchronisiert."
+          }
+        }
       }
     },
-    "Task Manager" : {
-      "localizations" : {
-        "de" : { "stringUnit" : { "state" : "translated", "value" : "Aufgabenverwaltung" } }
+    "Choose a stronger password.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wähle ein sichereres Passwort."
+          }
+        }
+      }
+    },
+    "Close": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schließen"
+          }
+        }
+      }
+    },
+    "Confirm Password": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passwort bestätigen"
+          }
+        }
+      }
+    },
+    "Create Account": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konto erstellen"
+          }
+        }
+      }
+    },
+    "Don't have an account?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch kein Konto?"
+          }
+        }
+      }
+    },
+    "Email": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "E-Mail"
+          }
+        }
+      }
+    },
+    "Enter a valid email address, like name@example.com.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gib eine gültige E-Mail-Adresse ein, z. B. name@example.com."
+          }
+        }
+      }
+    },
+    "Floating control": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schwebendes Bedienelement"
+          }
+        }
+      }
+    },
+    "For your security, please log in again to continue.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Melde dich zu deiner Sicherheit erneut an, um fortzufahren."
+          }
+        }
+      }
+    },
+    "Forgot Password": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passwort vergessen"
+          }
+        }
+      }
+    },
+    "Forgot Password?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passwort vergessen?"
+          }
+        }
+      }
+    },
+    "Hide password": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passwort ausblenden"
+          }
+        }
+      }
+    },
+    "If an account exists for %@, a reset link is on its way.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Falls ein Konto für %@ existiert, ist ein Link zum Zurücksetzen unterwegs."
+          }
+        }
+      }
+    },
+    "Include at least one letter and one number.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verwende mindestens einen Buchstaben und eine Zahl."
+          }
+        }
+      }
+    },
+    "Incorrect email or password.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "E-Mail-Adresse oder Passwort ist falsch."
+          }
+        }
+      }
+    },
+    "Loading": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wird geladen"
+          }
+        }
+      }
+    },
+    "Log In": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anmelden"
+          }
+        }
+      }
+    },
+    "Log in to see your tasks.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Melde dich an, um deine Aufgaben zu sehen."
+          }
+        }
+      }
+    },
+    "Name": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
+          }
+        }
+      }
+    },
+    "No Tasks": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Aufgaben"
+          }
+        }
+      }
+    },
+    "Password": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passwort"
+          }
+        }
+      }
+    },
+    "Passwords don't match.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Passwörter stimmen nicht überein."
+          }
+        }
+      }
+    },
+    "Plan, share and finish tasks together.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgaben gemeinsam planen, teilen und erledigen."
+          }
+        }
+      }
+    },
+    "Primary": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Primär"
+          }
+        }
+      }
+    },
+    "Reset Password": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passwort zurücksetzen"
+          }
+        }
+      }
+    },
+    "Secondary": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sekundär"
+          }
+        }
+      }
+    },
+    "Send Reset Link": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Link senden"
+          }
+        }
+      }
+    },
+    "Show password": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passwort anzeigen"
+          }
+        }
+      }
+    },
+    "Sign Out": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abmelden"
+          }
+        }
+      }
+    },
+    "Sign Up": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Registrieren"
+          }
+        }
+      }
+    },
+    "Sign-in is unavailable because the app isn't connected to a server.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Anmeldung ist nicht verfügbar, weil die App mit keinem Server verbunden ist."
+          }
+        }
+      }
+    },
+    "Signed In": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Angemeldet"
+          }
+        }
+      }
+    },
+    "Something went wrong. Please try again.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+          }
+        }
+      }
+    },
+    "Tap + to add your first task.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tippe auf +, um deine erste Aufgabe hinzuzufügen."
+          }
+        }
+      }
+    },
+    "That email address doesn't look right.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese E-Mail-Adresse scheint nicht zu stimmen."
+          }
+        }
+      }
+    },
+    "This account has been disabled.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieses Konto wurde deaktiviert."
+          }
+        }
+      }
+    },
+    "This field is required.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieses Feld ist erforderlich."
+          }
+        }
+      }
+    },
+    "Too many attempts. Wait a moment and try again.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zu viele Versuche. Warte einen Moment und versuche es erneut."
+          }
+        }
+      }
+    },
+    "Use at least %lld characters.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verwende mindestens %lld Zeichen."
+          }
+        }
+      }
+    },
+    "We'll email you a link to choose a new password.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wir senden dir einen Link, mit dem du ein neues Passwort wählen kannst."
+          }
+        }
+      }
+    },
+    "Welcome Back": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Willkommen zurück"
+          }
+        }
+      }
+    },
+    "You appear to be offline. Check your connection and try again.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Du scheinst offline zu sein. Prüfe deine Verbindung und versuche es erneut."
+          }
+        }
+      }
+    },
+    "You're Offline": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Du bist offline"
+          }
+        }
+      }
+    },
+    "You're not signed in.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Du bist nicht angemeldet."
+          }
+        }
+      }
+    },
+    "Your session has expired. Please log in again.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deine Sitzung ist abgelaufen. Bitte melde dich erneut an."
+          }
+        }
+      }
+    },
+    "Your tasks will appear here.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hier erscheinen deine Aufgaben."
+          }
+        }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

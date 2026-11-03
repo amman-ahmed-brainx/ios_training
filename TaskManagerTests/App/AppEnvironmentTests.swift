@@ -23,15 +23,27 @@ struct AppEnvironmentTests {
     }
 
     @Test func fakeModesNeverTouchTheBackend() {
-        let environment = AppEnvironment(mode: .uiTest)
-        environment.bootstrap()
-        #expect(environment.backendStatus == .fake)
+        #expect(AppEnvironment(mode: .uiTest).backendStatus == .fake)
+        #expect(AppEnvironment(mode: .preview).backendStatus == .fake)
     }
 
-    @Test func bootstrapIsIdempotent() {
-        let environment = AppEnvironment(mode: .preview)
+    @Test func uiTestModeStartsSignedOut() async {
+        let environment = AppEnvironment(mode: .uiTest)
         environment.bootstrap()
+        await eventually { environment.session.state == .signedOut(nil) }
+        environment.session.stop()
+    }
+
+    @Test func uiTestAccountCanSignIn() async {
+        let environment = AppEnvironment(mode: .uiTest)
         environment.bootstrap()
-        #expect(environment.backendStatus == .fake)
+        let login = environment.makeLoginViewModel()
+        login.email = FakeAuthService.uiTestEmail
+        login.password = FakeAuthService.uiTestPassword
+
+        await login.submit()
+
+        await eventually { environment.session.currentSession?.email == FakeAuthService.uiTestEmail }
+        environment.session.stop()
     }
 }

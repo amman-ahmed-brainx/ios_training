@@ -6,6 +6,7 @@ struct DesignSystemCatalog: View {
     private let swatches: [(name: String, color: Color)] = [
         ("accent", Palette.accent),
         ("card", Palette.card),
+        ("secondaryText", Palette.secondaryText),
         ("danger", Palette.danger),
         ("statusTodo", Palette.statusTodo),
         ("statusInProgress", Palette.statusInProgress),

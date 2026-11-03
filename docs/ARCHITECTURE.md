@@ -36,6 +36,34 @@ mode, and builds every service for that mode:
 | `preview` | SwiftUI previews, unit-test host (`XCTestConfigurationFilePath`) | in-memory fakes |
 | `uiTest` | `-uitest` launch argument | deterministic offline fakes, never a real backend |
 
+## Authentication and session (Phase 2)
+
+```
+FirebaseAuthService ──AsyncStream<SessionState>──▶ SessionController (@MainActor) ──▶ RootView gate
+   (state + ID-token listeners)                        │                              splash / auth flow / app
+                                                        ├─ UserProfileStore.ensureProfile (users/{uid})
+                                                        ├─ SessionExpiryPolicy (error → retry / reauthenticate / logout)
+                                                        └─ SessionLifecycleObservers (cleanup on session end)
+```
+
+- `AuthService` is the only auth API the app sees. It exposes an `AsyncStream<SessionState>` (fed by
+  Firebase's auth-state **and** ID-token listeners, so token refreshes are observable),
+  `currentIDToken(forceRefresh:)` for the background uploader, and typed `AuthError`s.
+- `SessionController` owns the session state. Launch starts at `.unknown` (splash) until the first
+  stream value resolves the persisted session.
+- **Auto-logout.** Firebase signs the user out itself when a refresh fails with
+  `userTokenExpired`/`userDisabled`; the controller sees a sign-out it didn't ask for and reports it
+  as `.sessionExpired`. Errors surfaced by our own calls go through `SessionExpiryPolicy`, and the
+  controller validates the token every time the app becomes active.
+- **Cleanup order.** On user sign-out, `SessionLifecycleObserver`s run *before* the backend sign-out,
+  so remote cleanup (removing this device's FCM token) still has credentials. On expiry only local
+  cleanup is possible. Later phases register the sync engine, local cache and push registrar here.
+- **Profile.** `users/{uid}` is written with `setData(merge:)` after every new sign-in, seeding
+  `createdAt` and `fcmTokens` only when the document doesn't exist. It is not awaited inline because
+  an offline Firestore write only completes on reconnect.
+- **Fakes.** `FakeAuthService` (Debug only) backs previews and `-uitest`; the UI test signs in as
+  `test@example.com`. `UnconfiguredAuthService` keeps live mode usable without the Firebase plist.
+
 ## Decisions and trade-offs
 
 - **The project lives at the repository root** (`ios_training/`), not in a nested `TaskManager/`
