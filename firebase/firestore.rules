@@ -23,6 +23,14 @@ service cloud.firestore {
         && !(data.ownerId in data.collaboratorIds);
     }
 
+    // A known status, and a status clock that can't be pushed far into the future to win every
+    // later merge (a day of slack tolerates skewed device clocks).
+    function validStatusChange(data) {
+      return data.status in ['todo', 'inProgress', 'done']
+        && data.statusUpdatedAt is timestamp
+        && data.statusUpdatedAt < request.time + duration.value(1, 'd');
+    }
+
     match /tasks/{taskId} {
       allow read: if isMember();
 
@@ -37,7 +45,8 @@ service cloud.firestore {
         || (isMember()
           && request.resource.data.diff(resource.data).affectedKeys()
                .hasOnly(['status', 'statusUpdatedAt', 'updatedAt', 'updatedBy'])
-          && request.resource.data.updatedBy == request.auth.uid);
+          && request.resource.data.updatedBy == request.auth.uid
+          && validStatusChange(request.resource.data));
 
       allow delete: if isOwner();
     }

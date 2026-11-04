@@ -13,7 +13,8 @@ actor SyncEngine: SessionLifecycleObserver, SyncControlling {
     private var userId: String?
     private var tasks: [Task<Void, Never>] = []
     private var retryTask: Task<Void, Never>?
-    private var isPushing = false
+    /// The running push, so callers (sign-out in particular) can wait for it instead of skipping.
+    private var pushPass: Task<Void, Never>?
     private var pushRequested = false
     private var status = SyncStatus.idle
     private var statusSubscribers: [UUID: AsyncStream<SyncStatus>.Continuation] = [:]
@@ -102,17 +103,37 @@ actor SyncEngine: SessionLifecycleObserver, SyncControlling {
 
     // MARK: Pushing
 
-    /// Pushes every due pending change once. Safe to call from anywhere, including background tasks.
+    /// Pushes every due pending change once and returns when that push has finished. Safe to call
+    /// from anywhere, including background tasks.
     func pushPendingChanges() async {
-        guard let userId, status.isOnline else { return }
-        if isPushing {
+        if let running = pushPass {
             pushRequested = true
+            await Self.wait(for: running)
+            // That push stopped early because its session ended; push this session's changes now.
+            if pushRequested && !Task.isCancelled { await pushPendingChanges() }
             return
         }
-        isPushing = true
+        guard let userId, status.isOnline else { return }
+        let pass = Task { await self.runPushPasses(for: userId) }
+        pushPass = pass
+        await Self.wait(for: pass)
+    }
+
+    /// Waits for `pass`, cancelling it if the caller is cancelled (e.g. a background task's time
+    /// running out), since an unstructured task doesn't inherit the caller's cancellation.
+    private static func wait(for pass: Task<Void, Never>) async {
+        await withTaskCancellationHandler {
+            await pass.value
+        } onCancel: {
+            pass.cancel()
+        }
+    }
+
+    private func runPushPasses(for userId: String) async {
         update { $0.isSyncing = true }
         defer {
-            isPushing = false
+            // Cleared before the task completes, so anyone awaiting it sees no running push.
+            pushPass = nil
             update { $0.isSyncing = false }
         }
 
@@ -127,12 +148,14 @@ actor SyncEngine: SessionLifecycleObserver, SyncControlling {
                 Log.sync.error("Reading the outbox failed: \(String(describing: error), privacy: .public)")
                 changes = []
             }
-            for change in changes where !Task.isCancelled {
+            for change in changes where self.userId == userId && !Task.isCancelled {
                 await push(change, store: store, userId: userId)
             }
+            // The session ended mid-push: leave its status and retries alone.
+            guard self.userId == userId else { return }
             await refreshPendingCount(store: store, userId: userId)
             await scheduleRetry(store: store, userId: userId)
-        } while pushRequested && !Task.isCancelled
+        } while pushRequested && self.userId == userId && !Task.isCancelled
     }
 
     private func push(_ change: TaskStore.PendingChange, store: TaskStore, userId: String) async {

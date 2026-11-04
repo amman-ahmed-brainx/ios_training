@@ -151,6 +151,27 @@ struct BackgroundAttachmentRoutingTests {
         #expect(await storage.uploadedPaths.count == 1)
     }
 
+    @Test func filesStorageWouldRejectAreRefusedUpFront() async throws {
+        let url = FileManager.default.temporaryDirectory.appending(path: "\(UUID().uuidString).unknownext")
+        try Data(repeating: 7, count: 1024).write(to: url)
+        defer { try? FileManager.default.removeItem(at: url) }
+        let model = model()
+
+        await model.addFile(at: url)
+
+        #expect(model.errorMessage != nil)
+        #expect(await uploader.jobs.isEmpty)
+        #expect(await storage.uploadedPaths.isEmpty)
+    }
+
+    @Test func uploadableTypesMirrorTheStorageRules() {
+        #expect(AttachmentsViewModel.isUploadable("image/heic"))
+        #expect(AttachmentsViewModel.isUploadable("application/pdf"))
+        #expect(AttachmentsViewModel.isUploadable("application/vnd.openxmlformats-officedocument.wordprocessingml.document"))
+        #expect(!AttachmentsViewModel.isUploadable("application/octet-stream"))
+        #expect(!AttachmentsViewModel.isUploadable("application/x-sh"))
+    }
+
     @Test func backgroundUploadsAreShownRetriedAndRemoved() async {
         let model = model()
         let observing = Task { await model.observeBackgroundUploads() }

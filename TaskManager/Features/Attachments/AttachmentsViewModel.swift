@@ -37,6 +37,16 @@ final class AttachmentsViewModel {
 
     /// Above this, files go through the background `URLSession` instead of the Storage SDK.
     static let foregroundUploadLimit = 2 * 1024 * 1024
+    /// Mirrors `allowedUpload()` in `firebase/storage.rules`; anything else would be rejected there.
+    static func isUploadable(_ contentType: String) -> Bool {
+        let prefixes = ["image/", "video/", "text/"]
+        let applicationTypes: Set = ["application/pdf", "application/zip", "application/json", "application/rtf",
+                                     "application/msword", "application/vnd.ms-excel", "application/vnd.ms-powerpoint"]
+        return prefixes.contains { contentType.hasPrefix($0) }
+            || applicationTypes.contains(contentType)
+            || contentType.hasPrefix("application/vnd.openxmlformats-officedocument.")
+    }
+
     /// Bytes kept for failed uploads so Retry doesn't need the original again.
     private var payloads: [String: (data: Data, contentType: String)] = [:]
 
@@ -79,12 +89,16 @@ final class AttachmentsViewModel {
 
     /// From fileImporter: copy out of the security-scoped URL off the main thread, then upload.
     func addFile(at url: URL) async {
+        guard let contentType = UTType(filenameExtension: url.pathExtension)?.preferredMIMEType,
+              Self.isUploadable(contentType) else {
+            errorMessage = String(localized: "This type of file can't be attached.")
+            return
+        }
         if let uploader, let copy = await copyIfLarge(url) {
             do {
-                let type = UTType(filenameExtension: url.pathExtension)
                 try await uploader.enqueue(UploadJob(
                     fileURL: copy, taskId: taskId, attachmentId: UUID().uuidString, fileName: url.lastPathComponent,
-                    contentType: type?.preferredMIMEType ?? "application/octet-stream", userId: userId
+                    contentType: contentType, userId: userId
                 ))
             } catch {
                 errorMessage = String(localized: "That file couldn't be prepared for upload.")
@@ -97,8 +111,7 @@ final class AttachmentsViewModel {
                 defer { if accessing { url.stopAccessingSecurityScopedResource() } }
                 return try Data(contentsOf: url)
             }.value
-            let type = UTType(filenameExtension: url.pathExtension)
-            await upload(data, name: url.lastPathComponent, contentType: type?.preferredMIMEType ?? "application/octet-stream")
+            await upload(data, name: url.lastPathComponent, contentType: contentType)
         } catch {
             errorMessage = String(localized: "That file couldn't be opened.")
         }
@@ -122,7 +135,8 @@ final class AttachmentsViewModel {
         } catch let error as TaskRepositoryError {
             errorMessage = error.message
         } catch {
-            // Metadata is gone; an orphaned file is cleaned up with the task.
+            // Metadata is gone and nothing references the file any more, so it stays orphaned in
+            // Storage (only task members could ever read it). Known limitation, see README.
             Log.uploads.notice("Deleting stored bytes failed: \(error.localizedDescription, privacy: .public)")
         }
     }

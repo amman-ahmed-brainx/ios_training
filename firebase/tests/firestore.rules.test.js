@@ -58,6 +58,15 @@ test('collaborator may only change status fields', async () => {
   await assertFails(updateDoc(doc(db('grace'), 'tasks/t1'), { status: 'done', updatedBy: 'ada' }));
 });
 
+test('collaborator status must be known and its clock not far in the future', async () => {
+  await assertFails(updateDoc(doc(db('grace'), 'tasks/t1'), {
+    status: 'archived', statusUpdatedAt: new Date(), updatedAt: new Date(), updatedBy: 'grace',
+  }));
+  await assertFails(updateDoc(doc(db('grace'), 'tasks/t1'), {
+    status: 'done', statusUpdatedAt: new Date('3000-01-01'), updatedAt: new Date(), updatedBy: 'grace',
+  }));
+});
+
 test('only the owner can delete', async () => {
   await assertFails(deleteDoc(doc(db('grace'), 'tasks/t1')));
   await assertSucceeds(deleteDoc(doc(db('ada'), 'tasks/t1')));

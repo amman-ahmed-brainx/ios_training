@@ -79,6 +79,11 @@ Demo script: [docs/DEMO.md](docs/DEMO.md).
 - Signing out while offline discards changes that haven't synced (Settings warns about this).
 - A write the backend rejects (for example after access is revoked) stays parked in the outbox
   with its reason instead of being retried or discarded.
+- Attaching a file to a task that hasn't reached Firestore yet (created offline) fails, because
+  the Storage rules look up the task's members; Retry works once the task has synced.
+- A background upload waiting for connectivity longer than an ID token lives (1 hour) fails with
+  401; Retry fetches a fresh token.
+- If deleting a single attachment's bytes fails, the file stays orphaned in Storage.
 - Analytics and Crashlytics are linked but their collection is disabled until thin wrappers exist.
 - Not yet covered by unit tests: `TaskStore.applyRemote`/outbox branches, `SyncEngine`'s push loop,
   the Firebase adapters (verified on device) and the Cloud Function trigger (needs the emulator).
