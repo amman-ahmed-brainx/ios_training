@@ -1,0 +1,39 @@
+included:
+  - TaskManager
+
+opt_in_rules:
+  - force_unwrapping
+  - empty_count
+  - first_where
+  - contains_over_first_not_nil
+  - redundant_nil_coalescing
+  - weak_delegate
+
+# The quality rules from the brief: these are build errors, not warnings.
+force_unwrapping:
+  severity: error
+force_try:
+  severity: error
+force_cast:
+  severity: error
+
+line_length:
+  warning: 140
+  ignores_comments: true
+  ignores_urls: true
+
+identifier_name:
+  min_length: 2
+  excluded: [id, x, y]
+
+type_body_length:
+  warning: 300
+
+file_length:
+  warning: 500
+
+nesting:
+  type_level: 2
+
+trailing_comma:
+  mandatory_comma: false

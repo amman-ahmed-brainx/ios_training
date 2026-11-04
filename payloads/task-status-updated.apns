@@ -1,0 +1,9 @@
+{
+  "Simulator Target Bundle": "com.brainxtech.taskmanager",
+  "aps": {
+    "alert": { "title": "Grace updated Write report", "body": "Status: Done" },
+    "sound": "default",
+    "thread-id": "REPLACE_WITH_TASK_ID"
+  },
+  "taskId": "REPLACE_WITH_TASK_ID"
+}

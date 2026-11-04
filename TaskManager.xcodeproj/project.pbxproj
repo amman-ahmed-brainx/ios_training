@@ -1,0 +1,1347 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01D59524B9100BE87FD3A75C /* FirestoreUserProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C030173C3E4A1765A7EBD45 /* FirestoreUserProfileStore.swift */; };
+		01F0472AE12BC55F21C857AB /* TestClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0C9B096682FB16863C4DAE /* TestClock.swift */; };
+		097580E074AA0FD05AEDC368 /* TaskCacheCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30FB106717EACA2BBCF2AF0 /* TaskCacheCleaner.swift */; };
+		0A5C91BA5665A7ACF5FC01AE /* ValidatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D704EB0CFC78F72211CA8F7D /* ValidatorsTests.swift */; };
+		0A9EA1A4CB5E46FDCF3382C5 /* FirebaseAttachmentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DAB36AD38FA55F68AA05BE /* FirebaseAttachmentStorage.swift */; };
+		0EAFD24235DE7DC82F98F9DA /* InviteCollaboratorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D75901EA33D3878C646275 /* InviteCollaboratorViewModel.swift */; };
+		15DBB14EF4CBD53290D40E62 /* TaskItem+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862E70184E9427B01B08169B /* TaskItem+Preview.swift */; };
+		167C7347984BCCC087E46BE2 /* AttachmentsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2072786F9540C00AB963BD91 /* AttachmentsViewModelTests.swift */; };
+		16D0414E0E161A3F525C1146 /* SessionExpiryPolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC027A7BB1F52830F40FBE4 /* SessionExpiryPolicyTests.swift */; };
+		17F7382411A34D28D2C57440 /* UploadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB59031986F09B3E8831098 /* UploadState.swift */; };
+		191A604E24729F27E06C41B4 /* UserDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EAD58F8E502FEB10CD52D7 /* UserDirectory.swift */; };
+		19DAA32F8BA8CCD2818CEE23 /* TaskQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81B84C63F8FD334EE3056F /* TaskQueryTests.swift */; };
+		1C4E63B26102C168135399A8 /* FirestoreUserDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B69D7FD2D957F2E0ACBA9 /* FirestoreUserDirectory.swift */; };
+		1CC8879840859C3B1B3E3E89 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 764DB92DE8BC93F9D3259568 /* Localizable.xcstrings */; };
+		1CDBD0A26D4801F3ED1B73A0 /* TaskEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1729F8EB49483307617A0B1 /* TaskEditorViewModel.swift */; };
+		1FF3CB4F1251E810EB25131B /* MockTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8226F24F9303DA6148B64409 /* MockTaskRepository.swift */; };
+		20AF41CBF2012BB5370AED27 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31C75483CE476B8D4EB824 /* RootView.swift */; };
+		21FC3343A4575812BAE09F81 /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9C6419C27FA4007B5514AA /* SessionController.swift */; };
+		25FC6747FEDA67E2DC9BE845 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A5DA303A8484B6645FD2B /* SettingsView.swift */; };
+		266D931D8FCF0F81E3BEA527 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529FCF06CD1FC13ED285241D /* EmptyStateView.swift */; };
+		28281B2049EA5961ADDA1E06 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 0B453C0F14541B8EFDB5A82F /* FirebaseMessaging */; };
+		2B9DDE501A0883B0B2805645 /* ReminderSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BE4C1898C5504DD3CD7A2C /* ReminderSchedulerTests.swift */; };
+		2D94ADB396D0AEB241950303 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2DC663564D6237204A4F3FA8 /* FirebaseStorage */; };
+		2DD65B79F9D264096892A165 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DD8EC114F1C6B97F118CE4 /* ForgotPasswordView.swift */; };
+		33FA7739BBD6E8A651249AB8 /* TaskTransferTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DCF40E10F749406878B080 /* TaskTransferTests.swift */; };
+		353CF61126AC8FC096650D78 /* ImageCompressorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647625382B9372A0B9AD44E /* ImageCompressorTests.swift */; };
+		357603FAEDA7AD1E7337A4D4 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313A9A7E7A81A795A86D1977 /* FormField.swift */; };
+		35E183D4B83FE76918BF7A88 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0E68852D1ECFAB00F9AF08 /* ForgotPasswordViewModel.swift */; };
+		363D053D227DCF1A992E017B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FE07CD27DB31BF80A97288 /* LoginView.swift */; };
+		3BD105270BD13578F603F05F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A36320385584079394EFFDEF /* InfoPlist.xcstrings */; };
+		4137CA8111DB2E0FE50F36AE /* View+Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98415693C0FC5446497430E3 /* View+Accessibility.swift */; };
+		44FE1C19D649C7123C61EF27 /* FakeTaskRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B12295DA4AB152DE56892E /* FakeTaskRemote.swift */; };
+		495B4829C3F0B74FD0EC2312 /* TaskStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E9E4B236EA281022533334 /* TaskStoreTests.swift */; };
+		4A45CAF692090216325C080A /* ConflictResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB85C314FA59D489D092864 /* ConflictResolver.swift */; };
+		51D701EF7399865ABA539C0A /* ImageCompressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3D65E4B3A70692F36E6982 /* ImageCompressor.swift */; };
+		52342FE7F2C321FF4CC0961A /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7438AEFB9F17A10E002E32C /* Validators.swift */; };
+		54B2E3843A2265B013D266F9 /* UnavailableTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0558572EDDB761CBB89766 /* UnavailableTaskRepository.swift */; };
+		5B621F60731CB3068EE8EC0D /* TaskEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D930B3F6562CBD1A163CAC2 /* TaskEditorView.swift */; };
+		5D63B347D9760A3304B6A73D /* AppEnvironmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21257C6B536E173B5E280A58 /* AppEnvironmentTests.swift */; };
+		5F51DE2B5EE67B52A390D63A /* ReminderScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CCB5EDDF31527FD7863FE4 /* ReminderScheduler.swift */; };
+		608A134384147A252A0CABC7 /* FloatingAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913D653F97889E357FEAEED4 /* FloatingAddButton.swift */; };
+		60D559C985BF9B85D6A34E7E /* MockAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB456BB6680F7EF1DBE1CA72 /* MockAuthService.swift */; };
+		61E31A29469C7E414BC5BA13 /* FloatingGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468AF988507C73A1363CFBF4 /* FloatingGlass.swift */; };
+		62C9DCC027ECE69991E2772F /* SyncEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DF6CD10B9F5B68EAAE5C8 /* SyncEngine.swift */; };
+		62D1D70B9D5F7283FD403EC3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D3BFA3E00090D4A6AFAEAE65 /* FirebaseAuth */; };
+		648523F0A972278BE8A3C5D7 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A517FE180B1662FEE919B /* Log.swift */; };
+		662493E34207E499C7F030E9 /* AuthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6A09DF11AA2EC13CB6D503 /* AuthHeader.swift */; };
+		66A760F8CB0E6A2EB140B033 /* FirebaseEmulatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43163C96AB156AA4517BC1B8 /* FirebaseEmulatorUITests.swift */; };
+		67D2BBC50F22598D74964534 /* StatusBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75D23B4362EA79FB479B97 /* StatusBadge.swift */; };
+		67D322CA66F25B3585121E6F /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B971589CF1EC35F496A0472 /* AuthError.swift */; };
+		6B011E868FFE86660FA5BB09 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8397C8FA09C05031C66560D /* TaskRow.swift */; };
+		6C7BC49F9BF7416A6EDB016C /* SyncControlling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1558B3D8974FF0AAE5903C /* SyncControlling.swift */; };
+		6C7C469F3886B9CDCA34F0A4 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994178C3E88FF1BC35F36A74 /* FirebaseAuthService.swift */; };
+		6F656FC8CD871CD6F8E43BF2 /* TaskViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620D546A1F1EFA991182415 /* TaskViewModelTests.swift */; };
+		6FFCA5124A3A3BF8330635FD /* InviteCollaboratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C80502762A6907362C6083 /* InviteCollaboratorView.swift */; };
+		706C413D90D3B247CB6AE313 /* ConflictResolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EE76C6741DA90912796D0E /* ConflictResolverTests.swift */; };
+		740747C7F3925D69C045FB35 /* AttachmentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6923543679805C5B98A8F6D /* AttachmentsViewModel.swift */; };
+		7799F41D4491CF6A8E1DDD04 /* FirebaseBootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE2A02528379C8F82EDC307 /* FirebaseBootstrap.swift */; };
+		7886FC31A3DB73601A98144A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAF37CDCD393904783FD40E7 /* Assets.xcassets */; };
+		79B8BE78731CF5ACD437E424 /* TaskTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA5D918CCD5E0A15553EE94 /* TaskTransfer.swift */; };
+		859C01C1707B1F59BBC632B5 /* Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0E7F6D117D66BE2CE99EC6 /* Tokens.swift */; };
+		8D010610631624B2453F0358 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53080C39B182410798098F92 /* TaskItem.swift */; };
+		8E6A52C64E4D6DFFFE865E49 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BE9A79BB160CAB2990ABBA /* MainView.swift */; };
+		8EF791F47BEF7A40C238570B /* FirestoreTaskRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028080F0203BD8860723266E /* FirestoreTaskRemote.swift */; };
+		915DFD9F332410B3D0FC1294 /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797275E6F2CA8305265E8C5F /* TaskListViewModel.swift */; };
+		919930ADE8ACD9DCDA10556E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 11FC8C04759B2B82A7058CFE /* PrivacyInfo.xcprivacy */; };
+		91B2215BA3EDC55B2AB8D098 /* Eventually.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA260604D2E88C0669FC3 /* Eventually.swift */; };
+		9424E2CB1B3AB258FD326A66 /* InlineValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D02EB976DE421312073A6BD /* InlineValidation.swift */; };
+		97A6C5B4C057EDB09FC9C663 /* TaskManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D473E08AF146B063569B6AAB /* TaskManagerApp.swift */; };
+		99D92C859F6E439C9D22C389 /* FakeAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EDAAB3EB7348FED93D7BF /* FakeAuthService.swift */; };
+		9BB2641E8B5162E9F7DB280E /* UnconfiguredAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F188A500AD04ABC8E812603 /* UnconfiguredAuthService.swift */; };
+		9E83A9537AC4F533F2409F58 /* SchemaV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94C02638179D4D0F3532AB /* SchemaV2.swift */; };
+		9EA96CF5E28CDB7B520CEB15 /* TaskManagerMigrationPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2CCCCB6B1406323D1DFF79 /* TaskManagerMigrationPlan.swift */; };
+		9EED0286834935471148ECE0 /* TaskFilterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0458718BFF2AB775B9EC12C /* TaskFilterMenu.swift */; };
+		A0CB2E304FDFDC77FDAC7AE5 /* TaskPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3175D5B05C3028C531ED0C2 /* TaskPermissions.swift */; };
+		A2782B2270F9CF259FF328A8 /* TaskQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E45A1FA6069368C351B60B /* TaskQuery.swift */; };
+		A4F7B714A181D3EDAC6FBA89 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CFE0C6F353D20CE45C228 /* NetworkMonitor.swift */; };
+		A761D41AC57D19E68410FB95 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A58A7B4AD6146831D95E60AA /* FirebaseFirestore */; };
+		AAE960048F21DC33EAA594D1 /* AuthFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B95D848F03F168D91DCE47 /* AuthFlowView.swift */; };
+		AB23F1BB728C732B59EAD772 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAECB9B08532980A7D2B470F /* SignUpViewModel.swift */; };
+		AB91F129E65C5899EE9B62E7 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849281FB9BEDAB4E696EE358 /* SignUpView.swift */; };
+		AEA67CCCFEB01F6F3843EBD2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F36B55D7F61A3BA1D40AC197 /* FirebaseAnalytics */; };
+		B14989EB03160DD0089DD865 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E2AC941698465E00CAEE3E /* ButtonStyles.swift */; };
+		B5B66C786F6C37BD062C9C75 /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90778740BE78EE82576F679 /* TaskDetailView.swift */; };
+		B875C3E15BA50B2F07965B6D /* SyncStatusBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417BF2A4F3EE3316AB32CCBB /* SyncStatusBanner.swift */; };
+		BB7EF949FC7F1415E8C0D39C /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B05ACFC83E98CBEDB2D747 /* TaskRepository.swift */; };
+		BDA44C689F059B7C32CFE705 /* AuthMemoryLeakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DF0DED24F5A6ACBACA543 /* AuthMemoryLeakTests.swift */; };
+		C769AFF84D3720F78D3B29E6 /* SchemaV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E22E20127FA95B1FA016B /* SchemaV1.swift */; };
+		C7E1C713C4439EE10378DB3C /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE0DB547A51E088675C2261 /* AppEnvironment.swift */; };
+		CB340B10C5495082C6C06658 /* SessionControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606D07F5BC6056B2C044F62 /* SessionControllerTests.swift */; };
+		CBB13F73174BE6114878B48D /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBAE98AFA7C0A3A1AC709A8 /* PrimaryButton.swift */; };
+		CBBF31D0A142C6417558C3C3 /* SessionLifecycleObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C727FB42B12281D508D2F11F /* SessionLifecycleObserver.swift */; };
+		CBE84143535076123382BB0D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A5699B0DBB4D11F0FAFB1 /* SettingsViewModel.swift */; };
+		CC4E681585890BDB565DEB33 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AC7190FD59EAD7BD2D2473 /* TaskListView.swift */; };
+		CC584D28A2578E5DA3687B45 /* BackgroundUploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854A32EE1B25B9C640FF84CE /* BackgroundUploadManager.swift */; };
+		CD2BEB14655567A3CEF5656D /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360E1D71482F15186031AA6 /* TaskStore.swift */; };
+		CD5173215CD48AD714B74C83 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F166BBE63AD618FF7678CD /* SplashView.swift */; };
+		D30708B39EE04FE3DEBAC168 /* TaskRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34848CBEAAA3DF8E456E7FD /* TaskRemote.swift */; };
+		D3E13E4E1A49FD269A9EAC4C /* UploadStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC00DF9E022B92C85780A070 /* UploadStore.swift */; };
+		D7D7F7F775F7F57D2BAC491C /* MessageBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0907426701EB5A775C90639C /* MessageBanner.swift */; };
+		D8F782F1ED2FC2E09A827FD0 /* TaskDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB538052B52E62C1B49F7FE /* TaskDetailViewModel.swift */; };
+		DB015F08E9389268677F9B61 /* FakeUserDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E33BDA8F8D5743372075067 /* FakeUserDirectory.swift */; };
+		DC8E00121E24A4D736D5C17C /* TaskDocumentMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141911EFB650AF04737CAC42 /* TaskDocumentMapper.swift */; };
+		DDA2BA33DC003D08890CAEF4 /* UserProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C723DBF8DE42EA1F63426 /* UserProfileStore.swift */; };
+		DDD1F7C5C1C7FF98B956D483 /* UploadStateMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057EDCEBA304BBD0132183AF /* UploadStateMachineTests.swift */; };
+		E22F40D9C9E67D2B849F7C1B /* SessionExpiryPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F76E4C56D4E4B950D1E4AB5 /* SessionExpiryPolicy.swift */; };
+		E52E6326381E1B9143A4CEF7 /* DesignSystemCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192BE7B18566F939F76D04C /* DesignSystemCatalog.swift */; };
+		E6B2BCD8CAE9A47FB3995A6A /* FirebasePushRegistrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654EB22AA064E990BAFC8224 /* FirebasePushRegistrar.swift */; };
+		EA0BB39F1396E2ABE96E4150 /* LocalTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4547D5B6E5A1AA3BFE9520B5 /* LocalTaskRepository.swift */; };
+		EAC7B609867081C00C41C026 /* AuthFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325403DAC2ABCACFA3D609B4 /* AuthFlowUITests.swift */; };
+		ECE4597B3243398FAD3F5EA5 /* AppClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C5E52BB7FC7D581F736529 /* AppClock.swift */; };
+		EECED4C9D9762DB856F93F01 /* BackgroundSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABB02BDF40A71AEE10483C /* BackgroundSync.swift */; };
+		F35B985595DE91F8928BD95C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E813BC4F61BBEA841988968E /* LoginViewModel.swift */; };
+		F3A5D6312EDABDA1C0417810 /* AttachmentsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441DBEFDEB0E669C8AB8177F /* AttachmentsSection.swift */; };
+		F42587129A9DD0FD7A1B6E03 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF41AB5084BF509026132D /* AppRouter.swift */; };
+		F4EED7B9B1E1FAC2F74EB9F2 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA031436EDBCDBC641B555D4 /* AuthService.swift */; };
+		F72F2527055E7C4C595ADDE3 /* AttachmentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034FB63DE4A2978146926274 /* AttachmentStorage.swift */; };
+		F9736DE162292541325FFCAF /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2CEC9DB08D4DABCD580C4B5E /* FirebaseCrashlytics */; };
+		FB6B2CDEFE77BA1EB89390D1 /* NotificationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEA0F0D5383EBEB06B65EC0 /* NotificationCoordinator.swift */; };
+		FC245058B1FD48863F5D109B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B02657CD64D787FA15DD4B /* AppDelegate.swift */; };
+		FC4655C976AA110D09B49E39 /* AuthViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D7D504D08F37A9798094D /* AuthViewModelTests.swift */; };
+		FE12BCF6E434D24A33E71A5F /* FakeAttachmentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A8B3CA64C4160A356221BA /* FakeAttachmentStorage.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BAE3E44A320F740911D6F244 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E39F78AEDCFB35ABF91497B4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D6AE5153AD9DCBC8A3CF4A63;
+			remoteInfo = TaskManager;
+		};
+		EC13F202D3B55148DB6E572B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E39F78AEDCFB35ABF91497B4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D6AE5153AD9DCBC8A3CF4A63;
+			remoteInfo = TaskManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		028080F0203BD8860723266E /* FirestoreTaskRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreTaskRemote.swift; sourceTree = "<group>"; };
+		034FB63DE4A2978146926274 /* AttachmentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentStorage.swift; sourceTree = "<group>"; };
+		057EDCEBA304BBD0132183AF /* UploadStateMachineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadStateMachineTests.swift; sourceTree = "<group>"; };
+		05B12295DA4AB152DE56892E /* FakeTaskRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeTaskRemote.swift; sourceTree = "<group>"; };
+		0606D07F5BC6056B2C044F62 /* SessionControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionControllerTests.swift; sourceTree = "<group>"; };
+		0907426701EB5A775C90639C /* MessageBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBanner.swift; sourceTree = "<group>"; };
+		1192BE7B18566F939F76D04C /* DesignSystemCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystemCatalog.swift; sourceTree = "<group>"; };
+		11FC8C04759B2B82A7058CFE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		12C80502762A6907362C6083 /* InviteCollaboratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCollaboratorView.swift; sourceTree = "<group>"; };
+		141911EFB650AF04737CAC42 /* TaskDocumentMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDocumentMapper.swift; sourceTree = "<group>"; };
+		1620D546A1F1EFA991182415 /* TaskViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModelTests.swift; sourceTree = "<group>"; };
+		1B971589CF1EC35F496A0472 /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
+		2072786F9540C00AB963BD91 /* AttachmentsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentsViewModelTests.swift; sourceTree = "<group>"; };
+		21257C6B536E173B5E280A58 /* AppEnvironmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironmentTests.swift; sourceTree = "<group>"; };
+		22B02657CD64D787FA15DD4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2A0E68852D1ECFAB00F9AF08 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		2A2CCCCB6B1406323D1DFF79 /* TaskManagerMigrationPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerMigrationPlan.swift; sourceTree = "<group>"; };
+		2C31C75483CE476B8D4EB824 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		2E0E7F6D117D66BE2CE99EC6 /* Tokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokens.swift; sourceTree = "<group>"; };
+		2F81B84C63F8FD334EE3056F /* TaskQueryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskQueryTests.swift; sourceTree = "<group>"; };
+		313A9A7E7A81A795A86D1977 /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
+		31F166BBE63AD618FF7678CD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		325403DAC2ABCACFA3D609B4 /* AuthFlowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowUITests.swift; sourceTree = "<group>"; };
+		3AB85C314FA59D489D092864 /* ConflictResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConflictResolver.swift; sourceTree = "<group>"; };
+		3CABB02BDF40A71AEE10483C /* BackgroundSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSync.swift; sourceTree = "<group>"; };
+		412D7D504D08F37A9798094D /* AuthViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelTests.swift; sourceTree = "<group>"; };
+		417BF2A4F3EE3316AB32CCBB /* SyncStatusBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncStatusBanner.swift; sourceTree = "<group>"; };
+		41E2AC941698465E00CAEE3E /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		43163C96AB156AA4517BC1B8 /* FirebaseEmulatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEmulatorUITests.swift; sourceTree = "<group>"; };
+		43BE4C1898C5504DD3CD7A2C /* ReminderSchedulerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSchedulerTests.swift; sourceTree = "<group>"; };
+		441DBEFDEB0E669C8AB8177F /* AttachmentsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentsSection.swift; sourceTree = "<group>"; };
+		4547D5B6E5A1AA3BFE9520B5 /* LocalTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTaskRepository.swift; sourceTree = "<group>"; };
+		468AF988507C73A1363CFBF4 /* FloatingGlass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingGlass.swift; sourceTree = "<group>"; };
+		485EDAAB3EB7348FED93D7BF /* FakeAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAuthService.swift; sourceTree = "<group>"; };
+		49A8B3CA64C4160A356221BA /* FakeAttachmentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAttachmentStorage.swift; sourceTree = "<group>"; };
+		49B05ACFC83E98CBEDB2D747 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
+		4BB59031986F09B3E8831098 /* UploadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadState.swift; sourceTree = "<group>"; };
+		4D02EB976DE421312073A6BD /* InlineValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineValidation.swift; sourceTree = "<group>"; };
+		529FCF06CD1FC13ED285241D /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		53080C39B182410798098F92 /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
+		5B0C9B096682FB16863C4DAE /* TestClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestClock.swift; sourceTree = "<group>"; };
+		5C030173C3E4A1765A7EBD45 /* FirestoreUserProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUserProfileStore.swift; sourceTree = "<group>"; };
+		64D75901EA33D3878C646275 /* InviteCollaboratorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCollaboratorViewModel.swift; sourceTree = "<group>"; };
+		654EB22AA064E990BAFC8224 /* FirebasePushRegistrar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePushRegistrar.swift; sourceTree = "<group>"; };
+		68060CCBBA294238F051317F /* TaskManagerTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = TaskManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A1558B3D8974FF0AAE5903C /* SyncControlling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncControlling.swift; sourceTree = "<group>"; };
+		6A9A5DA303A8484B6645FD2B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		6E33BDA8F8D5743372075067 /* FakeUserDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUserDirectory.swift; sourceTree = "<group>"; };
+		6F188A500AD04ABC8E812603 /* UnconfiguredAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnconfiguredAuthService.swift; sourceTree = "<group>"; };
+		6F76E4C56D4E4B950D1E4AB5 /* SessionExpiryPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionExpiryPolicy.swift; sourceTree = "<group>"; };
+		7360E1D71482F15186031AA6 /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
+		764DB92DE8BC93F9D3259568 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		797275E6F2CA8305265E8C5F /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
+		7A0DF6CD10B9F5B68EAAE5C8 /* SyncEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncEngine.swift; sourceTree = "<group>"; };
+		7CCF41AB5084BF509026132D /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		7E3D65E4B3A70692F36E6982 /* ImageCompressor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompressor.swift; sourceTree = "<group>"; };
+		8226F24F9303DA6148B64409 /* MockTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTaskRepository.swift; sourceTree = "<group>"; };
+		82DD8EC114F1C6B97F118CE4 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		841E22E20127FA95B1FA016B /* SchemaV1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaV1.swift; sourceTree = "<group>"; };
+		849281FB9BEDAB4E696EE358 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		854A32EE1B25B9C640FF84CE /* BackgroundUploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundUploadManager.swift; sourceTree = "<group>"; };
+		862E70184E9427B01B08169B /* TaskItem+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskItem+Preview.swift"; sourceTree = "<group>"; };
+		8D930B3F6562CBD1A163CAC2 /* TaskEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditorView.swift; sourceTree = "<group>"; };
+		90B95D848F03F168D91DCE47 /* AuthFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowView.swift; sourceTree = "<group>"; };
+		913D653F97889E357FEAEED4 /* FloatingAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingAddButton.swift; sourceTree = "<group>"; };
+		98415693C0FC5446497430E3 /* View+Accessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Accessibility.swift"; sourceTree = "<group>"; };
+		992A5699B0DBB4D11F0FAFB1 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		994178C3E88FF1BC35F36A74 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
+		9B2DF0DED24F5A6ACBACA543 /* AuthMemoryLeakTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMemoryLeakTests.swift; sourceTree = "<group>"; };
+		9E9C6419C27FA4007B5514AA /* SessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
+		9EA5D918CCD5E0A15553EE94 /* TaskTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTransfer.swift; sourceTree = "<group>"; };
+		A0458718BFF2AB775B9EC12C /* TaskFilterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFilterMenu.swift; sourceTree = "<group>"; };
+		A36320385584079394EFFDEF /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		A3FE07CD27DB31BF80A97288 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A5E9E4B236EA281022533334 /* TaskStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStoreTests.swift; sourceTree = "<group>"; };
+		AB94C02638179D4D0F3532AB /* SchemaV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaV2.swift; sourceTree = "<group>"; };
+		B0AC7190FD59EAD7BD2D2473 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
+		B30FB106717EACA2BBCF2AF0 /* TaskCacheCleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCacheCleaner.swift; sourceTree = "<group>"; };
+		B33B4120D3DFEB82E1B07572 /* TaskManager.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TaskManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8397C8FA09C05031C66560D /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
+		BAECB9B08532980A7D2B470F /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		BB456BB6680F7EF1DBE1CA72 /* MockAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthService.swift; sourceTree = "<group>"; };
+		BB75D23B4362EA79FB479B97 /* StatusBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBadge.swift; sourceTree = "<group>"; };
+		BB7A517FE180B1662FEE919B /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		BD6A09DF11AA2EC13CB6D503 /* AuthHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeader.swift; sourceTree = "<group>"; };
+		BEC027A7BB1F52830F40FBE4 /* SessionExpiryPolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionExpiryPolicyTests.swift; sourceTree = "<group>"; };
+		BF3B69D7FD2D957F2E0ACBA9 /* FirestoreUserDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUserDirectory.swift; sourceTree = "<group>"; };
+		BFE0DB547A51E088675C2261 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		C0EAD58F8E502FEB10CD52D7 /* UserDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDirectory.swift; sourceTree = "<group>"; };
+		C3175D5B05C3028C531ED0C2 /* TaskPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPermissions.swift; sourceTree = "<group>"; };
+		C58202577956DA8E07A99209 /* TaskManagerUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = TaskManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C727FB42B12281D508D2F11F /* SessionLifecycleObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLifecycleObserver.swift; sourceTree = "<group>"; };
+		C7438AEFB9F17A10E002E32C /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
+		CC00DF9E022B92C85780A070 /* UploadStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadStore.swift; sourceTree = "<group>"; };
+		D1729F8EB49483307617A0B1 /* TaskEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditorViewModel.swift; sourceTree = "<group>"; };
+		D3C5E52BB7FC7D581F736529 /* AppClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppClock.swift; sourceTree = "<group>"; };
+		D473E08AF146B063569B6AAB /* TaskManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerApp.swift; sourceTree = "<group>"; };
+		D52CFE0C6F353D20CE45C228 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		D647625382B9372A0B9AD44E /* ImageCompressorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompressorTests.swift; sourceTree = "<group>"; };
+		D6923543679805C5B98A8F6D /* AttachmentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentsViewModel.swift; sourceTree = "<group>"; };
+		D6EE76C6741DA90912796D0E /* ConflictResolverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConflictResolverTests.swift; sourceTree = "<group>"; };
+		D704EB0CFC78F72211CA8F7D /* ValidatorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorsTests.swift; sourceTree = "<group>"; };
+		D90778740BE78EE82576F679 /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
+		DA031436EDBCDBC641B555D4 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		DB5C723DBF8DE42EA1F63426 /* UserProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileStore.swift; sourceTree = "<group>"; };
+		DEBAE98AFA7C0A3A1AC709A8 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		DFEA0F0D5383EBEB06B65EC0 /* NotificationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCoordinator.swift; sourceTree = "<group>"; };
+		E1BE9A79BB160CAB2990ABBA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E813BC4F61BBEA841988968E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		EAF37CDCD393904783FD40E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EB0558572EDDB761CBB89766 /* UnavailableTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnavailableTaskRepository.swift; sourceTree = "<group>"; };
+		EBE2A02528379C8F82EDC307 /* FirebaseBootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseBootstrap.swift; sourceTree = "<group>"; };
+		EC0AA260604D2E88C0669FC3 /* Eventually.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eventually.swift; sourceTree = "<group>"; };
+		EDB10CA81851067DFD7498C8 /* TaskManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TaskManager.entitlements; sourceTree = "<group>"; };
+		F2DAB36AD38FA55F68AA05BE /* FirebaseAttachmentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAttachmentStorage.swift; sourceTree = "<group>"; };
+		F34848CBEAAA3DF8E456E7FD /* TaskRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRemote.swift; sourceTree = "<group>"; };
+		F8CCB5EDDF31527FD7863FE4 /* ReminderScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderScheduler.swift; sourceTree = "<group>"; };
+		F8DCF40E10F749406878B080 /* TaskTransferTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTransferTests.swift; sourceTree = "<group>"; };
+		F9E45A1FA6069368C351B60B /* TaskQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskQuery.swift; sourceTree = "<group>"; };
+		FBB538052B52E62C1B49F7FE /* TaskDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AAC190A45163939D729AC338 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62D1D70B9D5F7283FD403EC3 /* FirebaseAuth in Frameworks */,
+				A761D41AC57D19E68410FB95 /* FirebaseFirestore in Frameworks */,
+				2D94ADB396D0AEB241950303 /* FirebaseStorage in Frameworks */,
+				28281B2049EA5961ADDA1E06 /* FirebaseMessaging in Frameworks */,
+				F9736DE162292541325FFCAF /* FirebaseCrashlytics in Frameworks */,
+				AEA67CCCFEB01F6F3843EBD2 /* FirebaseAnalytics in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0ADA6EAC0583CA01C8695B55 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				9B2DF0DED24F5A6ACBACA543 /* AuthMemoryLeakTests.swift */,
+				412D7D504D08F37A9798094D /* AuthViewModelTests.swift */,
+				0606D07F5BC6056B2C044F62 /* SessionControllerTests.swift */,
+				BEC027A7BB1F52830F40FBE4 /* SessionExpiryPolicyTests.swift */,
+				D704EB0CFC78F72211CA8F7D /* ValidatorsTests.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		1426D230B02DA6CD6D29E2C4 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				1B971589CF1EC35F496A0472 /* AuthError.swift */,
+				DA031436EDBCDBC641B555D4 /* AuthService.swift */,
+				994178C3E88FF1BC35F36A74 /* FirebaseAuthService.swift */,
+				9E9C6419C27FA4007B5514AA /* SessionController.swift */,
+				6F76E4C56D4E4B950D1E4AB5 /* SessionExpiryPolicy.swift */,
+				C727FB42B12281D508D2F11F /* SessionLifecycleObserver.swift */,
+				6F188A500AD04ABC8E812603 /* UnconfiguredAuthService.swift */,
+				DB5C723DBF8DE42EA1F63426 /* UserProfileStore.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		19DD2D5B81B5ECEB8FFEA166 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EAF37CDCD393904783FD40E7 /* Assets.xcassets */,
+				A36320385584079394EFFDEF /* InfoPlist.xcstrings */,
+				764DB92DE8BC93F9D3259568 /* Localizable.xcstrings */,
+				11FC8C04759B2B82A7058CFE /* PrivacyInfo.xcprivacy */,
+				EDB10CA81851067DFD7498C8 /* TaskManager.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1AB380261CF31A993C4B9741 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				7E3D65E4B3A70692F36E6982 /* ImageCompressor.swift */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		1D12EE8283BBB7DD015338B4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B33B4120D3DFEB82E1B07572 /* TaskManager.app */,
+				68060CCBBA294238F051317F /* TaskManagerTests.xctest */,
+				C58202577956DA8E07A99209 /* TaskManagerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2413F696B31BF32294E222D4 /* Collaboration */ = {
+			isa = PBXGroup;
+			children = (
+				12C80502762A6907362C6083 /* InviteCollaboratorView.swift */,
+				64D75901EA33D3878C646275 /* InviteCollaboratorViewModel.swift */,
+			);
+			path = Collaboration;
+			sourceTree = "<group>";
+		};
+		25DC7B0CB7E4EDAC9028C342 /* TaskManagerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				325403DAC2ABCACFA3D609B4 /* AuthFlowUITests.swift */,
+				43163C96AB156AA4517BC1B8 /* FirebaseEmulatorUITests.swift */,
+			);
+			path = TaskManagerUITests;
+			sourceTree = "<group>";
+		};
+		2FEAF3F26AA7FBA9DDDC0694 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				53080C39B182410798098F92 /* TaskItem.swift */,
+				C3175D5B05C3028C531ED0C2 /* TaskPermissions.swift */,
+				F9E45A1FA6069368C351B60B /* TaskQuery.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		3BC2BE6477EA854256CBB757 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				FA30CE4E3827804A747E4B33 /* Fakes */,
+				22B02657CD64D787FA15DD4B /* AppDelegate.swift */,
+				BFE0DB547A51E088675C2261 /* AppEnvironment.swift */,
+				7CCF41AB5084BF509026132D /* AppRouter.swift */,
+				3CABB02BDF40A71AEE10483C /* BackgroundSync.swift */,
+				E1BE9A79BB160CAB2990ABBA /* MainView.swift */,
+				DFEA0F0D5383EBEB06B65EC0 /* NotificationCoordinator.swift */,
+				2C31C75483CE476B8D4EB824 /* RootView.swift */,
+				31F166BBE63AD618FF7678CD /* SplashView.swift */,
+				D473E08AF146B063569B6AAB /* TaskManagerApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3F4E9AB0975864C74C6D37EC /* Attachments */ = {
+			isa = PBXGroup;
+			children = (
+				2072786F9540C00AB963BD91 /* AttachmentsViewModelTests.swift */,
+			);
+			path = Attachments;
+			sourceTree = "<group>";
+		};
+		529167F3B94BB70A736DB38C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6A9A5DA303A8484B6645FD2B /* SettingsView.swift */,
+				992A5699B0DBB4D11F0FAFB1 /* SettingsViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		5A6B8E94BF14284F88049175 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				90B95D848F03F168D91DCE47 /* AuthFlowView.swift */,
+				BD6A09DF11AA2EC13CB6D503 /* AuthHeader.swift */,
+				82DD8EC114F1C6B97F118CE4 /* ForgotPasswordView.swift */,
+				2A0E68852D1ECFAB00F9AF08 /* ForgotPasswordViewModel.swift */,
+				A3FE07CD27DB31BF80A97288 /* LoginView.swift */,
+				E813BC4F61BBEA841988968E /* LoginViewModel.swift */,
+				849281FB9BEDAB4E696EE358 /* SignUpView.swift */,
+				BAECB9B08532980A7D2B470F /* SignUpViewModel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		72C5486708BCA40FBE924A6D /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				EBE2A02528379C8F82EDC307 /* FirebaseBootstrap.swift */,
+				654EB22AA064E990BAFC8224 /* FirebasePushRegistrar.swift */,
+				028080F0203BD8860723266E /* FirestoreTaskRemote.swift */,
+				BF3B69D7FD2D957F2E0ACBA9 /* FirestoreUserDirectory.swift */,
+				5C030173C3E4A1765A7EBD45 /* FirestoreUserProfileStore.swift */,
+				141911EFB650AF04737CAC42 /* TaskDocumentMapper.swift */,
+				F34848CBEAAA3DF8E456E7FD /* TaskRemote.swift */,
+				C0EAD58F8E502FEB10CD52D7 /* UserDirectory.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		74AAA4472561FF02100C1714 /* TaskManager */ = {
+			isa = PBXGroup;
+			children = (
+				3BC2BE6477EA854256CBB757 /* App */,
+				7E512AA072CFBF865F4A9F75 /* Core */,
+				A6920559FAEACE8FA5EC5FC5 /* DesignSystem */,
+				8F77F738ECA6A725D0DF5258 /* Features */,
+				19DD2D5B81B5ECEB8FFEA166 /* Resources */,
+			);
+			path = TaskManager;
+			sourceTree = "<group>";
+		};
+		79DE41C6F4499D833EBF37D1 /* TaskManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				E0A3F317B828A55987E44A80 /* App */,
+				3F4E9AB0975864C74C6D37EC /* Attachments */,
+				0ADA6EAC0583CA01C8695B55 /* Auth */,
+				9D976D037A963609532BCC1E /* Media */,
+				9155190408D618693B8A4807 /* Mocks */,
+				C7CF02521DA4DF86363B04AF /* Notifications */,
+				D4459571D9EF7343EB0B5AD1 /* Support */,
+				9B8C32561404E99B30DD2A09 /* Sync */,
+				EBA4FBE874F7B586E8FF717B /* Tasks */,
+				A8DFC596BC54812DC30CE98D /* Uploads */,
+			);
+			path = TaskManagerTests;
+			sourceTree = "<group>";
+		};
+		7D9961B62B9206A844ABA811 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				D90778740BE78EE82576F679 /* TaskDetailView.swift */,
+				FBB538052B52E62C1B49F7FE /* TaskDetailViewModel.swift */,
+				8D930B3F6562CBD1A163CAC2 /* TaskEditorView.swift */,
+				D1729F8EB49483307617A0B1 /* TaskEditorViewModel.swift */,
+				A0458718BFF2AB775B9EC12C /* TaskFilterMenu.swift */,
+				B0AC7190FD59EAD7BD2D2473 /* TaskListView.swift */,
+				797275E6F2CA8305265E8C5F /* TaskListViewModel.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		7E512AA072CFBF865F4A9F75 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1426D230B02DA6CD6D29E2C4 /* Auth */,
+				2FEAF3F26AA7FBA9DDDC0694 /* Domain */,
+				1AB380261CF31A993C4B9741 /* Media */,
+				CDF8EA29705D03A0E9A794AC /* Notifications */,
+				CC124BAD1825B2A48A1E2193 /* Persistence */,
+				72C5486708BCA40FBE924A6D /* Remote */,
+				B68EB4BD5006A82EA1971E57 /* Sync */,
+				E827DB1C75BCFC8E6A350F07 /* Uploads */,
+				852CE985FC0270FB4A524AB8 /* Utilities */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		852CE985FC0270FB4A524AB8 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D3C5E52BB7FC7D581F736529 /* AppClock.swift */,
+				4D02EB976DE421312073A6BD /* InlineValidation.swift */,
+				BB7A517FE180B1662FEE919B /* Log.swift */,
+				C7438AEFB9F17A10E002E32C /* Validators.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		8F77F738ECA6A725D0DF5258 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				CBF872AF62A7283A963F8431 /* Attachments */,
+				5A6B8E94BF14284F88049175 /* Auth */,
+				2413F696B31BF32294E222D4 /* Collaboration */,
+				529167F3B94BB70A736DB38C /* Settings */,
+				7D9961B62B9206A844ABA811 /* Tasks */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		9155190408D618693B8A4807 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				BB456BB6680F7EF1DBE1CA72 /* MockAuthService.swift */,
+				8226F24F9303DA6148B64409 /* MockTaskRepository.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		9B8C32561404E99B30DD2A09 /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				D6EE76C6741DA90912796D0E /* ConflictResolverTests.swift */,
+			);
+			path = Sync;
+			sourceTree = "<group>";
+		};
+		9D71C3F77EE31E6AB3A51E94 = {
+			isa = PBXGroup;
+			children = (
+				74AAA4472561FF02100C1714 /* TaskManager */,
+				79DE41C6F4499D833EBF37D1 /* TaskManagerTests */,
+				25DC7B0CB7E4EDAC9028C342 /* TaskManagerUITests */,
+				1D12EE8283BBB7DD015338B4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9D976D037A963609532BCC1E /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				D647625382B9372A0B9AD44E /* ImageCompressorTests.swift */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		A6920559FAEACE8FA5EC5FC5 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				41E2AC941698465E00CAEE3E /* ButtonStyles.swift */,
+				1192BE7B18566F939F76D04C /* DesignSystemCatalog.swift */,
+				529FCF06CD1FC13ED285241D /* EmptyStateView.swift */,
+				913D653F97889E357FEAEED4 /* FloatingAddButton.swift */,
+				468AF988507C73A1363CFBF4 /* FloatingGlass.swift */,
+				313A9A7E7A81A795A86D1977 /* FormField.swift */,
+				0907426701EB5A775C90639C /* MessageBanner.swift */,
+				DEBAE98AFA7C0A3A1AC709A8 /* PrimaryButton.swift */,
+				BB75D23B4362EA79FB479B97 /* StatusBadge.swift */,
+				417BF2A4F3EE3316AB32CCBB /* SyncStatusBanner.swift */,
+				B8397C8FA09C05031C66560D /* TaskRow.swift */,
+				2E0E7F6D117D66BE2CE99EC6 /* Tokens.swift */,
+				98415693C0FC5446497430E3 /* View+Accessibility.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		A8DFC596BC54812DC30CE98D /* Uploads */ = {
+			isa = PBXGroup;
+			children = (
+				057EDCEBA304BBD0132183AF /* UploadStateMachineTests.swift */,
+			);
+			path = Uploads;
+			sourceTree = "<group>";
+		};
+		B68EB4BD5006A82EA1971E57 /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				3AB85C314FA59D489D092864 /* ConflictResolver.swift */,
+				D52CFE0C6F353D20CE45C228 /* NetworkMonitor.swift */,
+				6A1558B3D8974FF0AAE5903C /* SyncControlling.swift */,
+				7A0DF6CD10B9F5B68EAAE5C8 /* SyncEngine.swift */,
+			);
+			path = Sync;
+			sourceTree = "<group>";
+		};
+		C7CF02521DA4DF86363B04AF /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				43BE4C1898C5504DD3CD7A2C /* ReminderSchedulerTests.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		CBF872AF62A7283A963F8431 /* Attachments */ = {
+			isa = PBXGroup;
+			children = (
+				441DBEFDEB0E669C8AB8177F /* AttachmentsSection.swift */,
+				D6923543679805C5B98A8F6D /* AttachmentsViewModel.swift */,
+			);
+			path = Attachments;
+			sourceTree = "<group>";
+		};
+		CC124BAD1825B2A48A1E2193 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				4547D5B6E5A1AA3BFE9520B5 /* LocalTaskRepository.swift */,
+				841E22E20127FA95B1FA016B /* SchemaV1.swift */,
+				AB94C02638179D4D0F3532AB /* SchemaV2.swift */,
+				B30FB106717EACA2BBCF2AF0 /* TaskCacheCleaner.swift */,
+				2A2CCCCB6B1406323D1DFF79 /* TaskManagerMigrationPlan.swift */,
+				49B05ACFC83E98CBEDB2D747 /* TaskRepository.swift */,
+				7360E1D71482F15186031AA6 /* TaskStore.swift */,
+				9EA5D918CCD5E0A15553EE94 /* TaskTransfer.swift */,
+				EB0558572EDDB761CBB89766 /* UnavailableTaskRepository.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		CDF8EA29705D03A0E9A794AC /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				F8CCB5EDDF31527FD7863FE4 /* ReminderScheduler.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		D4459571D9EF7343EB0B5AD1 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				EC0AA260604D2E88C0669FC3 /* Eventually.swift */,
+				5B0C9B096682FB16863C4DAE /* TestClock.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		E0A3F317B828A55987E44A80 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				21257C6B536E173B5E280A58 /* AppEnvironmentTests.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E827DB1C75BCFC8E6A350F07 /* Uploads */ = {
+			isa = PBXGroup;
+			children = (
+				034FB63DE4A2978146926274 /* AttachmentStorage.swift */,
+				854A32EE1B25B9C640FF84CE /* BackgroundUploadManager.swift */,
+				F2DAB36AD38FA55F68AA05BE /* FirebaseAttachmentStorage.swift */,
+				4BB59031986F09B3E8831098 /* UploadState.swift */,
+				CC00DF9E022B92C85780A070 /* UploadStore.swift */,
+			);
+			path = Uploads;
+			sourceTree = "<group>";
+		};
+		EBA4FBE874F7B586E8FF717B /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				2F81B84C63F8FD334EE3056F /* TaskQueryTests.swift */,
+				A5E9E4B236EA281022533334 /* TaskStoreTests.swift */,
+				F8DCF40E10F749406878B080 /* TaskTransferTests.swift */,
+				1620D546A1F1EFA991182415 /* TaskViewModelTests.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		FA30CE4E3827804A747E4B33 /* Fakes */ = {
+			isa = PBXGroup;
+			children = (
+				49A8B3CA64C4160A356221BA /* FakeAttachmentStorage.swift */,
+				485EDAAB3EB7348FED93D7BF /* FakeAuthService.swift */,
+				05B12295DA4AB152DE56892E /* FakeTaskRemote.swift */,
+				6E33BDA8F8D5743372075067 /* FakeUserDirectory.swift */,
+				862E70184E9427B01B08169B /* TaskItem+Preview.swift */,
+			);
+			path = Fakes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		838600A3F72A5798B22941C7 /* TaskManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC63F20EF28E22947BBE8BC6 /* Build configuration list for PBXNativeTarget "TaskManagerTests" */;
+			buildPhases = (
+				CC149BA1E9AB66C152525DF9 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				35031C9AA4281AB8429B7070 /* PBXTargetDependency */,
+			);
+			name = TaskManagerTests;
+			packageProductDependencies = (
+			);
+			productName = TaskManagerTests;
+			productReference = 68060CCBBA294238F051317F /* TaskManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CCBA61CB4E6FDA643964F58C /* TaskManagerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BFCBD2D8F968B873B2A81E1 /* Build configuration list for PBXNativeTarget "TaskManagerUITests" */;
+			buildPhases = (
+				2DB67A9CA1D47BD979F1877A /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55EEFF535078746C37A75D83 /* PBXTargetDependency */,
+			);
+			name = TaskManagerUITests;
+			packageProductDependencies = (
+			);
+			productName = TaskManagerUITests;
+			productReference = C58202577956DA8E07A99209 /* TaskManagerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		D6AE5153AD9DCBC8A3CF4A63 /* TaskManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CD0D20E38CC1013975A8476 /* Build configuration list for PBXNativeTarget "TaskManager" */;
+			buildPhases = (
+				EB47FA6A834F80B895D39F1D /* SwiftLint */,
+				A2EFC8B568D9F5C0FC7EA3BC /* Sources */,
+				AA304BF1680A70688C2EB7AD /* Copy Firebase config */,
+				CC9A9785BE5DFEA6BC71759C /* Resources */,
+				AAC190A45163939D729AC338 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TaskManager;
+			packageProductDependencies = (
+				D3BFA3E00090D4A6AFAEAE65 /* FirebaseAuth */,
+				A58A7B4AD6146831D95E60AA /* FirebaseFirestore */,
+				2DC663564D6237204A4F3FA8 /* FirebaseStorage */,
+				0B453C0F14541B8EFDB5A82F /* FirebaseMessaging */,
+				2CEC9DB08D4DABCD580C4B5E /* FirebaseCrashlytics */,
+				F36B55D7F61A3BA1D40AC197 /* FirebaseAnalytics */,
+			);
+			productName = TaskManager;
+			productReference = B33B4120D3DFEB82E1B07572 /* TaskManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E39F78AEDCFB35ABF91497B4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2720;
+				TargetAttributes = {
+					838600A3F72A5798B22941C7 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					CCBA61CB4E6FDA643964F58C = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+						TestTargetID = D6AE5153AD9DCBC8A3CF4A63;
+					};
+					D6AE5153AD9DCBC8A3CF4A63 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = AC6323F84075EC678E7A17D7 /* Build configuration list for PBXProject "TaskManager" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				de,
+				en,
+			);
+			mainGroup = 9D71C3F77EE31E6AB3A51E94;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				064CD28A9A410D4D2A4D86EB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 1D12EE8283BBB7DD015338B4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D6AE5153AD9DCBC8A3CF4A63 /* TaskManager */,
+				838600A3F72A5798B22941C7 /* TaskManagerTests */,
+				CCBA61CB4E6FDA643964F58C /* TaskManagerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CC9A9785BE5DFEA6BC71759C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7886FC31A3DB73601A98144A /* Assets.xcassets in Resources */,
+				3BD105270BD13578F603F05F /* InfoPlist.xcstrings in Resources */,
+				1CC8879840859C3B1B3E3E89 /* Localizable.xcstrings in Resources */,
+				919930ADE8ACD9DCDA10556E /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AA304BF1680A70688C2EB7AD /* Copy Firebase config */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Firebase config";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# The plist holds project keys, so it is never committed. Without it the app runs offline.\nPLIST=\"${SRCROOT}/TaskManager/Resources/GoogleService-Info.plist\"\nif [ -f \"$PLIST\" ]; then\n  cp \"$PLIST\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\nelse\n  echo \"note: GoogleService-Info.plist not found; building without Firebase.\"\nfi\n";
+		};
+		EB47FA6A834F80B895D39F1D /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"/opt/homebrew/bin:/usr/local/bin:$PATH\"\nif command -v swiftlint >/dev/null 2>&1; then\n  swiftlint lint --quiet --config \"${SRCROOT}/.swiftlint.yml\" \"${SRCROOT}/TaskManager\"\nelse\n  echo \"note: SwiftLint not installed; scripts/check_no_force_unwraps.sh still guards CI.\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2DB67A9CA1D47BD979F1877A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAC7B609867081C00C41C026 /* AuthFlowUITests.swift in Sources */,
+				66A760F8CB0E6A2EB140B033 /* FirebaseEmulatorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2EFC8B568D9F5C0FC7EA3BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECE4597B3243398FAD3F5EA5 /* AppClock.swift in Sources */,
+				FC245058B1FD48863F5D109B /* AppDelegate.swift in Sources */,
+				C7E1C713C4439EE10378DB3C /* AppEnvironment.swift in Sources */,
+				F42587129A9DD0FD7A1B6E03 /* AppRouter.swift in Sources */,
+				F72F2527055E7C4C595ADDE3 /* AttachmentStorage.swift in Sources */,
+				F3A5D6312EDABDA1C0417810 /* AttachmentsSection.swift in Sources */,
+				740747C7F3925D69C045FB35 /* AttachmentsViewModel.swift in Sources */,
+				67D322CA66F25B3585121E6F /* AuthError.swift in Sources */,
+				AAE960048F21DC33EAA594D1 /* AuthFlowView.swift in Sources */,
+				662493E34207E499C7F030E9 /* AuthHeader.swift in Sources */,
+				F4EED7B9B1E1FAC2F74EB9F2 /* AuthService.swift in Sources */,
+				EECED4C9D9762DB856F93F01 /* BackgroundSync.swift in Sources */,
+				CC584D28A2578E5DA3687B45 /* BackgroundUploadManager.swift in Sources */,
+				B14989EB03160DD0089DD865 /* ButtonStyles.swift in Sources */,
+				4A45CAF692090216325C080A /* ConflictResolver.swift in Sources */,
+				E52E6326381E1B9143A4CEF7 /* DesignSystemCatalog.swift in Sources */,
+				266D931D8FCF0F81E3BEA527 /* EmptyStateView.swift in Sources */,
+				FE12BCF6E434D24A33E71A5F /* FakeAttachmentStorage.swift in Sources */,
+				99D92C859F6E439C9D22C389 /* FakeAuthService.swift in Sources */,
+				44FE1C19D649C7123C61EF27 /* FakeTaskRemote.swift in Sources */,
+				DB015F08E9389268677F9B61 /* FakeUserDirectory.swift in Sources */,
+				0A9EA1A4CB5E46FDCF3382C5 /* FirebaseAttachmentStorage.swift in Sources */,
+				6C7C469F3886B9CDCA34F0A4 /* FirebaseAuthService.swift in Sources */,
+				7799F41D4491CF6A8E1DDD04 /* FirebaseBootstrap.swift in Sources */,
+				E6B2BCD8CAE9A47FB3995A6A /* FirebasePushRegistrar.swift in Sources */,
+				8EF791F47BEF7A40C238570B /* FirestoreTaskRemote.swift in Sources */,
+				1C4E63B26102C168135399A8 /* FirestoreUserDirectory.swift in Sources */,
+				01D59524B9100BE87FD3A75C /* FirestoreUserProfileStore.swift in Sources */,
+				608A134384147A252A0CABC7 /* FloatingAddButton.swift in Sources */,
+				61E31A29469C7E414BC5BA13 /* FloatingGlass.swift in Sources */,
+				2DD65B79F9D264096892A165 /* ForgotPasswordView.swift in Sources */,
+				35E183D4B83FE76918BF7A88 /* ForgotPasswordViewModel.swift in Sources */,
+				357603FAEDA7AD1E7337A4D4 /* FormField.swift in Sources */,
+				51D701EF7399865ABA539C0A /* ImageCompressor.swift in Sources */,
+				9424E2CB1B3AB258FD326A66 /* InlineValidation.swift in Sources */,
+				6FFCA5124A3A3BF8330635FD /* InviteCollaboratorView.swift in Sources */,
+				0EAFD24235DE7DC82F98F9DA /* InviteCollaboratorViewModel.swift in Sources */,
+				EA0BB39F1396E2ABE96E4150 /* LocalTaskRepository.swift in Sources */,
+				648523F0A972278BE8A3C5D7 /* Log.swift in Sources */,
+				363D053D227DCF1A992E017B /* LoginView.swift in Sources */,
+				F35B985595DE91F8928BD95C /* LoginViewModel.swift in Sources */,
+				8E6A52C64E4D6DFFFE865E49 /* MainView.swift in Sources */,
+				D7D7F7F775F7F57D2BAC491C /* MessageBanner.swift in Sources */,
+				A4F7B714A181D3EDAC6FBA89 /* NetworkMonitor.swift in Sources */,
+				FB6B2CDEFE77BA1EB89390D1 /* NotificationCoordinator.swift in Sources */,
+				CBB13F73174BE6114878B48D /* PrimaryButton.swift in Sources */,
+				5F51DE2B5EE67B52A390D63A /* ReminderScheduler.swift in Sources */,
+				20AF41CBF2012BB5370AED27 /* RootView.swift in Sources */,
+				C769AFF84D3720F78D3B29E6 /* SchemaV1.swift in Sources */,
+				9E83A9537AC4F533F2409F58 /* SchemaV2.swift in Sources */,
+				21FC3343A4575812BAE09F81 /* SessionController.swift in Sources */,
+				E22F40D9C9E67D2B849F7C1B /* SessionExpiryPolicy.swift in Sources */,
+				CBBF31D0A142C6417558C3C3 /* SessionLifecycleObserver.swift in Sources */,
+				25FC6747FEDA67E2DC9BE845 /* SettingsView.swift in Sources */,
+				CBE84143535076123382BB0D /* SettingsViewModel.swift in Sources */,
+				AB91F129E65C5899EE9B62E7 /* SignUpView.swift in Sources */,
+				AB23F1BB728C732B59EAD772 /* SignUpViewModel.swift in Sources */,
+				CD5173215CD48AD714B74C83 /* SplashView.swift in Sources */,
+				67D2BBC50F22598D74964534 /* StatusBadge.swift in Sources */,
+				6C7BC49F9BF7416A6EDB016C /* SyncControlling.swift in Sources */,
+				62C9DCC027ECE69991E2772F /* SyncEngine.swift in Sources */,
+				B875C3E15BA50B2F07965B6D /* SyncStatusBanner.swift in Sources */,
+				097580E074AA0FD05AEDC368 /* TaskCacheCleaner.swift in Sources */,
+				B5B66C786F6C37BD062C9C75 /* TaskDetailView.swift in Sources */,
+				D8F782F1ED2FC2E09A827FD0 /* TaskDetailViewModel.swift in Sources */,
+				DC8E00121E24A4D736D5C17C /* TaskDocumentMapper.swift in Sources */,
+				5B621F60731CB3068EE8EC0D /* TaskEditorView.swift in Sources */,
+				1CDBD0A26D4801F3ED1B73A0 /* TaskEditorViewModel.swift in Sources */,
+				9EED0286834935471148ECE0 /* TaskFilterMenu.swift in Sources */,
+				15DBB14EF4CBD53290D40E62 /* TaskItem+Preview.swift in Sources */,
+				8D010610631624B2453F0358 /* TaskItem.swift in Sources */,
+				CC4E681585890BDB565DEB33 /* TaskListView.swift in Sources */,
+				915DFD9F332410B3D0FC1294 /* TaskListViewModel.swift in Sources */,
+				97A6C5B4C057EDB09FC9C663 /* TaskManagerApp.swift in Sources */,
+				9EA96CF5E28CDB7B520CEB15 /* TaskManagerMigrationPlan.swift in Sources */,
+				A0CB2E304FDFDC77FDAC7AE5 /* TaskPermissions.swift in Sources */,
+				A2782B2270F9CF259FF328A8 /* TaskQuery.swift in Sources */,
+				D30708B39EE04FE3DEBAC168 /* TaskRemote.swift in Sources */,
+				BB7EF949FC7F1415E8C0D39C /* TaskRepository.swift in Sources */,
+				6B011E868FFE86660FA5BB09 /* TaskRow.swift in Sources */,
+				CD2BEB14655567A3CEF5656D /* TaskStore.swift in Sources */,
+				79B8BE78731CF5ACD437E424 /* TaskTransfer.swift in Sources */,
+				859C01C1707B1F59BBC632B5 /* Tokens.swift in Sources */,
+				54B2E3843A2265B013D266F9 /* UnavailableTaskRepository.swift in Sources */,
+				9BB2641E8B5162E9F7DB280E /* UnconfiguredAuthService.swift in Sources */,
+				17F7382411A34D28D2C57440 /* UploadState.swift in Sources */,
+				D3E13E4E1A49FD269A9EAC4C /* UploadStore.swift in Sources */,
+				191A604E24729F27E06C41B4 /* UserDirectory.swift in Sources */,
+				DDA2BA33DC003D08890CAEF4 /* UserProfileStore.swift in Sources */,
+				52342FE7F2C321FF4CC0961A /* Validators.swift in Sources */,
+				4137CA8111DB2E0FE50F36AE /* View+Accessibility.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC149BA1E9AB66C152525DF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D63B347D9760A3304B6A73D /* AppEnvironmentTests.swift in Sources */,
+				167C7347984BCCC087E46BE2 /* AttachmentsViewModelTests.swift in Sources */,
+				BDA44C689F059B7C32CFE705 /* AuthMemoryLeakTests.swift in Sources */,
+				FC4655C976AA110D09B49E39 /* AuthViewModelTests.swift in Sources */,
+				706C413D90D3B247CB6AE313 /* ConflictResolverTests.swift in Sources */,
+				91B2215BA3EDC55B2AB8D098 /* Eventually.swift in Sources */,
+				353CF61126AC8FC096650D78 /* ImageCompressorTests.swift in Sources */,
+				60D559C985BF9B85D6A34E7E /* MockAuthService.swift in Sources */,
+				1FF3CB4F1251E810EB25131B /* MockTaskRepository.swift in Sources */,
+				2B9DDE501A0883B0B2805645 /* ReminderSchedulerTests.swift in Sources */,
+				CB340B10C5495082C6C06658 /* SessionControllerTests.swift in Sources */,
+				16D0414E0E161A3F525C1146 /* SessionExpiryPolicyTests.swift in Sources */,
+				19DAA32F8BA8CCD2818CEE23 /* TaskQueryTests.swift in Sources */,
+				495B4829C3F0B74FD0EC2312 /* TaskStoreTests.swift in Sources */,
+				33FA7739BBD6E8A651249AB8 /* TaskTransferTests.swift in Sources */,
+				6F656FC8CD871CD6F8E43BF2 /* TaskViewModelTests.swift in Sources */,
+				01F0472AE12BC55F21C857AB /* TestClock.swift in Sources */,
+				DDD1F7C5C1C7FF98B956D483 /* UploadStateMachineTests.swift in Sources */,
+				0A5C91BA5665A7ACF5FC01AE /* ValidatorsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		35031C9AA4281AB8429B7070 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D6AE5153AD9DCBC8A3CF4A63 /* TaskManager */;
+			targetProxy = EC13F202D3B55148DB6E572B /* PBXContainerItemProxy */;
+		};
+		55EEFF535078746C37A75D83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D6AE5153AD9DCBC8A3CF4A63 /* TaskManager */;
+			targetProxy = BAE3E44A320F740911D6F244 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0BFF62DE48EBBC28B505AA55 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.brainxtech.taskmanager.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TaskManager.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TaskManager";
+			};
+			name = Debug;
+		};
+		233A3799944F3F8C15DC5C7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.brainxtech.taskmanager.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TaskManager;
+			};
+			name = Debug;
+		};
+		7BADAE808D6A6CF88D3E3BDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		BD9CE0AE44C8E7FF3364A7FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.brainxtech.taskmanager.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TaskManager;
+			};
+			name = Release;
+		};
+		C2F80A7D91FF007045FAD0A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.brainxtech.taskmanager.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TaskManager.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TaskManager";
+			};
+			name = Release;
+		};
+		CD8EB4F8E230945FB9BEDB2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TaskManager/Resources/TaskManager.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = MVBD6QQGZX;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = TaskManager/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.brainxtech.taskmanager;
+				PRODUCT_NAME = TaskManager;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F2A12F6B83354F8254DFFF00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		FB1A21589C22C32953901522 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TaskManager/Resources/TaskManager.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = PVLD7V62U8;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = TaskManager/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.brainxtech.taskmanager;
+				PRODUCT_NAME = TaskManager;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4CD0D20E38CC1013975A8476 /* Build configuration list for PBXNativeTarget "TaskManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD8EB4F8E230945FB9BEDB2C /* Debug */,
+				FB1A21589C22C32953901522 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		5BFCBD2D8F968B873B2A81E1 /* Build configuration list for PBXNativeTarget "TaskManagerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				233A3799944F3F8C15DC5C7A /* Debug */,
+				BD9CE0AE44C8E7FF3364A7FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AC6323F84075EC678E7A17D7 /* Build configuration list for PBXProject "TaskManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2A12F6B83354F8254DFFF00 /* Debug */,
+				7BADAE808D6A6CF88D3E3BDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		EC63F20EF28E22947BBE8BC6 /* Build configuration list for PBXNativeTarget "TaskManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0BFF62DE48EBBC28B505AA55 /* Debug */,
+				C2F80A7D91FF007045FAD0A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		064CD28A9A410D4D2A4D86EB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 13.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0B453C0F14541B8EFDB5A82F /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 064CD28A9A410D4D2A4D86EB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		2CEC9DB08D4DABCD580C4B5E /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 064CD28A9A410D4D2A4D86EB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		2DC663564D6237204A4F3FA8 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 064CD28A9A410D4D2A4D86EB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		A58A7B4AD6146831D95E60AA /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 064CD28A9A410D4D2A4D86EB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		D3BFA3E00090D4A6AFAEAE65 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 064CD28A9A410D4D2A4D86EB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		F36B55D7F61A3BA1D40AC197 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 064CD28A9A410D4D2A4D86EB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = E39F78AEDCFB35ABF91497B4 /* Project object */;
+}

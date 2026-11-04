@@ -1,0 +1,164 @@
+name: TaskManager
+
+options:
+  bundleIdPrefix: com.brainxtech
+  deploymentTarget:
+    iOS: "17.0"
+  developmentLanguage: en
+  createIntermediateGroups: true
+  groupSortPosition: top
+  xcodeVersion: "27.2"
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    TARGETED_DEVICE_FAMILY: "1"
+    IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+    # Test targets don't need a team on the simulator; the app target sets one per configuration.
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    ENABLE_USER_SCRIPT_SANDBOXING: NO
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+    SWIFT_EMIT_LOC_STRINGS: YES
+  configs:
+    Release:
+      SWIFT_TREAT_WARNINGS_AS_ERRORS: YES
+      GCC_TREAT_WARNINGS_AS_ERRORS: YES
+
+packages:
+  Firebase:
+    url: https://github.com/firebase/firebase-ios-sdk
+    exactVersion: 13.1.1
+
+targets:
+  TaskManager:
+    type: application
+    platform: iOS
+    sources:
+      - path: TaskManager
+        excludes:
+          # Gitignored; bundled by the "Copy Firebase config" phase only when present.
+          - "Resources/GoogleService-Info.plist"
+          - "Resources/Info.plist"
+    dependencies:
+      - package: Firebase
+        product: FirebaseAuth
+      - package: Firebase
+        product: FirebaseFirestore
+      - package: Firebase
+        product: FirebaseStorage
+      - package: Firebase
+        product: FirebaseMessaging
+      - package: Firebase
+        product: FirebaseCrashlytics
+      - package: Firebase
+        product: FirebaseAnalytics
+    entitlements:
+      path: TaskManager/Resources/TaskManager.entitlements
+      properties:
+        aps-environment: development
+    info:
+      path: TaskManager/Resources/Info.plist
+      properties:
+        CFBundleDisplayName: Tasks
+        CFBundleLocalizations: [en, de]
+        UILaunchScreen:
+          UIColorName: LaunchBackground
+        UIApplicationSupportsIndirectInputEvents: true
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UIBackgroundModes: [fetch, processing, remote-notification]
+        BGTaskSchedulerPermittedIdentifiers:
+          - com.brainxtech.taskmanager.sync
+          - com.brainxtech.taskmanager.sync-processing
+        # We forward APNs callbacks ourselves instead of letting Firebase swizzle the delegate.
+        FirebaseAppDelegateProxyEnabled: false
+        # Off until the optional Analytics/Crashlytics wrappers and the privacy manifest land.
+        FIREBASE_ANALYTICS_COLLECTION_ENABLED: false
+        FirebaseCrashlyticsCollectionEnabled: false
+        ITSAppUsesNonExemptEncryption: false
+    settings:
+      configs:
+        # Signing teams as chosen in Xcode; kept here so `xcodegen generate` doesn't drop them.
+        Debug:
+          DEVELOPMENT_TEAM: MVBD6QQGZX
+        Release:
+          DEVELOPMENT_TEAM: PVLD7V62U8
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.brainxtech.taskmanager
+        PRODUCT_NAME: TaskManager
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ENABLE_PREVIEWS: YES
+        DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+        ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS: YES
+    preBuildScripts:
+      - name: SwiftLint
+        basedOnDependencyAnalysis: false
+        script: |
+          export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+          if command -v swiftlint >/dev/null 2>&1; then
+            swiftlint lint --quiet --config "${SRCROOT}/.swiftlint.yml" "${SRCROOT}/TaskManager"
+          else
+            echo "note: SwiftLint not installed; scripts/check_no_force_unwraps.sh still guards CI."
+          fi
+    postCompileScripts:
+      - name: Copy Firebase config
+        basedOnDependencyAnalysis: false
+        script: |
+          # The plist holds project keys, so it is never committed. Without it the app runs offline.
+          PLIST="${SRCROOT}/TaskManager/Resources/GoogleService-Info.plist"
+          if [ -f "$PLIST" ]; then
+            cp "$PLIST" "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/"
+          else
+            echo "note: GoogleService-Info.plist not found; building without Firebase."
+          fi
+
+  TaskManagerTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [TaskManagerTests]
+    dependencies:
+      - target: TaskManager
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.brainxtech.taskmanager.tests
+        GENERATE_INFOPLIST_FILE: YES
+        BUNDLE_LOADER: $(TEST_HOST)
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/TaskManager.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TaskManager
+
+  TaskManagerUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [TaskManagerUITests]
+    dependencies:
+      - target: TaskManager
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.brainxtech.taskmanager.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: TaskManager
+
+schemes:
+  TaskManager:
+    build:
+      targets:
+        TaskManager: all
+        TaskManagerTests: [test]
+        TaskManagerUITests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      gatherCoverageData: true
+      coverageTargets: [TaskManager]
+      targets:
+        - TaskManagerTests
+        - TaskManagerUITests
+    archive:
+      config: Release
