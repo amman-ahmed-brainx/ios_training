@@ -219,8 +219,14 @@ actor BackgroundUploadManager: UploadManaging, SessionLifecycleObserver {
     /// `POST https://firebasestorage.googleapis.com/v0/b/<bucket>/o?name=<path>` with the user's ID token.
     static func request(bucket: String, path: String, contentType: String, idToken: String) throws -> URLRequest {
         var components = URLComponents()
-        components.scheme = "https"
-        components.host = "firebasestorage.googleapis.com"
+        if FirebaseBootstrap.usesEmulators {
+            components.scheme = "http"
+            components.host = FirebaseBootstrap.emulatorHost
+            components.port = 9199
+        } else {
+            components.scheme = "https"
+            components.host = "firebasestorage.googleapis.com"
+        }
         components.path = "/v0/b/\(bucket)/o"
         components.queryItems = [URLQueryItem(name: "name", value: path)]
         guard let url = components.url else { throw URLError(.badURL) }

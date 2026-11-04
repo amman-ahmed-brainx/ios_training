@@ -12,6 +12,15 @@
 | Cloud Function (Jest) | Written, not yet run: `cd functions && npm ci && npm test` |
 | Security rules (emulator) | Written, not yet run: `cd firebase && npm ci && npm test` |
 
+**Firebase end to end (Local Emulator Suite).** `FirebaseEmulatorUITests` runs the real Firebase
+Auth and Firestore SDKs, the project's security rules and the sync engine against
+`firebase emulators:start --only auth,firestore,storage` (the app is launched with the Debug-only
+`-firebaseEmulators` flag; the tests skip when the emulators aren't running). Both pass:
+sign in → create task → confirmed by Firestore → relaunch restores session and task; and owner
+shares by email → collaborator updates only the status through the REST API (rules enforced) →
+the owner's list shows it live. Firestore contents were checked directly: `users/{uid}` profile
+(lowercased email, no push tokens) and `tasks/{id}` with `memberIds` and `statusUpdatedAt`.
+
 The UI test covers log in → create with due date → edit → complete (swipe) → delete (swipe) → sign
 out against the `-uitest` fake backend, plus inline validation and `performAccessibilityAudit()`.
 The audit found and we fixed: truncation of "Don't have an account?" at large sizes, and the system

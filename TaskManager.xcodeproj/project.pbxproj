@@ -54,6 +54,7 @@
 		62D1D70B9D5F7283FD403EC3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D3BFA3E00090D4A6AFAEAE65 /* FirebaseAuth */; };
 		648523F0A972278BE8A3C5D7 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A517FE180B1662FEE919B /* Log.swift */; };
 		662493E34207E499C7F030E9 /* AuthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6A09DF11AA2EC13CB6D503 /* AuthHeader.swift */; };
+		66A760F8CB0E6A2EB140B033 /* FirebaseEmulatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43163C96AB156AA4517BC1B8 /* FirebaseEmulatorUITests.swift */; };
 		67D2BBC50F22598D74964534 /* StatusBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75D23B4362EA79FB479B97 /* StatusBadge.swift */; };
 		67D322CA66F25B3585121E6F /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B971589CF1EC35F496A0472 /* AuthError.swift */; };
 		6B011E868FFE86660FA5BB09 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8397C8FA09C05031C66560D /* TaskRow.swift */; };
@@ -176,6 +177,7 @@
 		412D7D504D08F37A9798094D /* AuthViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelTests.swift; sourceTree = "<group>"; };
 		417BF2A4F3EE3316AB32CCBB /* SyncStatusBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncStatusBanner.swift; sourceTree = "<group>"; };
 		41E2AC941698465E00CAEE3E /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		43163C96AB156AA4517BC1B8 /* FirebaseEmulatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEmulatorUITests.swift; sourceTree = "<group>"; };
 		43BE4C1898C5504DD3CD7A2C /* ReminderSchedulerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSchedulerTests.swift; sourceTree = "<group>"; };
 		441DBEFDEB0E669C8AB8177F /* AttachmentsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentsSection.swift; sourceTree = "<group>"; };
 		4547D5B6E5A1AA3BFE9520B5 /* LocalTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTaskRepository.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				325403DAC2ABCACFA3D609B4 /* AuthFlowUITests.swift */,
+				43163C96AB156AA4517BC1B8 /* FirebaseEmulatorUITests.swift */,
 			);
 			path = TaskManagerUITests;
 			sourceTree = "<group>";
@@ -858,6 +861,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAC7B609867081C00C41C026 /* AuthFlowUITests.swift in Sources */,
+				66A760F8CB0E6A2EB140B033 /* FirebaseEmulatorUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

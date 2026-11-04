@@ -57,6 +57,17 @@ scripts/verify.sh                          # force-unwrap check, SwiftLint, Rele
 (cd firebase && npm ci && npm test)        # security rules (Firestore emulator)
 ```
 
+End to end against Firebase without touching production:
+
+```bash
+firebase emulators:start --only auth,firestore,storage
+xcodebuild test -scheme TaskManager -destination 'platform=iOS Simulator,name=iPhone 17' \
+  -only-testing:TaskManagerUITests/FirebaseEmulatorUITests
+```
+
+To use the emulators while running the app yourself, add the `-firebaseEmulators` launch argument
+(Debug builds only).
+
 Results and Instruments notes: [docs/QUALITY.md](docs/QUALITY.md). Release: [docs/RELEASE.md](docs/RELEASE.md).
 Demo script: [docs/DEMO.md](docs/DEMO.md).
 
