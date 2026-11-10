@@ -1,0 +1,67 @@
+rules_version = '2';
+
+// Task access is driven by `memberIds` (owner + collaborators). Mirrors TaskPermissions.swift.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isMember() {
+      return signedIn() && request.auth.uid in resource.data.memberIds;
+    }
+
+    function isOwner() {
+      return signedIn() && request.auth.uid == resource.data.ownerId;
+    }
+
+    // memberIds is exactly the owner plus the collaborators: no hidden readers.
+    function validMembership(data) {
+      return data.ownerId in data.memberIds
+        && data.memberIds.hasAll(data.collaboratorIds)
+        && data.memberIds.size() == data.collaboratorIds.size() + 1
+        && !(data.ownerId in data.collaboratorIds);
+    }
+
+    // A known status, and a status clock that can't be pushed far into the future to win every
+    // later merge (a day of slack tolerates skewed device clocks).
+    function validStatusChange(data) {
+      return data.status in ['todo', 'inProgress', 'done']
+        && data.statusUpdatedAt is timestamp
+        && data.statusUpdatedAt < request.time + duration.value(1, 'd');
+    }
+
+    match /tasks/{taskId} {
+      allow read: if isMember();
+
+      allow create: if signedIn()
+        && request.resource.data.ownerId == request.auth.uid
+        && validMembership(request.resource.data);
+
+      // Owner may change anything except ownership; collaborators only the status fields.
+      allow update: if (isOwner()
+          && request.resource.data.ownerId == resource.data.ownerId
+          && validMembership(request.resource.data))
+        || (isMember()
+          && request.resource.data.diff(resource.data).affectedKeys()
+               .hasOnly(['status', 'statusUpdatedAt', 'updatedAt', 'updatedBy'])
+          && request.resource.data.updatedBy == request.auth.uid
+          && validStatusChange(request.resource.data));
+
+      allow delete: if isOwner();
+    }
+
+    // Device tokens are private to their owner (the Cloud Function reads them with admin rights).
+    match /userTokens/{uid} {
+      allow read, write: if signedIn() && request.auth.uid == uid;
+    }
+
+    // Any signed-in user may read profiles so invite-by-email can find people (see README).
+    // Profiles hold only email and display name; push tokens live in userTokens/{uid}.
+    match /users/{uid} {
+      allow read: if signedIn();
+      allow create, update: if signedIn() && request.auth.uid == uid;
+      allow delete: if false;
+    }
+  }
+}

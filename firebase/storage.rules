@@ -1,0 +1,24 @@
+rules_version = '2';
+
+// Attachments are readable and writable only by members of the task they belong to.
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /attachments/{taskId}/{fileName} {
+      function isTaskMember() {
+        return request.auth != null
+          && request.auth.uid in firestore.get(/databases/(default)/documents/tasks/$(taskId)).data.memberIds;
+      }
+
+      function allowedUpload() {
+        return request.resource.size < 50 * 1024 * 1024
+          && (request.resource.contentType.matches('image/.*')
+            || request.resource.contentType.matches('video/.*')
+            || request.resource.contentType.matches('text/.*')
+            || request.resource.contentType.matches('application/(pdf|zip|json|rtf|msword|vnd\\.ms-(excel|powerpoint)|vnd\\.openxmlformats-officedocument\\..+)'));
+      }
+
+      allow read, delete: if isTaskMember();
+      allow create, update: if isTaskMember() && allowedUpload();
+    }
+  }
+}

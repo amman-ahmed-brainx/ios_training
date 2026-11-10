@@ -1,0 +1,37 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Regenerate the project and run unit + UI tests"
+  lane :test do
+    sh("cd .. && xcodegen generate --quiet")
+    run_tests(
+      project: "TaskManager.xcodeproj",
+      scheme: "TaskManager",
+      devices: [ENV.fetch("TASKMANAGER_SIMULATOR", "iPhone 18 Pro")],
+      code_coverage: true
+    )
+  end
+
+  desc "Bump the build number, archive and upload to TestFlight"
+  lane :beta do
+    # App Store Connect API key from the environment; nothing is stored in the repo.
+    api_key = app_store_connect_api_key(
+      key_id: ENV.fetch("ASC_KEY_ID"),
+      issuer_id: ENV.fetch("ASC_ISSUER_ID"),
+      key_filepath: ENV.fetch("ASC_KEY_PATH"),
+      in_house: false
+    )
+    sh("cd .. && xcodegen generate --quiet")
+    increment_build_number(
+      xcodeproj: "TaskManager.xcodeproj",
+      build_number: latest_testflight_build_number(api_key: api_key) + 1
+    )
+    build_app(
+      project: "TaskManager.xcodeproj",
+      scheme: "TaskManager",
+      configuration: "Release",
+      export_method: "app-store"
+    )
+    upload_to_testflight(api_key: api_key, skip_waiting_for_build_processing: true)
+  end
+end
